@@ -1,3 +1,8 @@
+import os
+
+# Defensive guard for Spaces where OAuth was previously enabled.
+os.environ.setdefault("HF_OAUTH", "0")
+
 import gradio as gr
 from huggingface_hub import InferenceClient
 
@@ -9,12 +14,12 @@ def respond(
     max_tokens,
     temperature,
     top_p,
-    hf_token: gr.OAuthToken,
 ):
     """
     For more information on `huggingface_hub` Inference API support, please check the docs: https://huggingface.co/docs/huggingface_hub/v0.22.2/en/guides/inference
     """
-    client = InferenceClient(token=hf_token.token, model="soroosh-tanzadeh/jbrain-160M")
+    token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
+    client = InferenceClient(token=token, model="soroosh-tanzadeh/jbrain-160M")
 
     messages = [{"role": "system", "content": system_message}]
 
@@ -60,8 +65,6 @@ chatbot = gr.ChatInterface(
 )
 
 with gr.Blocks() as demo:
-    with gr.Sidebar():
-        gr.LoginButton()
     chatbot.render()
 
 
