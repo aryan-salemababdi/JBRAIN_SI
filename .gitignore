@@ -7,3 +7,4 @@ demos
 *.mp4
 *.pdf
 .env
+data

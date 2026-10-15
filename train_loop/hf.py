@@ -1,5 +1,6 @@
 import torch
 import tiktoken
+import time
 
 from model import JBRLanguageModel, JBRLanguageModelLoss
 from train_loop.common import build_model_config, get_device, save_training_artifacts
@@ -21,8 +22,76 @@ class JBRTrainerModel(torch.nn.Module):
         return output
 
 
+class ConsoleProgressCallback:
+    """
+    Emits explicit progress lines for non-interactive environments
+    (e.g., HF Jobs logs), where tqdm bars are often suppressed.
+    """
+
+    def __init__(self, seq_len: int):
+        self.start_time = None
+        self.seq_len = seq_len
+
+    def on_train_begin(self, args, state, control, **kwargs):
+        del control, kwargs
+        self.start_time = time.time()
+        world_size = max(1, getattr(args, "world_size", 1))
+        self.tokens_per_step = (
+            self.seq_len
+            * args.per_device_train_batch_size
+            * args.gradient_accumulation_steps
+            * world_size
+        )
+        print(
+            f"[HF TRAIN] start | max_steps={state.max_steps} "
+            f"| batch={args.per_device_train_batch_size} "
+            f"| grad_accum={args.gradient_accumulation_steps} "
+            f"| seq_len={self.seq_len} "
+            f"| tokens/step={self.tokens_per_step:,}",
+            flush=True,
+        )
+
+    def on_log(self, args, state, control, logs=None, **kwargs):
+        del control, kwargs
+        if not logs:
+            return
+
+        step = int(state.global_step)
+        total = int(state.max_steps) if state.max_steps else 0
+        pct = (100.0 * step / total) if total > 0 else 0.0
+        elapsed = time.time() - self.start_time if self.start_time else 0.0
+        steps_per_sec = (step / elapsed) if elapsed > 0 else 0.0
+        tokens_per_sec = steps_per_sec * self.tokens_per_step if steps_per_sec > 0 else 0.0
+        total_tokens = step * self.tokens_per_step
+        eta = ((total - step) / steps_per_sec) if (total > 0 and steps_per_sec > 0) else 0.0
+
+        loss = logs.get("loss")
+        lr = logs.get("learning_rate")
+        loss_str = f"{loss:.4f}" if isinstance(loss, (int, float)) else "n/a"
+        lr_str = f"{lr:.2e}" if isinstance(lr, (int, float)) else "n/a"
+
+        print(
+            f"[HF TRAIN] step={step}/{total} ({pct:.2f}%) "
+            f"loss={loss_str} lr={lr_str} "
+            f"speed={steps_per_sec:.3f} step/s "
+            f"tok/s={tokens_per_sec:,.0f} "
+            f"tokens={total_tokens:,} "
+            f"eta={eta/60:.1f}m",
+            flush=True,
+        )
+
+    def on_train_end(self, args, state, control, **kwargs):
+        del args, state, control, kwargs
+        elapsed = time.time() - self.start_time if self.start_time else 0.0
+        print(f"[HF TRAIN] complete | elapsed={elapsed/60:.2f} minutes", flush=True)
+
+
 def run_hf_training(args) -> None:
-    from transformers import Trainer, TrainingArguments
+    from transformers import Trainer, TrainingArguments, TrainerCallback
+
+    class _ProgressCallback(ConsoleProgressCallback, TrainerCallback):
+        def __init__(self):
+            super().__init__(seq_len=args.seq_len)
 
     device = get_device()
     tokenizer = tiktoken.get_encoding(args.tokenizer_name)
@@ -54,6 +123,7 @@ def run_hf_training(args) -> None:
         hub_model_id=args.hub_model_id,
         hub_private_repo=args.hub_private_repo,
         report_to=[],
+        disable_tqdm=False,
     )
 
     trainer = Trainer(
@@ -61,6 +131,7 @@ def run_hf_training(args) -> None:
         args=training_args,
         train_dataset=train_dataset,
         data_collator=hf_collator,
+        callbacks=[_ProgressCallback()],
     )
     trainer.train(resume_from_checkpoint=args.resume)
     trainer.save_model(args.output_dir)

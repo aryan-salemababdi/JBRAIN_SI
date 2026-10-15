@@ -1,5 +1,6 @@
 import math
 import os
+import time
 
 import numpy as np
 import torch
@@ -64,7 +65,16 @@ def run_local_training(args) -> None:
         y = torch.from_numpy(y_np.astype(np.int64)).to(device, non_blocking=True)
         return x, y
 
-    print(f"Training on {device.type.upper()} | steps={args.max_steps} | batch={args.batch_size}")
+    world_size = max(1, int(os.getenv("WORLD_SIZE", "1")))
+    tokens_per_step = args.seq_len * args.batch_size * args.grad_accum_steps * world_size
+    start_time = time.time()
+
+    print(
+        f"Training on {device.type.upper()} | steps={args.max_steps} | batch={args.batch_size} "
+        f"| grad_accum={args.grad_accum_steps} | seq_len={args.seq_len} "
+        f"| tokens/step={tokens_per_step:,}",
+        flush=True,
+    )
     for step in range(start_step, args.max_steps + 1):
         model.train()
         optimizer.zero_grad(set_to_none=True)
@@ -101,9 +111,17 @@ def run_local_training(args) -> None:
                 ppl = math.exp(accumulated_loss)
             except OverflowError:
                 ppl = float("inf")
+            elapsed = max(1e-9, time.time() - start_time)
+            steps_done = step - start_step + 1
+            steps_per_sec = steps_done / elapsed
+            tok_per_sec = steps_per_sec * tokens_per_step
+            total_tokens_seen = step * tokens_per_step
+            eta_sec = (args.max_steps - step) / steps_per_sec if steps_per_sec > 0 else 0.0
             print(
                 f"step={step}/{args.max_steps} "
-                f"loss={accumulated_loss:.4f} ppl={ppl:.2f} lr={scheduler.get_last_lr()[0]:.2e}"
+                f"loss={accumulated_loss:.4f} ppl={ppl:.2f} lr={scheduler.get_last_lr()[0]:.2e} "
+                f"speed={steps_per_sec:.3f} step/s tok/s={tok_per_sec:,.0f} "
+                f"tokens={total_tokens_seen:,} eta={eta_sec/60:.1f}m"
             )
 
         if step % args.sample_every == 0:
