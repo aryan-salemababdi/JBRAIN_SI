@@ -1,4 +1,13 @@
 ---
+title: J-BRAIN
+emoji: "🧠"
+colorFrom: blue
+colorTo: indigo
+sdk: gradio
+app_file: app.py
+pinned: false
+suggested_hardware: cpu-basic
+python_version: "3.10"
 license: mit
 language:
   - en
@@ -12,19 +21,6 @@ tags:
   - recurrent-neural-network
   - text-generation
 model_name: J-BRAIN
-
-### Spaces Metadata
-title: {{title}}
-emoji: {{emoji}}
-colorFrom: {{colorFrom}}
-colorTo: {{colorTo}}
-sdk: {{sdk}}
-sdk_version: "{{sdkVersion}}"
-{{#pythonVersion}}
-python_version: "{{pythonVersion}}"
-{{/pythonVersion}}
-app_file: app.py
-pinned: false
 ---
 
 # J-BRAIN: Joint-Behavioral Resonant Artificial Intelligence Network
@@ -210,3 +206,18 @@ python inference.py \
   --hf-repo-id <user_or_org/repo> \
   --prompt "The future of efficient language models is"
 ```
+
+## Hugging Face Spaces (Gradio + CPU)
+
+This repository is configured for a Hugging Face Space on CPU with Gradio:
+
+- `sdk: gradio`
+- `app_file: app.py`
+- `suggested_hardware: cpu-basic`
+
+Deployment steps:
+
+1. Create a new Space on Hugging Face.
+2. Select **Gradio** SDK and **CPU Basic** hardware.
+3. Push this repository to the Space.
+4. Keep `requirements.txt` in the root so dependencies install automatically.
