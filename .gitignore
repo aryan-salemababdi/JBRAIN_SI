@@ -8,3 +8,4 @@ demos
 *.pdf
 .env
 data
+*.pth
