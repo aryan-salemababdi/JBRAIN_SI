@@ -1,0 +1,17 @@
+# Core training/inference
+torch
+numpy
+tiktoken
+transformers
+datasets
+huggingface_hub
+tf_keras
+
+# Model/app utilities
+gradio
+tqdm
+tokenizers
+
+# Plotting and analysis scripts
+matplotlib
+scipy

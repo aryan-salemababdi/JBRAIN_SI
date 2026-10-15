@@ -1,4 +1,20 @@
-# J-BRAIN v2: Joint-Behavioral Resonant Artificial Intelligence Network
+---
+license: mit
+language:
+  - en
+pipeline_tag: text-generation
+library_name: transformers
+datasets:
+  - HuggingFaceFW/fineweb-edu
+tags:
+  - pytorch
+  - causal-lm
+  - recurrent-neural-network
+  - text-generation
+model_name: J-BRAIN
+---
+
+# J-BRAIN: Joint-Behavioral Resonant Artificial Intelligence Network
 
 > **Constant Inference Memory Language Modeling via Selective Non-Hermitian Wave Dynamics and Holographic Uncertainty Bounds**  
 > **Author:** Aryan Salemabadi & Soroush Tanzadeh Mojarad
