@@ -12,7 +12,7 @@ from model import JBRConfig, JBRLanguageModel
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="J-BRAIN v2 inference CLI.")
     parser.add_argument("--source", choices=["local", "hf"], default="local")
-    parser.add_argument("--model-path", default="Models/JBR1_V2_CE")
+    parser.add_argument("--model-path", default="data/models/JBR1_V2_HF")
     parser.add_argument("--weights-file", default=None)
     parser.add_argument("--config-file", default=None)
     parser.add_argument("--hf-repo-id", default=None)
@@ -25,7 +25,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--vocab-size", type=int, default=100277)
 
     parser.add_argument("--prompt", required=True)
-    parser.add_argument("--max-new-tokens", type=int, default=100)
+    parser.add_argument("--max-new-tokens", type=int, default=1024)
     parser.add_argument("--temperature", type=float, default=0.7)
     parser.add_argument("--repetition-penalty", type=float, default=1.2)
     parser.add_argument("--seed", type=int, default=42)
