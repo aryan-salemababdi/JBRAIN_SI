@@ -6,3 +6,4 @@ demos
 *.png
 *.mp4
 *.pdf
+.env
