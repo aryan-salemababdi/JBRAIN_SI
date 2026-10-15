@@ -73,12 +73,73 @@ Hardware profiling confirms true constant-memory execution. A 163M J-BRAIN v2 in
 
 ```text
 JBRAIN/
-├── architecture.py              # Core J-BRAIN v2 PyTorch layer & complex_phase_parallel_scan
-├── test_equivalence.py          # Numerical equivalence verification (Recurrent vs Parallel Scan)
-├── export_onnx.py               # ONNX computational graph export pipeline
-├── quantize_jbrain.py           # Static INT8/BF16 quantization scripts
-├── test_smartwatch.py           # Constant memory Edge/Wear OS simulation environment
-├── benchmark_results.md         # Detailed hardware execution and zero-shot metrics
+├── model/                       # J-BRAIN v2 architecture modules (core, block, LM, losses)
+├── train_loop/                  # Training module (args, datasets, local loop, HF Trainer loop)
+├── train.py                     # Thin training entrypoint -> train_loop.main
+├── inference.py                 # Text generation entrypoint (local or Hugging Face source)
+├── architecture_v2.py           # Compatibility re-exports for older imports
+├── architecture.py              # Legacy architecture version (kept for reference)
+├── main_train_v2.py             # Backward-compatible wrapper to the new training entrypoint
 └── Data/
-    └── jbrain_tokenizer.json    # Calibrated Tokenizer schema
+    └── jbrain_v2_english_data.bin
+```
+
+## Training
+
+`train.py` supports two modes:
+
+- `local`: custom memmap training loop
+- `hf`: Hugging Face `Trainer` pipeline
+
+### Default Hugging Face dataset
+
+The HF mode now defaults to:
+
+- Dataset: `HuggingFaceFW/fineweb-edu`
+- Config: `sample-10BT`
+- Split: `train`
+
+### Local training example
+
+```bash
+python train.py \
+  --mode local \
+  --data-bin-path Data/jbrain_v2_english_data.bin \
+  --output-dir Models/JBR1_V2_CE
+```
+
+### Hugging Face training example
+
+```bash
+python train.py \
+  --mode hf \
+  --output-dir Models/JBR1_V2_HF
+```
+
+Optional HF arguments:
+
+- `--hf-dataset-name`
+- `--hf-dataset-config`
+- `--hf-text-column`
+- `--push-to-hub --hub-model-id <user_or_org/repo>`
+
+## Inference
+
+### Local artifact inference
+
+```bash
+python inference.py \
+  --source local \
+  --model-path Models/JBR1_V2_CE \
+  --prompt "The future of efficient language models is"
+```
+
+### Hugging Face Hub inference
+
+```bash
+python inference.py \
+  --source hf \
+  --hf-repo-id <user_or_org/repo> \
+  --prompt "The future of efficient language models is"
+```
     
