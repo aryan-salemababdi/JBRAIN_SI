@@ -73,13 +73,15 @@ class JBRLanguageModel(nn.Module):
         max_new_tokens: int,
         temperature: float = 0.7,
         repetition_penalty: float = 1.2,
+        eos_token_id: int = -1,
     ):
         self.eval()
         logits, past_states = self.encode_prompt_chunked(prompt_ids)
         probs = F.softmax(logits[:, -1, :] / temperature, dim=-1)
         next_token = torch.multinomial(probs, num_samples=1)
         generated_tokens = prompt_ids[0].tolist() + [next_token.item()]
-
+        if next_token.item() == eos_token_id:
+            return generated_tokens
         for _ in range(max_new_tokens - 1):
             logits, past_states = self(next_token, past_states=past_states)
             next_logit = logits[:, -1, :].clone()
@@ -91,4 +93,7 @@ class JBRLanguageModel(nn.Module):
             probs = F.softmax(next_logit / temperature, dim=-1)
             next_token = torch.multinomial(probs, num_samples=1)
             generated_tokens.append(next_token.item())
+            if eos_token_id is not None and next_token.item() == eos_token_id:
+                break
         return generated_tokens
+

@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import sys
 from typing import Optional
 
 import torch
@@ -12,7 +13,7 @@ from model import JBRConfig, JBRLanguageModel
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="J-BRAIN v2 inference CLI.")
     parser.add_argument("--source", choices=["local", "hf"], default="local")
-    parser.add_argument("--model-path", default="Models/JBR1_V2_CE")
+    parser.add_argument("--model-path", default="data/models/JBR1_V2_HF")
     parser.add_argument("--weights-file", default=None)
     parser.add_argument("--config-file", default=None)
     parser.add_argument("--hf-repo-id", default=None)
@@ -25,10 +26,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--vocab-size", type=int, default=100277)
 
     parser.add_argument("--prompt", required=True)
-    parser.add_argument("--max-new-tokens", type=int, default=100)
+    parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--temperature", type=float, default=0.7)
-    parser.add_argument("--repetition-penalty", type=float, default=1.2)
-    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--repetition-penalty", type=float, default=1.5)
+    parser.add_argument("--seed", type=int, default=0)
     return parser.parse_args()
 
 
@@ -85,10 +86,62 @@ def load_model_and_tokenizer(args: argparse.Namespace):
     model.eval()
     return model, tokenizer
 
+def _build_prompt(message, system_message = "You are a helpful assistant."):
+    lines = [f"System: {system_message}"]
+    lines.append(f"User: {message.strip()}")
+    lines.append("Assistant:")
+    return "\n".join(lines)
+
+
+@torch.no_grad()
+def stream_generate(
+    model: JBRLanguageModel,
+    tokenizer,
+    prompt_ids: torch.Tensor,
+    max_new_tokens: int,
+    temperature: float,
+    repetition_penalty: float,
+    eos_token_id: int,
+):
+    """
+    Stream decoded output token-by-token to stdout while generating.
+    """
+    model.eval()
+    logits, past_states = model.encode_prompt_chunked(prompt_ids)
+    probs = torch.nn.functional.softmax(logits[:, -1, :] / temperature, dim=-1)
+    next_token = torch.multinomial(probs, num_samples=1)
+
+    generated_tokens = []
+    seen_tokens = set(prompt_ids[0].tolist())
+
+    for _ in range(max_new_tokens):
+        token_id = int(next_token.item())
+        if token_id == eos_token_id:
+            break
+
+        generated_tokens.append(token_id)
+        seen_tokens.add(token_id)
+        token_text = tokenizer.decode([token_id])
+        print(token_text, end="", flush=True)
+
+        logits, past_states = model(next_token, past_states=past_states)
+        next_logit = logits[:, -1, :].clone()
+        for tok in seen_tokens:
+            if next_logit[0, tok] > 0:
+                next_logit[0, tok] /= repetition_penalty
+            else:
+                next_logit[0, tok] *= repetition_penalty
+
+        probs = torch.nn.functional.softmax(next_logit / temperature, dim=-1)
+        next_token = torch.multinomial(probs, num_samples=1)
+
+    return generated_tokens
+
 
 def main() -> None:
     args = parse_args()
-    torch.manual_seed(args.seed)
+    if args.seed > 0:
+        torch.manual_seed(args.seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
 
@@ -97,14 +150,17 @@ def main() -> None:
     model = model.to(device)
 
     prompt_ids = torch.tensor([tokenizer.encode(args.prompt)], dtype=torch.long, device=device)
-    with torch.no_grad():
-        token_ids = model.generate_o1_memory(
-            prompt_ids=prompt_ids,
-            max_new_tokens=args.max_new_tokens,
-            temperature=args.temperature,
-            repetition_penalty=args.repetition_penalty,
-        )
-    print(tokenizer.decode(token_ids))
+    print("", end="", flush=True)
+    stream_generate(
+        model=model,
+        tokenizer=tokenizer,
+        prompt_ids=prompt_ids,
+        max_new_tokens=args.max_new_tokens,
+        temperature=args.temperature,
+        repetition_penalty=args.repetition_penalty,
+        eos_token_id=tokenizer.eot_token,
+    )
+    print()
 
 
 if __name__ == "__main__":
