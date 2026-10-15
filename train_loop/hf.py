@@ -1,6 +1,7 @@
 import torch
 import tiktoken
 import time
+import inspect
 
 from model import JBRLanguageModel, JBRLanguageModelLoss
 from train_loop.common import build_model_config, get_device, save_training_artifacts
@@ -102,29 +103,42 @@ def run_hf_training(args) -> None:
 
     bf16 = args.precision == "bf16"
     fp16 = args.precision == "fp16"
-    training_args = TrainingArguments(
-        output_dir=args.output_dir,
-        overwrite_output_dir=True,
-        per_device_train_batch_size=args.batch_size,
-        gradient_accumulation_steps=args.grad_accum_steps,
-        learning_rate=args.learning_rate,
-        weight_decay=args.weight_decay,
-        max_steps=args.max_steps,
-        warmup_steps=args.warmup_steps,
-        logging_steps=args.log_steps,
-        save_steps=args.save_steps,
-        lr_scheduler_type="cosine",
-        remove_unused_columns=False,
-        dataloader_pin_memory=(device.type == "cuda"),
-        dataloader_drop_last=True,
-        bf16=bf16,
-        fp16=fp16,
-        push_to_hub=args.push_to_hub,
-        hub_model_id=args.hub_model_id,
-        hub_private_repo=args.hub_private_repo,
-        report_to=[],
-        disable_tqdm=False,
-    )
+    desired_args = {
+        "output_dir": args.output_dir,
+        "overwrite_output_dir": True,
+        "per_device_train_batch_size": args.batch_size,
+        "gradient_accumulation_steps": args.grad_accum_steps,
+        "learning_rate": args.learning_rate,
+        "weight_decay": args.weight_decay,
+        "max_steps": args.max_steps,
+        "warmup_steps": args.warmup_steps,
+        "logging_steps": args.log_steps,
+        "save_steps": args.save_steps,
+        "lr_scheduler_type": "cosine",
+        "remove_unused_columns": False,
+        "dataloader_pin_memory": (device.type == "cuda"),
+        "dataloader_drop_last": True,
+        "bf16": bf16,
+        "fp16": fp16,
+        "push_to_hub": args.push_to_hub,
+        "hub_model_id": args.hub_model_id,
+        "hub_private_repo": args.hub_private_repo,
+        "report_to": [],
+        "disable_tqdm": False,
+    }
+
+    # Handle older/newer transformers where TrainingArguments signature varies.
+    supported = set(inspect.signature(TrainingArguments.__init__).parameters.keys())
+    filtered_args = {k: v for k, v in desired_args.items() if k in supported}
+    dropped = [k for k in desired_args.keys() if k not in supported]
+    if dropped:
+        print(
+            "[HF TRAIN] TrainingArguments compatibility: dropped unsupported args -> "
+            + ", ".join(sorted(dropped)),
+            flush=True,
+        )
+
+    training_args = TrainingArguments(**filtered_args)
 
     trainer = Trainer(
         model=wrapped_model,
