@@ -12,6 +12,7 @@ import torch
 import tiktoken
 from huggingface_hub import hf_hub_download
 
+from context import ContextBuilder
 from model import JBRConfig, JBRLanguageModel
 
 # Hard-disable Gradio OAuth route attachment for CPU Space deployments.
@@ -45,32 +46,6 @@ def _resolve_artifact_paths():
     return cfg_path, weights_path
 
 
-def _build_prompt(message, history, system_message):
-    lines = [f"System: {system_message.strip()}"]
-
-    for turn in history:
-        if isinstance(turn, dict):
-            role = turn.get("role", "")
-            content = str(turn.get("content", "")).strip()
-            if not content:
-                continue
-            if role == "assistant":
-                lines.append(f"Assistant: {content}")
-            elif role == "user":
-                lines.append(f"User: {content}")
-        elif isinstance(turn, (list, tuple)) and len(turn) == 2:
-            user_msg = str(turn[0]).strip()
-            assistant_msg = str(turn[1]).strip()
-            if user_msg:
-                lines.append(f"User: {user_msg}")
-            if assistant_msg:
-                lines.append(f"Assistant: {assistant_msg}")
-
-    lines.append(f"User: {message.strip()}")
-    lines.append("Assistant:")
-    return "\n".join(lines)
-
-
 @lru_cache(maxsize=1)
 def _load_local_runtime():
     cfg_path, weights_path = _resolve_artifact_paths()
@@ -87,7 +62,9 @@ def _load_local_runtime():
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
-    return model, tokenizer, device
+    max_ctx = int(os.getenv("JBRAIN_MAX_CONTEXT_TOKENS", "4096"))
+    context_builder = ContextBuilder(tokenizer=tokenizer, max_context_tokens=max_ctx)
+    return model, tokenizer, device, context_builder
 
 
 def respond(
@@ -98,8 +75,13 @@ def respond(
     temperature,
     repetition_penalty,
 ):
-    model, tokenizer, device = _load_local_runtime()
-    prompt = _build_prompt(message, history, system_message)
+    model, tokenizer, device, context_builder = _load_local_runtime()
+    prompt = context_builder.build(
+        system_message=system_message,
+        user_message=message,
+        history=history,
+        reserved_output_tokens=int(max_tokens),
+    )
     prompt_ids = torch.tensor([tokenizer.encode(prompt)], dtype=torch.long, device=device)
 
     with torch.no_grad():

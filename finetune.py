@@ -10,6 +10,7 @@ import numpy as np
 import torch
 import tiktoken
 
+from context import ContextBuilder
 from model import JBRConfig, JBRLanguageModel
 
 
@@ -23,15 +24,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--hf-endpoint", default=None)
 
     parser.add_argument("--tokenizer-name", default="cl100k_base")
-    parser.add_argument("--dataset-name", default="squad")
+    parser.add_argument("--dataset-name", default="HuggingFaceTB/smoltalk")
     parser.add_argument("--dataset-config", default=None)
     parser.add_argument("--train-split", default="train")
-    parser.add_argument("--eval-split", default="validation")
+    parser.add_argument("--eval-split", default="test")
     parser.add_argument("--max-train-samples", type=int, default=0)
     parser.add_argument("--max-eval-samples", type=int, default=1000)
     parser.add_argument("--max-length", type=int, default=512)
+    parser.add_argument("--system-message", default="You are a helpful assistant.")
+    parser.add_argument("--max-context-tokens", type=int, default=4096)
 
-    parser.add_argument("--output-dir", default="Models/JBR_QA_FT")
+    parser.add_argument("--output-dir", default="data/models/JBR_QA_FT")
     parser.add_argument("--learning-rate", type=float, default=2e-5)
     parser.add_argument("--weight-decay", type=float, default=0.01)
     parser.add_argument("--warmup-steps", type=int, default=100)
@@ -118,22 +121,85 @@ def extract_answer(example: dict) -> str:
     return ""
 
 
-def _build_prompt(message, system_message = "You are a helpful assistant."):
-    lines = [f"System: {system_message}"]
-    lines.append(f"User: {message.strip()}")
-    lines.append("Assistant:")
-    return "\n".join(lines)
+def _extract_from_messages(messages):
+    """
+    Extract training prompt/target from a chat-style messages list.
+    Uses all prior turns as history, and supervises the final assistant turn.
+    """
+    if not isinstance(messages, list):
+        return "", [], ""
+    cleaned = []
+    for m in messages:
+        if not isinstance(m, dict):
+            continue
+        role = str(m.get("role", "")).strip().lower()
+        content = str(m.get("content", "")).strip()
+        if role in {"user", "assistant"} and content:
+            cleaned.append({"role": role, "content": content})
+    if not cleaned:
+        return "", [], ""
 
-def build_qa_features(ds, tokenizer, max_length: int):
+    # Prefer supervising the latest assistant turn when available.
+    target_idx = None
+    for i in range(len(cleaned) - 1, -1, -1):
+        if cleaned[i]["role"] == "assistant":
+            target_idx = i
+            break
+    if target_idx is None:
+        return "", [], ""
+
+    target = cleaned[target_idx]["content"]
+    prior = cleaned[:target_idx]
+    user_message = ""
+    for i in range(len(prior) - 1, -1, -1):
+        if prior[i]["role"] == "user":
+            user_message = prior[i]["content"]
+            prior.pop(i)
+            break
+    if not user_message:
+        user_message = "Please answer the request."
+       
+    return user_message, prior, target
+
+
+def build_features(ds, tokenizer, max_length: int, context_builder: ContextBuilder, system_message: str):
     eos_id = getattr(tokenizer, "eot_token", None)
 
     def _map_fn(example):
         question = str(example.get("question", "")).strip()
-        context = str(example.get("context", "")).strip()
+        context_text = str(example.get("context", "")).strip()
         answer = extract_answer(example).strip()
 
-        prompt = f"Question: {question}\nContext: {context}\nAnswer:"
-        prompt = _build_prompt(prompt)
+        if "messages" in example:
+            user_message, history, target = _extract_from_messages(example["messages"])
+            answer = target.strip() or answer
+            prompt = context_builder.build(
+                system_message=system_message,
+                user_message=user_message,
+                history=history,
+                reserved_output_tokens=max_length // 2,
+            )
+    
+        elif question or context_text:
+            qa_user = f"Question: {question}\nContext: {context_text}\nProvide a concise answer."
+            prompt = context_builder.build(
+                system_message=system_message,
+                user_message=qa_user,
+                history=[],
+                reserved_output_tokens=max_length // 2,
+            )
+        else:
+            instruction = str(example.get("instruction", "")).strip()
+            inp = str(example.get("input", "")).strip()
+            user_message = "\n".join([x for x in [instruction, inp] if x]).strip() or "Please respond."
+            answer = answer or str(example.get("response", "")).strip() or str(example.get("output", "")).strip()
+            prompt = context_builder.build(
+                system_message=system_message,
+                user_message=user_message,
+                history=[],
+                reserved_output_tokens=max_length // 2,
+            )
+            
         prompt_ids = tokenizer.encode(prompt)
         answer_ids = tokenizer.encode(" " + answer) if answer else tokenizer.encode(" unknown")
         if eos_id is not None:
@@ -170,7 +236,7 @@ def qa_collator(batch):
     }
 
 
-class QATrainerModel(torch.nn.Module):
+class TrainerModel(torch.nn.Module):
     def __init__(self, model: JBRLanguageModel):
         super().__init__()
         self.model = model
@@ -224,21 +290,21 @@ def main() -> None:
     set_seed(args.seed)
 
     model, model_config, tokenizer, tokenizer_name = load_model_and_tokenizer(args)
+    context_builder = ContextBuilder(tokenizer=tokenizer, max_context_tokens=args.max_context_tokens)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
 
-    raw_train = load_dataset(args.dataset_name, args.dataset_config, split=args.train_split)
-    raw_eval = load_dataset(args.dataset_name, args.dataset_config, split=args.eval_split)
-
+    raw_train = load_dataset(args.dataset_name, args.dataset_config, split=args.train_split, streaming=True, cache_dir="./.cache")
+    raw_eval = load_dataset(args.dataset_name, args.dataset_config, split=args.eval_split, streaming=True, cache_dir="./.cache")
     if args.max_train_samples > 0:
-        raw_train = raw_train.select(range(min(len(raw_train), args.max_train_samples)))
+        raw_train = raw_train.take(args.max_train_samples)
     if args.max_eval_samples > 0:
-        raw_eval = raw_eval.select(range(min(len(raw_eval), args.max_eval_samples)))
+        raw_eval = raw_eval.take(args.max_eval_samples)
 
-    train_ds = build_qa_features(raw_train, tokenizer, args.max_length)
-    eval_ds = build_qa_features(raw_eval, tokenizer, args.max_length)
+    train_ds = build_features(raw_train, tokenizer, args.max_length, context_builder, args.system_message)
+    eval_ds = build_features(raw_eval, tokenizer, args.max_length, context_builder, args.system_message)
 
-    wrapped_model = QATrainerModel(model)
+    wrapped_model = TrainerModel(model)
     bf16 = args.precision == "bf16"
     fp16 = args.precision == "fp16"
     desired_args = {
@@ -279,7 +345,6 @@ def main() -> None:
     save_artifacts(args.output_dir, model, model_config, tokenizer_name)
     maybe_push_to_hub(args)
     print(f"QA fine-tuning complete. Artifacts saved to: {args.output_dir}")
-
 
 if __name__ == "__main__":
     main()

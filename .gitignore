@@ -9,3 +9,4 @@ demos
 .env
 data
 *.pth
+.cache

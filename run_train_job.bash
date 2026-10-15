@@ -27,9 +27,12 @@ export HF_TOKEN
 PYTHON_CMD=$'import os, subprocess, sys\n'
 PYTHON_CMD+=$'subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "pip"])\n'
 PYTHON_CMD+=$'subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "huggingface_hub"])\n'
+PYTHON_CMD+=$'subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "--index-url", "https://download.pytorch.org/whl/cu121", "torch", "torchvision", "torchaudio"])\n'
 PYTHON_CMD+=$'from huggingface_hub import snapshot_download\n'
 PYTHON_CMD+=$'snapshot_download(repo_id=os.environ["REPO_ID"], repo_type="model", local_dir="/workspace/jbrain", token=os.environ["HF_TOKEN"])\n'
 PYTHON_CMD+=$'subprocess.check_call([sys.executable, "-m", "pip", "install", "--no-cache-dir", "-r", "/workspace/jbrain/requirements.txt"])\n'
+PYTHON_CMD+=$'import torch, transformers\n'
+PYTHON_CMD+=$'print(f"[JOB PREFLIGHT] torch={torch.__version__} cuda={torch.cuda.is_available()} transformers={transformers.__version__}", flush=True)\n'
 PYTHON_CMD+=$'subprocess.check_call([sys.executable, "/workspace/jbrain/train.py", "--mode", "hf", "--output-dir", os.environ["OUTPUT_DIR"], "--max-steps", os.environ["MAX_STEPS"], "--push-to-hub", "--hub-model-id", os.environ["REPO_ID"]])\n'
 
 ARGS=(

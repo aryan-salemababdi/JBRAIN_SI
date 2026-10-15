@@ -7,6 +7,7 @@ from typing import Optional
 import torch
 import tiktoken
 
+from context import ContextBuilder
 from model import JBRConfig, JBRLanguageModel
 
 
@@ -26,6 +27,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--vocab-size", type=int, default=100277)
 
     parser.add_argument("--prompt", required=True)
+    parser.add_argument("--system-message", default="You are a helpful assistant.")
+    parser.add_argument("--max-context-tokens", type=int, default=4096)
     parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--temperature", type=float, default=0.7)
     parser.add_argument("--repetition-penalty", type=float, default=1.5)
@@ -86,13 +89,6 @@ def load_model_and_tokenizer(args: argparse.Namespace):
     model.eval()
     return model, tokenizer
 
-def _build_prompt(message, system_message = "You are a helpful assistant."):
-    lines = [f"System: {system_message}"]
-    lines.append(f"User: {message.strip()}")
-    lines.append("Assistant:")
-    return "\n".join(lines)
-
-
 @torch.no_grad()
 def stream_generate(
     model: JBRLanguageModel,
@@ -146,10 +142,17 @@ def main() -> None:
         torch.cuda.manual_seed_all(args.seed)
 
     model, tokenizer = load_model_and_tokenizer(args)
+    context_builder = ContextBuilder(tokenizer=tokenizer, max_context_tokens=args.max_context_tokens)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
 
-    prompt_ids = torch.tensor([tokenizer.encode(args.prompt)], dtype=torch.long, device=device)
+    prompt = context_builder.build(
+        system_message=args.system_message,
+        user_message=args.prompt,
+        history=[],
+        reserved_output_tokens=args.max_new_tokens,
+    )
+    prompt_ids = torch.tensor([tokenizer.encode(prompt)], dtype=torch.long, device=device)
     print("", end="", flush=True)
     stream_generate(
         model=model,
