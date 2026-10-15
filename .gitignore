@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+notes.html
+.vscode
+demos
+*.png
+*.mp4
+*.pdf
