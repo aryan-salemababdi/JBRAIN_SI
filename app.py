@@ -14,7 +14,7 @@ def respond(
     """
     For more information on `huggingface_hub` Inference API support, please check the docs: https://huggingface.co/docs/huggingface_hub/v0.22.2/en/guides/inference
     """
-    client = InferenceClient(token=hf_token.token, model="openai/gpt-oss-20b")
+    client = InferenceClient(token=hf_token.token, model="soroosh-tanzadeh/jbrain-160M")
 
     messages = [{"role": "system", "content": system_message}]
 
