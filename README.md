@@ -5,6 +5,7 @@ colorFrom: blue
 colorTo: indigo
 sdk: gradio
 app_file: app.py
+hf_oauth: true
 pinned: false
 suggested_hardware: cpu-basic
 python_version: "3.10"
