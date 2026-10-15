@@ -12,6 +12,8 @@ class JBRTrainerModel(torch.nn.Module):
     def __init__(self, model: JBRLanguageModel):
         super().__init__()
         self.model = model
+        # Trainer inspects ``model.config`` for saving and metadata.
+        self.config = model.config
         self.loss_fn = JBRLanguageModelLoss()
 
     def forward(self, input_ids=None, labels=None, **kwargs):
@@ -125,6 +127,8 @@ def run_hf_training(args) -> None:
         "hub_private_repo": args.hub_private_repo,
         "report_to": [],
         "disable_tqdm": False,
+        # J-BRAIN ties embeddings and lm_head weights; safetensors save can fail on shared storage.
+        "save_safetensors": False,
     }
 
     # Handle older/newer transformers where TrainingArguments signature varies.

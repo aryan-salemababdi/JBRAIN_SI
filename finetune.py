@@ -239,6 +239,8 @@ def qa_collator(batch):
 class TrainerModel(torch.nn.Module):
     def __init__(self, model: JBRLanguageModel):
         super().__init__()
+        # Trainer inspects ``model.config`` for saving and metadata.
+        self.config = model.config
         self.model = model
 
     def forward(self, input_ids=None, labels=None, **kwargs):

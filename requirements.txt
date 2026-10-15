@@ -1,17 +1,17 @@
 # Core training/inference
-torch
-numpy
-tiktoken
-transformers
-datasets
-huggingface_hub
-tf_keras
+torch>=2.6,<3.0
+numpy>=2.0,<3.0
+tiktoken>=0.14,<1.0
+transformers>=5.20,<6.0
+accelerate>=1.1,<2.0
+datasets>=5.1,<6.0
+huggingface_hub>=2.2,<3.0
+tokenizers>=0.23,<0.24
 
 # Model/app utilities
-gradio
-tqdm
-tokenizers
+gradio>=6.30,<7.0
+tqdm>=4.66,<5.0
 
 # Plotting and analysis scripts
-matplotlib
-scipy
+matplotlib>=3.11,<4.0
+scipy>=1.17,<2.0
