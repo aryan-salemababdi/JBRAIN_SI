@@ -2,9 +2,22 @@ import os
 
 # Defensive guard for Spaces where OAuth was previously enabled.
 os.environ.setdefault("HF_OAUTH", "0")
+os.environ.setdefault("OAUTH_CLIENT_ID", "")
+os.environ.setdefault("OAUTH_CLIENT_SECRET", "")
 
 import gradio as gr
 from huggingface_hub import InferenceClient
+
+# Hard-disable Gradio OAuth route attachment for CPU Space deployments.
+try:
+    import gradio.oauth as _gr_oauth
+
+    def _noop_attach_oauth(app):
+        return app
+
+    _gr_oauth.attach_oauth = _noop_attach_oauth
+except Exception:
+    pass
 
 
 def respond(
