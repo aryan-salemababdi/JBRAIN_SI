@@ -1,4 +1,5 @@
 import argparse
+import collections
 import inspect
 import json
 import os
@@ -12,6 +13,9 @@ import tiktoken
 
 from context import ContextBuilder
 from model import JBRConfig, JBRLanguageModel
+
+MODEL_TRAIN_SEQ_LEN = 512
+MIN_PROMPT_TOKENS = 32
 
 
 def parse_args() -> argparse.Namespace:
@@ -139,7 +143,7 @@ def _extract_from_messages(messages):
     if not cleaned:
         return "", [], ""
 
-    # Prefer supervising the latest assistant turn when available.
+    #prefer supervising the latest assistant turn when available
     target_idx = None
     for i in range(len(cleaned) - 1, -1, -1):
         if cleaned[i]["role"] == "assistant":
@@ -162,7 +166,56 @@ def _extract_from_messages(messages):
     return user_message, prior, target
 
 
-def build_features(ds, tokenizer, max_length: int, context_builder: ContextBuilder, system_message: str):
+def fit_example(prompt_ids, answer_ids, max_length: int, eos_id: Optional[int] = None):
+    """
+    Combine prompt and answer into one training sequence of at most ``max_length`` tokens, so that
+    the answer (and its EOS) always keeps valid next-token targets.
+
+    ``answer_ids`` excludes EOS. Returns ``(input_ids, labels, status)``; ``input_ids`` and ``labels``
+    are None when the example is rejected (status starts with ``rejected_``).
+    - Fits: kept as is ("ok").
+    - Too long: the prompt is truncated from the left (its end, ending in "Assistant:", is kept) so
+      the full answer + EOS fits ("prompt_truncated").
+    - Answer alone too long: the prompt keeps at least MIN_PROMPT_TOKENS tokens and the answer is cut
+      at the end WITHOUT EOS, because an EOS after a cut-off answer would teach the model to stop
+      mid-sentence ("answer_truncated").
+    Every kept example has at least one supervised target after the next-token shift.
+    """
+    if max_length < MIN_PROMPT_TOKENS + 2:
+        raise ValueError(f"max_length={max_length} is too small (need at least {MIN_PROMPT_TOKENS + 2}).")
+    if not prompt_ids:
+        return None, None, "rejected_empty_prompt"
+    if not answer_ids:
+        return None, None, "rejected_empty_answer"
+
+    full_answer = list(answer_ids) + ([eos_id] if eos_id is not None else [])
+    answer_cap = max_length - min(len(prompt_ids), MIN_PROMPT_TOKENS)
+    answer_truncated = len(full_answer) > answer_cap
+    target = list(answer_ids)[:answer_cap] if answer_truncated else full_answer
+
+    room = max_length - len(target)
+    prompt_truncated = len(prompt_ids) > room
+    prompt = list(prompt_ids)[-room:] if prompt_truncated else list(prompt_ids)
+
+    input_ids = prompt + target
+    labels = [-100] * len(prompt) + target
+    assert len(input_ids) == len(labels) <= max_length
+    #labels are aligned with input_ids and the loss shifts by one so the supervised targets are
+    #labels[1:]; the prompt is non-empty, so every answer token is a valid target
+    assert any(x != -100 for x in labels[1:])
+    status = "ok"
+    if answer_truncated and prompt_truncated:
+        status = "prompt_and_answer_truncated"
+    elif answer_truncated:
+        status = "answer_truncated"
+    elif prompt_truncated:
+        status = "prompt_truncated"
+    return input_ids, labels, status
+
+
+def build_features(ds, tokenizer, max_length: int, context_builder: ContextBuilder, system_message: str,
+                   stats: Optional[collections.Counter] = None):
+    """Tokenize examples; rejected examples are filtered out. ``stats`` (optional) counts each status."""
     eos_id = getattr(tokenizer, "eot_token", None)
 
     def _map_fn(example):
@@ -170,53 +223,35 @@ def build_features(ds, tokenizer, max_length: int, context_builder: ContextBuild
         context_text = str(example.get("context", "")).strip()
         answer = extract_answer(example).strip()
 
+        history = []
         if "messages" in example:
             user_message, history, target = _extract_from_messages(example["messages"])
             answer = target.strip() or answer
-            prompt = context_builder.build(
-                system_message=system_message,
-                user_message=user_message,
-                history=history,
-                reserved_output_tokens=max_length // 2,
-            )
-    
         elif question or context_text:
-            qa_user = f"Question: {question}\nContext: {context_text}\nProvide a concise answer."
-            prompt = context_builder.build(
-                system_message=system_message,
-                user_message=qa_user,
-                history=[],
-                reserved_output_tokens=max_length // 2,
-            )
+            user_message = f"Question: {question}\nContext: {context_text}\nProvide a concise answer."
         else:
             instruction = str(example.get("instruction", "")).strip()
             inp = str(example.get("input", "")).strip()
             user_message = "\n".join([x for x in [instruction, inp] if x]).strip() or "Please respond."
             answer = answer or str(example.get("response", "")).strip() or str(example.get("output", "")).strip()
-            prompt = context_builder.build(
-                system_message=system_message,
-                user_message=user_message,
-                history=[],
-                reserved_output_tokens=max_length // 2,
-            )
-            
-        prompt_ids = tokenizer.encode(prompt)
+
         answer_ids = tokenizer.encode(" " + answer) if answer else tokenizer.encode(" unknown")
-        if eos_id is not None:
-            answer_ids = answer_ids + [eos_id]
+        prompt_budget = max(MIN_PROMPT_TOKENS, max_length - len(answer_ids) - 1)
+        prompt = context_builder.build(
+            system_message=system_message,
+            user_message=user_message,
+            history=history,
+            reserved_output_tokens=max(1, context_builder.max_context_tokens - prompt_budget),
+        )
+        input_ids, labels, status = fit_example(tokenizer.encode(prompt), answer_ids, max_length, eos_id)
+        if stats is not None:
+            stats[status] += 1
+        if input_ids is None:
+            return {"input_ids": [0], "labels": [-100], "keep": False}
+        return {"input_ids": input_ids, "labels": labels, "keep": True}
 
-        input_ids = (prompt_ids + answer_ids)[:max_length]
-        labels = ([-100] * len(prompt_ids) + answer_ids)[:max_length]
-
-        # Keep labels aligned with input length after truncation.
-        if len(labels) < len(input_ids):
-            labels += [-100] * (len(input_ids) - len(labels))
-        elif len(labels) > len(input_ids):
-            labels = labels[: len(input_ids)]
-
-        return {"input_ids": input_ids, "labels": labels}
-
-    return ds.map(_map_fn, remove_columns=ds.column_names)
+    mapped = ds.map(_map_fn, remove_columns=ds.column_names)
+    return mapped.filter(lambda ex: ex["keep"]).remove_columns(["keep"])
 
 
 def qa_collator(batch):
@@ -236,10 +271,26 @@ def qa_collator(batch):
     }
 
 
+def shifted_lm_loss(logits: torch.Tensor, labels: torch.Tensor, ignore_index: int = -100) -> torch.Tensor:
+    """
+    Next-token cross-entropy. ``labels`` is aligned with ``input_ids`` (labels[t] is the target
+    token that sits at input position t), so the logits at position t predict labels[t + 1].
+    Positions with ``ignore_index`` (prompt, padding) are excluded. A batch with no supervised
+    target returns 0 (with zero gradients) instead of NaN.
+    """
+    vocab_size = logits.shape[-1]
+    shift_logits = logits[:, :-1, :].reshape(-1, vocab_size)
+    shift_labels = labels[:, 1:].reshape(-1)
+    loss_sum = torch.nn.functional.cross_entropy(
+        shift_logits, shift_labels, ignore_index=ignore_index, reduction="sum"
+    )
+    n_valid = (shift_labels != ignore_index).sum().clamp(min=1)
+    return loss_sum / n_valid
+
+
 class TrainerModel(torch.nn.Module):
     def __init__(self, model: JBRLanguageModel):
         super().__init__()
-        # Trainer inspects ``model.config`` for saving and metadata.
         self.config = model.config
         self.model = model
 
@@ -248,13 +299,7 @@ class TrainerModel(torch.nn.Module):
         logits, _ = self.model(input_ids)
         output = {"logits": logits}
         if labels is not None:
-            vocab_size = logits.shape[-1]
-            loss = torch.nn.functional.cross_entropy(
-                logits.reshape(-1, vocab_size),
-                labels.reshape(-1),
-                ignore_index=-100,
-            )
-            output["loss"] = loss
+            output["loss"] = shifted_lm_loss(logits, labels)
         return output
 
 
@@ -289,6 +334,11 @@ def main() -> None:
     from transformers import Trainer, TrainingArguments
 
     args = parse_args()
+    if not MIN_PROMPT_TOKENS + 2 <= args.max_length <= MODEL_TRAIN_SEQ_LEN:
+        raise ValueError(
+            f"--max-length must be in [{MIN_PROMPT_TOKENS + 2}, {MODEL_TRAIN_SEQ_LEN}] "
+            f"(the model was pretrained at {MODEL_TRAIN_SEQ_LEN} tokens); got {args.max_length}."
+        )
     set_seed(args.seed)
 
     model, model_config, tokenizer, tokenizer_name = load_model_and_tokenizer(args)
@@ -303,8 +353,9 @@ def main() -> None:
     if args.max_eval_samples > 0:
         raw_eval = raw_eval.take(args.max_eval_samples)
 
-    train_ds = build_features(raw_train, tokenizer, args.max_length, context_builder, args.system_message)
-    eval_ds = build_features(raw_eval, tokenizer, args.max_length, context_builder, args.system_message)
+    train_stats, eval_stats = collections.Counter(), collections.Counter()
+    train_ds = build_features(raw_train, tokenizer, args.max_length, context_builder, args.system_message, train_stats)
+    eval_ds = build_features(raw_eval, tokenizer, args.max_length, context_builder, args.system_message, eval_stats)
 
     wrapped_model = TrainerModel(model)
     bf16 = args.precision == "bf16"
@@ -343,6 +394,8 @@ def main() -> None:
         data_collator=qa_collator,
     )
     trainer.train(resume_from_checkpoint=args.resume)
+    print(f"Example fitting (train): {dict(train_stats)}")
+    print(f"Example fitting (eval): {dict(eval_stats)}")
 
     save_artifacts(args.output_dir, model, model_config, tokenizer_name)
     maybe_push_to_hub(args)
