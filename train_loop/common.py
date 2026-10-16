@@ -7,7 +7,7 @@ from typing import Optional
 import numpy as np
 import torch
 
-from model import JBRConfig, JBRLanguageModel
+from jbrain_model import JBRConfig, JBRLanguageModel
 
 
 def set_seed(seed: int) -> None:

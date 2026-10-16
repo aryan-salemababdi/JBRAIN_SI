@@ -3,7 +3,7 @@ import tiktoken
 import time
 import inspect
 
-from model import JBRLanguageModel, JBRLanguageModelLoss
+from jbrain_model import JBRLanguageModel, JBRLanguageModelLoss
 from train_loop.common import build_model_config, get_device, save_training_artifacts
 from train_loop.datasets import build_hf_dataset, hf_collator
 

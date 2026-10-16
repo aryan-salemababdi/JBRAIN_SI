@@ -1,4 +1,4 @@
-from model import (
+from jbrain_model import (
     CausalConv1d,
     JBR_Block,
     JBR_FFN,

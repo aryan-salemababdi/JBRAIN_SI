@@ -13,7 +13,7 @@ import tiktoken
 from huggingface_hub import hf_hub_download
 
 from context import ContextBuilder
-from model import JBRConfig, JBRLanguageModel
+from jbrain_model import JBRConfig, JBRLanguageModel
 
 # Hard-disable Gradio OAuth route attachment for CPU Space deployments.
 try:

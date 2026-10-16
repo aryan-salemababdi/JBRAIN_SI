@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from model.core import JBRHolographicRecurrentCore
+from jbrain_model.core import JBRHolographicRecurrentCore
 
 
 class JBR_FFN(nn.Module):

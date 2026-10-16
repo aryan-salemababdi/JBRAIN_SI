@@ -10,7 +10,7 @@ FLAVOR="${FLAVOR:-l4x1}"
 JOB_NAME="${JOB_NAME:-jbrain-train}"
 REPO_ID="${REPO_ID:-soroosh-tanzadeh/jbrain}"
 OUTPUT_DIR="${OUTPUT_DIR:-/workspace/out}"
-MAX_STEPS="${MAX_STEPS:-5000}"
+MAX_STEPS="${MAX_STEPS:-500000}"
 DETACH="${DETACH:-true}" # true => return immediately, false => attach logs
 
 if ! command -v hf >/dev/null 2>&1; then
@@ -47,7 +47,7 @@ PYTHON_CMD+=$'backend_check = "import torch, transformers; from transformers.uti
 PYTHON_CMD+=$'rc = subprocess.call([py, "-c", backend_check])\n'
 PYTHON_CMD+=$'if rc != 0:\n'
 PYTHON_CMD+=$'  raise RuntimeError("Transformers cannot see the torch provided by the image. Check the image torch install and Python environment.")\n'
-PYTHON_CMD+=$'subprocess.check_call([py, "/workspace/jbrain/train.py", "--mode", "hf", "--output-dir", os.environ["OUTPUT_DIR"], "--max-steps", os.environ["MAX_STEPS"], "--push-to-hub", "--hub-model-id", os.environ["REPO_ID"]])\n'
+PYTHON_CMD+=$'subprocess.check_call([py, "/workspace/jbrain/train.py", "--mode", "hf", "--output-dir", os.environ["OUTPUT_DIR"], "--max-steps", os.environ["MAX_STEPS"], "--push-to-hub", "--hub-model-id", "soroosh-tanzadeh/JBRAIN-163M", "--seq-len", "512", "--batch-size", "4"])\n'
 
 ARGS=(
   jobs run "$IMAGE"

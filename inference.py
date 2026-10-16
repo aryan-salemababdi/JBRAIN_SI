@@ -8,7 +8,7 @@ import torch
 import tiktoken
 
 from context import ContextBuilder
-from model import JBRConfig, JBRLanguageModel
+from jbrain_model import JBRConfig, JBRLanguageModel
 
 
 def parse_args() -> argparse.Namespace:

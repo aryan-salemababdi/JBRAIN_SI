@@ -4,8 +4,8 @@ import torch.nn.functional as F
 from torch.utils.checkpoint import checkpoint
 from typing import Optional
 
-from model.block import JBRBlock
-from model.config import JBRConfig
+from jbrain_model.block import JBRBlock
+from jbrain_model.config import JBRConfig
 
 
 class JBRLanguageModel(nn.Module):
