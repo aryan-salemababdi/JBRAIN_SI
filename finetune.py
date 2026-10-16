@@ -12,7 +12,7 @@ import torch
 import tiktoken
 
 from context import ContextBuilder
-from model import JBRConfig, JBRLanguageModel
+from jbrain_model import JBRConfig, JBRLanguageModel
 
 MODEL_TRAIN_SEQ_LEN = 512
 MIN_PROMPT_TOKENS = 32
@@ -36,10 +36,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-eval-samples", type=int, default=1000)
     parser.add_argument("--max-length", type=int, default=512)
     parser.add_argument("--system-message", default="You are a helpful assistant.")
-    parser.add_argument("--max-context-tokens", type=int, default=4096)
+    parser.add_argument("--max-context-tokens", type=int, default=512)
 
     parser.add_argument("--output-dir", default="data/models/JBR_QA_FT")
-    parser.add_argument("--learning-rate", type=float, default=2e-5)
+    parser.add_argument("--learning-rate", type=float, default=1e-4)
     parser.add_argument("--weight-decay", type=float, default=0.01)
     parser.add_argument("--warmup-steps", type=int, default=100)
     parser.add_argument("--max-steps", type=int, default=3000)
@@ -47,7 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--grad-accum-steps", type=int, default=8)
     parser.add_argument("--log-steps", type=int, default=10)
     parser.add_argument("--save-steps", type=int, default=250)
-    parser.add_argument("--eval-steps", type=int, default=250)
+    parser.add_argument("--eval-steps", type=int, default=10)
     parser.add_argument("--precision", choices=["fp32", "fp16", "bf16"], default="fp32")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--resume", action="store_true")
@@ -382,6 +382,8 @@ def main() -> None:
         # J-BRAIN ties embeddings and lm_head weights; safetensors save can fail on shared storage.
         "save_safetensors": False,
         "report_to": [],
+        "eval_strategy": "steps",
+        "load_best_model_at_end": True
     }
     supported = set(inspect.signature(TrainingArguments.__init__).parameters.keys())
     targs = TrainingArguments(**{k: v for k, v in desired_args.items() if k in supported})

@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from model.causal_conv import CausalConv1d
+from jbrain_model.causal_conv import CausalConv1d
 
 
 class JBRHolographicRecurrentCore(nn.Module):

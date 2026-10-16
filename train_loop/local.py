@@ -6,7 +6,7 @@ import numpy as np
 import torch
 import tiktoken
 
-from model import JBRLanguageModel, JBRLanguageModelLoss
+from jbrain_model import JBRLanguageModel, JBRLanguageModelLoss
 from train_loop.common import (
     build_model_config,
     get_device,
