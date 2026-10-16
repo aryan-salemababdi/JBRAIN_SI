@@ -8,7 +8,7 @@ from tqdm import tqdm
 OUTPUT_BIN_FILE = "data/jbrain_v2_english_data.bin"
 STATE_FILE = "data/prepare_state.json"
 
-TARGET_TOKENS = 10_000_000 
+TARGET_TOKENS = 10_000_000_000 
 
 def main():
     os.makedirs(os.path.dirname(OUTPUT_BIN_FILE), exist_ok=True)

@@ -1,29 +1,3 @@
----
-title: J-BRAIN
-emoji: "🧠"
-colorFrom: blue
-colorTo: indigo
-sdk: gradio
-app_file: app.py
-hf_oauth: false
-pinned: false
-suggested_hardware: cpu-basic
-python_version: "3.10"
-license: mit
-language:
-  - en
-pipeline_tag: text-generation
-library_name: transformers
-datasets:
-  - HuggingFaceFW/fineweb-edu
-tags:
-  - pytorch
-  - causal-lm
-  - recurrent-neural-network
-  - text-generation
-model_name: J-BRAIN
----
-
 # J-BRAIN: Joint-Behavioral Resonant Artificial Intelligence Network
 
 > **Constant Inference Memory Language Modeling via Selective Non-Hermitian Wave
@@ -187,6 +161,24 @@ Optional HF arguments:
 - `--hf-dataset-config`
 - `--hf-text-column`
 - `--push-to-hub --hub-model-id <user_or_org/repo>`
+
+### Build and upload a selected model
+
+`upload_model_to_hf.py` creates a clean Hub bundle containing the selected model
+artifacts, a generated model-card README, and an optional binary training
+dataset:
+
+```bash
+python upload_model_to_hf.py \
+  --model-dir data/models/JBR1_V2_HF \
+  --repo-id <user_or_org/repo> \
+  --output-dir /tmp/jbrain-hf-bundle \
+  --upload
+```
+
+The script converts `jbrain_model.pt` into `pytorch.bin` and generates the Hub
+model card. Use `--weights-file` to select another checkpoint. Omit `--upload`
+to build and inspect the bundle without sending it to the Hub.
 
 ## Inference
 
