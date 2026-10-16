@@ -1,0 +1,121 @@
+{
+  "checkpoint_sha256": "f735065aac46203c0e9152f4b96a64c04f7d2416409c01579eaf021e1b1ca850",
+  "code_sha256": "067f1833802b4d7403b3f1e3d4bbc349d820c106f7ecb183fa41bd66d2171952",
+  "config_hash": "9edf9ad7ae7239a3451f2cf519069e8c3d0fb01a6672fb3bdd47af69e13294d8",
+  "created_utc": "2026-10-16T11:42:28Z",
+  "datasets": {
+    "arc_easy": {
+      "dataset_name": "ARC-Easy",
+      "dataset_path": "allenai/ai2_arc",
+      "requests_sha256": "24b00c47ed488d938a1739b7a2badbcf2ccb29a2fb3f5fc9d0189351c0882273",
+      "revision": {
+        "hub_cache_dir": "C:\\Users\\ARYA\\.cache\\huggingface\\hub\\datasets--allenai--ai2_arc",
+        "refs_main": "210d026faf9955653af8916fad021475a3f00453",
+        "snapshots": [
+          "210d026faf9955653af8916fad021475a3f00453"
+        ]
+      },
+      "test_split": "test",
+      "validation_split": "validation"
+    },
+    "hellaswag": {
+      "dataset_name": null,
+      "dataset_path": "Rowan/hellaswag",
+      "requests_sha256": "ae66f1a870227b8b415311040c154a1496fdbf5dca3876c230a965ec1b744fa3",
+      "revision": {
+        "hub_cache_dir": "C:\\Users\\ARYA\\.cache\\huggingface\\hub\\datasets--Rowan--hellaswag",
+        "refs_main": "218ec52e09a7e7462a5400043bb9a69a41d06b76",
+        "snapshots": [
+          "218ec52e09a7e7462a5400043bb9a69a41d06b76"
+        ]
+      },
+      "test_split": null,
+      "validation_split": "validation"
+    },
+    "lambada_openai": {
+      "dataset_name": "default",
+      "dataset_path": "EleutherAI/lambada_openai",
+      "requests_sha256": "21922d9f9efab3c602e01a187e1b077efb888ef3aab1f0f1ac04b4989c337b0a",
+      "revision": {
+        "hub_cache_dir": "C:\\Users\\ARYA\\.cache\\huggingface\\hub\\datasets--EleutherAI--lambada_openai",
+        "refs_main": "900124bf3b8235c6daf21033af9948b3f07346c4",
+        "snapshots": [
+          "900124bf3b8235c6daf21033af9948b3f07346c4"
+        ]
+      },
+      "test_split": "test",
+      "validation_split": null
+    },
+    "piqa": {
+      "dataset_name": null,
+      "dataset_path": "baber/piqa",
+      "requests_sha256": "10ce5beb6deef2b21a9212b5787cb211875f878d1be504744da3af6096f950d1",
+      "revision": {
+        "hub_cache_dir": "C:\\Users\\ARYA\\.cache\\huggingface\\hub\\datasets--baber--piqa",
+        "refs_main": "142f6d7367fd9877f0fb3b5734ea6a545f54cdd1",
+        "snapshots": [
+          "142f6d7367fd9877f0fb3b5734ea6a545f54cdd1"
+        ]
+      },
+      "test_split": null,
+      "validation_split": "validation"
+    },
+    "sciq": {
+      "dataset_name": null,
+      "dataset_path": "allenai/sciq",
+      "requests_sha256": "a56440128c4e077430fa79b4b6da3fe1dcff5a8fbb1130bd1fc482a480301e4d",
+      "revision": {
+        "hub_cache_dir": "C:\\Users\\ARYA\\.cache\\huggingface\\hub\\datasets--allenai--sciq",
+        "refs_main": "2c94ad3e1aafab77146f384e23536f97a4849815",
+        "snapshots": [
+          "2c94ad3e1aafab77146f384e23536f97a4849815"
+        ]
+      },
+      "test_split": "test",
+      "validation_split": "validation"
+    }
+  },
+  "files": {
+    "checkpoint.json": {
+      "bytes": 673,
+      "sha256": "d9b36d0916453dd1a3d11e62d24f58eee4ee2dbe04f70c2324f92326f3453565"
+    },
+    "compute_dtype.json": {
+      "bytes": 357,
+      "sha256": "b08dba3783fbac0556fd0cfffc79cbfc266f6edfb0907202efaff583ae868926"
+    },
+    "config.json": {
+      "bytes": 1337,
+      "sha256": "08e54c5b2ea1a26fcb06e33c51d45161b6b3ed96812872f82f2d36f6d54e7b05"
+    },
+    "environment.json": {
+      "bytes": 887,
+      "sha256": "d75e805cab62577d68e8bbca61129f2b6b98ea364ab9b0853c77e15212ecd310"
+    },
+    "loglik_cache.jsonl": {
+      "bytes": 15117855,
+      "sha256": "ff0af344aa87e31f953d246bc2193a739b9089bc73cda70129b579a145a809d9"
+    },
+    "per_sample_results.jsonl": {
+      "bytes": 15551532,
+      "sha256": "25587b4ea2fdb61f8fb13d7ceea68fb77589f055de3d3395bc9d2e7ab850f1b6"
+    },
+    "results.json": {
+      "bytes": 15498,
+      "sha256": "f1c206a55cfb1b2998adeae05fd75f9e88607a07cc6d72204a92cfe968600f7c"
+    },
+    "run.log": {
+      "bytes": 24437,
+      "sha256": "a32a67d27a327c821bb3cd36f2657aaa6986615fb0595aaf95ae5b353d8016d1"
+    }
+  },
+  "finished_utc": "2026-10-16T12:14:33Z",
+  "git": {
+    "head": "8173c46566e6a8805380c67cbf6103d666d7b3bf",
+    "note": "benchmarks/ is untracked; see code_sha256 for its exact content",
+    "tracked_files_modified": 0
+  },
+  "partial_evaluation": false,
+  "run_id": "20261016T114228Z_9edf9ad7_f735065a_bf16",
+  "schema_version": 1
+}

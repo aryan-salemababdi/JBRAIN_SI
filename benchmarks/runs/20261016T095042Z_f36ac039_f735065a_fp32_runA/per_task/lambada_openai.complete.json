@@ -1,0 +1,241 @@
+{
+  "aggregate": {
+    "acc": 0.026586454492528624,
+    "acc_by_target_tokens": {
+      "1": [
+        132,
+        4020
+      ],
+      "2": [
+        4,
+        952
+      ],
+      "3": [
+        0,
+        163
+      ],
+      "4": [
+        1,
+        11
+      ],
+      "5": [
+        0,
+        5
+      ],
+      "7": [
+        0,
+        2
+      ]
+    },
+    "acc_ci95": [
+      0.02253425859415462,
+      0.0313439653335536
+    ],
+    "correct": 137,
+    "kind": "word_prediction",
+    "mean_word_nll": 8.65194182779496,
+    "n": 5153,
+    "n_target_tokens": 6496,
+    "n_truncated_docs": 0,
+    "perplexity": 5721.245627977516,
+    "perplexity_ci95": [
+      5151.177399520041,
+      6344.978102855953
+    ],
+    "task": "lambada_openai",
+    "token_perplexity": 956.4387827286746
+  },
+  "config_hash": "f36ac0390071e43387f727a46b6153fd9bc048864ecc4f21d949030b72e45310",
+  "consistency": {
+    "aggregate_mismatches": [],
+    "flag_mismatches": 0,
+    "ok": true,
+    "task": "lambada_openai"
+  },
+  "cross_checks": [
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "45498b9cd7844a9290ddf980f2730626f5a90ac100a664b70b5297d4f041f6b1"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "3c4825fa3e1febe944f9a1a07728b23c4b023ca8ed888750101c6757f01a24a7"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "4ebcfa43ee745cb3087467a7aa687e52943b16651022e5976076e0dec30afad1"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "561473ba37288081eeab248fc78a55f88f5b9ddfbd83e22aa9d6e5b3b2acf951"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "d1068e816c0d75017c33f64d744b42fc5600f774693d44def93db8eec72218dd"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "e7a376ddcc16411ce7ac2f5410d785b251609c431d0eb911baeb4866e07e6e05"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "f0c82904105420181fa4dc9d40cf2dd81a9a945cfde44462b86e542341bfdc3d"
+    },
+    {
+      "abs_diff": 1.430511474609375e-06,
+      "greedy_agrees": true,
+      "key": "f1eae6bb7d398a93a47393e91a792eef54c9c470f787962f0743541886010482"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "ef398798849ed7342a2c46d0779b7e3123c870548755a0ab0186508aceb33bb7"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "0221cbe6da733e0f47fe4383c647b9d651e6d73bd621d8bd31f24cbc1309848b"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "83fdf1eb2c0df151d0fcfcabc4509f23e261b0d6e0113f8e13622dc74a6b997f"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "ff28d3fca2cf3144685831808ed0b36640b256d49d65f24db17fe35dcdf7be75"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "ecc1fbc32f2cb4186785e91fb809cd72fedf37cad2eb36c87c1112f5ee56f0b7"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "c9399faa64cb0d4f8fd0992f189ecbedddfa0fde37b2849d994c666dc0ff6103"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "7fe7a486dad7de1c4a4afac167f82cb83c728a7ef4392ff96ea1073c63e65711"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "0f1fe08b525ab0b6333681ec35af0158837822f820546a13b8a745bdced4061c"
+    },
+    {
+      "abs_diff": 7.82310962677002e-07,
+      "greedy_agrees": true,
+      "key": "0de5419b4380843a10dd14e541e4927033f72ed57fdccfc4ffe7b797dbbc6024"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "3fa50e3e5abc375d9c35130ecfe26833cff926bdded76d4a6322878877337787"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "5921304de03a406ad1aed97305ddea71d310fe2d032c3c986a28464c116da1dc"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "31d1f5f45afb1f4f46bc3998f3d0d63c0e21a04bb0116e63e87adf1bdac86851"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "6682c74f1b338b1154be1925f5411ea1394472d34492c83d3ee9916ca6ebc18a"
+    },
+    {
+      "abs_diff": 3.337860107421875e-06,
+      "greedy_agrees": true,
+      "key": "e706a7615e2f74c0972b2f13c9dc0b0bf896c0d6ddc01bf1c5cb29da00291675"
+    },
+    {
+      "abs_diff": 5.125999450683594e-06,
+      "greedy_agrees": true,
+      "key": "af1271c436db18a3b68e1efd491d881fb9b5e6127fdb2a178edbe62455507a20"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "9a2eb12d72104c327c82fd629cbfb249099075d6f6373d6919086f66edf4cd3a"
+    },
+    {
+      "abs_diff": 1.049041748046875e-05,
+      "greedy_agrees": true,
+      "key": "59f57595ec497d2985ac4ee7bbc34327cb321012106481d5bf7444777d91ac10"
+    },
+    {
+      "abs_diff": 0.0,
+      "greedy_agrees": true,
+      "key": "f9d891ef764db7a6dd69821bb4e6a28cab2f9dc36401dca6fa46608d05e75034"
+    }
+  ],
+  "dataset_revision": {
+    "hub_cache_dir": "C:\\Users\\ARYA\\.cache\\huggingface\\hub\\datasets--EleutherAI--lambada_openai",
+    "refs_main": "900124bf3b8235c6daf21033af9948b3f07346c4",
+    "snapshots": [
+      "900124bf3b8235c6daf21033af9948b3f07346c4"
+    ]
+  },
+  "elapsed_seconds_this_session": 126.15115761756897,
+  "lm_eval_reported": {
+    "acc,none": 0.026586454492528624,
+    "acc_stderr,none": "N/A",
+    "alias": "lambada_openai",
+    "name": "lambada_openai",
+    "perplexity,none": 5721.245627977516,
+    "perplexity_stderr,none": "N/A",
+    "sample_len": 5153
+  },
+  "n_cache_hits": 2,
+  "n_expected": 5153,
+  "n_new_requests": 5151,
+  "n_original_docs": 5153,
+  "per_sample_sha256": "296715a5ff63bc742cff13084e5248192bc87469c85c57aad615f8f560c6b25f",
+  "requests_sha256": "21922d9f9efab3c602e01a187e1b077efb888ef3aab1f0f1ac04b4989c337b0a",
+  "task": "lambada_openai",
+  "task_config": {
+    "dataset_name": "default",
+    "dataset_path": "EleutherAI/lambada_openai",
+    "doc_to_choice": null,
+    "doc_to_target": "{{' '+text.split(' ')[-1]}}",
+    "doc_to_text": "{{text.split(' ')[:-1]|join(' ')}}",
+    "fewshot_split": null,
+    "metadata": {
+      "task_yaml": "lambada_openai.yaml",
+      "version": 1.0
+    },
+    "metric_list": [
+      {
+        "aggregation": "perplexity",
+        "higher_is_better": false,
+        "metric": "perplexity"
+      },
+      {
+        "aggregation": "mean",
+        "higher_is_better": true,
+        "metric": "acc"
+      }
+    ],
+    "num_fewshot": 0,
+    "output_type": "loglikelihood",
+    "test_split": "test",
+    "training_split": null,
+    "validation_split": null
+  },
+  "task_version": 1.0
+}

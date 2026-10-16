@@ -1,0 +1,14 @@
+{
+  "bf16_actually_executed": true,
+  "log_softmax_dtype": "float32 (logits.float() before log_softmax)",
+  "logits_dtype": "torch.bfloat16",
+  "mechanism": "torch.autocast(cuda, bfloat16)",
+  "parameter_dtypes": [
+    "torch.float32"
+  ],
+  "precision": "bf16",
+  "submodule_output_dtype_counts": {
+    "torch.bfloat16": 158,
+    "torch.float32": 50
+  }
+}

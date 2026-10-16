@@ -1,0 +1,181 @@
+2026-10-16 13:45:34,890 INFO jbrain.bench: STARTING run in D:\aryan\JBRAIN\benchmarks\runs\20261016T101534Z_f36ac039_f735065a_fp32_runB | config_hash f36ac0390071e43387f727a46b6153fd9bc048864ecc4f21d949030b72e45310 | checkpoint sha256 f735065aac46203c0e9152f4b96a64c04f7d2416409c01579eaf021e1b1ca850 | code_sha256 2fd93cbbc5cf17b3e944b596c82a0aa0cdf05bcbfd135f519f568f7680b1fb44 | device cuda
+2026-10-16 13:45:37,740 INFO jbrain.bench: checkpoint loaded strictly: 162298656 parameters, sha256 f735065aac46203c0e9152f4b96a64c04f7d2416409c01579eaf021e1b1ca850
+2026-10-16 13:45:37,741 INFO jbrain.bench: [arc_easy] evaluating (limit=None) ...
+2026-10-16 13:45:37,824 INFO lm_eval.evaluator: Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2026-10-16 13:45:37,825 INFO lm_eval.evaluator: Using pre-initialized model
+2026-10-16 13:45:46,065 WARNING datasets.load: Using the latest cached version of the dataset since allenai/ai2_arc couldn't be found on the Hugging Face Hub (offline mode is enabled).
+2026-10-16 13:45:46,076 WARNING datasets.packaged_modules.cache.cache: Found the latest cached dataset configuration 'ARC-Easy' at C:\Users\ARYA\.cache\huggingface\datasets\allenai___ai2_arc\ARC-Easy\0.0.0\210d026faf9955653af8916fad021475a3f00453 (last modified on Wed Sep 23 18:25:59 2026).
+2026-10-16 13:45:46,996 INFO lm_eval.evaluator_utils: Selected tasks:
+2026-10-16 13:45:46,996 INFO lm_eval.evaluator_utils: Task: arc_easy (arc\arc_easy.yaml)
+2026-10-16 13:45:46,996 WARNING lm_eval.evaluator: Overwriting default num_fewshot of arc_easy from None to 0
+2026-10-16 13:45:46,996 INFO lm_eval.api.task: Building contexts for arc_easy on rank 0...
+2026-10-16 13:45:49,627 INFO lm_eval.evaluator: Running loglikelihood requests
+2026-10-16 13:45:59,067 INFO jbrain.bench: scored 500 new requests (500/9501 in this call, 0 cache hits) | 53.0 req/s | ETA 170s
+2026-10-16 13:46:07,899 INFO jbrain.bench: scored 1000 new requests (1000/9501 in this call, 0 cache hits) | 54.7 req/s | ETA 155s
+2026-10-16 13:46:16,502 INFO jbrain.bench: scored 1500 new requests (1500/9501 in this call, 0 cache hits) | 55.8 req/s | ETA 143s
+2026-10-16 13:46:25,182 INFO jbrain.bench: scored 2000 new requests (2000/9501 in this call, 0 cache hits) | 56.3 req/s | ETA 133s
+2026-10-16 13:46:33,922 INFO jbrain.bench: scored 2500 new requests (2500/9501 in this call, 0 cache hits) | 56.4 req/s | ETA 124s
+2026-10-16 13:46:42,864 INFO jbrain.bench: scored 3000 new requests (3000/9501 in this call, 0 cache hits) | 56.4 req/s | ETA 115s
+2026-10-16 13:46:51,521 INFO jbrain.bench: scored 3500 new requests (3500/9501 in this call, 0 cache hits) | 56.5 req/s | ETA 106s
+2026-10-16 13:47:00,236 INFO jbrain.bench: scored 4000 new requests (4000/9501 in this call, 0 cache hits) | 56.7 req/s | ETA 97s
+2026-10-16 13:47:08,963 INFO jbrain.bench: scored 4500 new requests (4500/9501 in this call, 0 cache hits) | 56.7 req/s | ETA 88s
+2026-10-16 13:47:17,737 INFO jbrain.bench: scored 5000 new requests (5003/9501 in this call, 3 cache hits) | 56.7 req/s | ETA 79s
+2026-10-16 13:47:26,570 INFO jbrain.bench: scored 5500 new requests (5503/9501 in this call, 3 cache hits) | 56.7 req/s | ETA 70s
+2026-10-16 13:47:35,454 INFO jbrain.bench: scored 6000 new requests (6003/9501 in this call, 3 cache hits) | 56.7 req/s | ETA 62s
+2026-10-16 13:47:44,025 INFO jbrain.bench: scored 6500 new requests (6503/9501 in this call, 3 cache hits) | 56.8 req/s | ETA 53s
+2026-10-16 13:47:52,669 INFO jbrain.bench: scored 7000 new requests (7003/9501 in this call, 3 cache hits) | 56.9 req/s | ETA 44s
+2026-10-16 13:48:01,418 INFO jbrain.bench: scored 7500 new requests (7503/9501 in this call, 3 cache hits) | 56.9 req/s | ETA 35s
+2026-10-16 13:48:10,111 INFO jbrain.bench: scored 8000 new requests (8003/9501 in this call, 3 cache hits) | 56.9 req/s | ETA 26s
+2026-10-16 13:48:18,786 INFO jbrain.bench: scored 8500 new requests (8503/9501 in this call, 3 cache hits) | 57.0 req/s | ETA 18s
+2026-10-16 13:48:27,862 INFO jbrain.bench: scored 9000 new requests (9003/9501 in this call, 3 cache hits) | 56.9 req/s | ETA 9s
+2026-10-16 13:48:43,049 INFO jbrain.bench: [arc_easy] done: n=2376 acc=0.5076 acc_norm=0.4402 (185s)
+2026-10-16 13:48:43,049 INFO jbrain.bench: [piqa] evaluating (limit=None) ...
+2026-10-16 13:48:43,050 INFO lm_eval.evaluator: Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2026-10-16 13:48:43,050 INFO lm_eval.evaluator: Using pre-initialized model
+2026-10-16 13:48:50,888 WARNING datasets.load: Using the latest cached version of the dataset since baber/piqa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+2026-10-16 13:48:50,889 WARNING datasets.packaged_modules.cache.cache: Found the latest cached dataset configuration 'default' at C:\Users\ARYA\.cache\huggingface\datasets\baber___piqa\default\0.0.0\142f6d7367fd9877f0fb3b5734ea6a545f54cdd1 (last modified on Wed Sep 23 18:27:18 2026).
+2026-10-16 13:48:51,173 INFO lm_eval.evaluator_utils: Selected tasks:
+2026-10-16 13:48:51,174 INFO lm_eval.evaluator_utils: Task: piqa (piqa\piqa.yaml)
+2026-10-16 13:48:51,174 WARNING lm_eval.evaluator: Overwriting default num_fewshot of piqa from None to 0
+2026-10-16 13:48:51,174 INFO lm_eval.api.task: Building contexts for piqa on rank 0...
+2026-10-16 13:48:52,595 INFO lm_eval.evaluator: Running loglikelihood requests
+2026-10-16 13:48:52,837 INFO jbrain.bench: scored 9500 new requests (4/3676 in this call, 5 cache hits) | 39361.6 req/s | ETA 0s
+2026-10-16 13:49:03,966 INFO jbrain.bench: scored 10000 new requests (504/3676 in this call, 5 cache hits) | 879.5 req/s | ETA 4s
+2026-10-16 13:49:13,126 INFO jbrain.bench: scored 10500 new requests (1004/3676 in this call, 5 cache hits) | 511.4 req/s | ETA 5s
+2026-10-16 13:49:22,741 INFO jbrain.bench: scored 11000 new requests (1504/3676 in this call, 5 cache hits) | 364.9 req/s | ETA 6s
+2026-10-16 13:49:31,714 INFO jbrain.bench: scored 11500 new requests (2004/3676 in this call, 5 cache hits) | 294.0 req/s | ETA 6s
+2026-10-16 13:49:41,124 INFO jbrain.bench: scored 12000 new requests (2504/3676 in this call, 5 cache hits) | 247.3 req/s | ETA 5s
+2026-10-16 13:49:51,275 INFO jbrain.bench: scored 12500 new requests (3004/3676 in this call, 5 cache hits) | 213.0 req/s | ETA 3s
+2026-10-16 13:50:00,570 INFO jbrain.bench: scored 13000 new requests (3504/3676 in this call, 5 cache hits) | 191.2 req/s | ETA 1s
+2026-10-16 13:50:06,857 INFO jbrain.bench: [piqa] done: n=1838 acc=0.6148 acc_norm=0.6268 (84s)
+2026-10-16 13:50:06,858 INFO jbrain.bench: [sciq] evaluating (limit=None) ...
+2026-10-16 13:50:06,858 INFO lm_eval.evaluator: Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2026-10-16 13:50:06,858 INFO lm_eval.evaluator: Using pre-initialized model
+2026-10-16 13:50:14,768 WARNING datasets.load: Using the latest cached version of the dataset since allenai/sciq couldn't be found on the Hugging Face Hub (offline mode is enabled).
+2026-10-16 13:50:14,769 WARNING datasets.packaged_modules.cache.cache: Found the latest cached dataset configuration 'default' at C:\Users\ARYA\.cache\huggingface\datasets\allenai___sciq\default\0.0.0\2c94ad3e1aafab77146f384e23536f97a4849815 (last modified on Thu Oct  1 02:32:29 2026).
+2026-10-16 13:50:15,053 INFO lm_eval.evaluator_utils: Selected tasks:
+2026-10-16 13:50:15,053 INFO lm_eval.evaluator_utils: Task: sciq (sciq\sciq.yaml)
+2026-10-16 13:50:15,053 WARNING lm_eval.evaluator: Overwriting default num_fewshot of sciq from None to 0
+2026-10-16 13:50:15,053 INFO lm_eval.api.task: Building contexts for sciq on rank 0...
+2026-10-16 13:50:16,081 INFO lm_eval.evaluator: Running loglikelihood requests
+2026-10-16 13:50:24,532 INFO jbrain.bench: scored 13500 new requests (329/4000 in this call, 6 cache hits) | 1597.6 req/s | ETA 2s
+2026-10-16 13:50:36,012 INFO jbrain.bench: scored 14000 new requests (830/4000 in this call, 7 cache hits) | 702.5 req/s | ETA 5s
+2026-10-16 13:50:46,050 INFO jbrain.bench: scored 14500 new requests (1331/4000 in this call, 8 cache hits) | 483.8 req/s | ETA 6s
+2026-10-16 13:50:55,660 INFO jbrain.bench: scored 15000 new requests (1831/4000 in this call, 8 cache hits) | 379.0 req/s | ETA 6s
+2026-10-16 13:51:05,272 INFO jbrain.bench: scored 15500 new requests (2333/4000 in this call, 10 cache hits) | 315.1 req/s | ETA 5s
+2026-10-16 13:51:14,569 INFO jbrain.bench: scored 16000 new requests (2834/4000 in this call, 11 cache hits) | 273.6 req/s | ETA 4s
+2026-10-16 13:51:23,813 INFO jbrain.bench: scored 16500 new requests (3335/4000 in this call, 12 cache hits) | 243.6 req/s | ETA 3s
+2026-10-16 13:51:35,139 INFO jbrain.bench: scored 17000 new requests (3837/4000 in this call, 14 cache hits) | 215.0 req/s | ETA 1s
+2026-10-16 13:51:41,925 INFO jbrain.bench: [sciq] done: n=1000 acc=0.6640 acc_norm=0.6120 (95s)
+2026-10-16 13:51:41,925 INFO jbrain.bench: [hellaswag] evaluating (limit=None) ...
+2026-10-16 13:51:41,926 INFO lm_eval.evaluator: Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2026-10-16 13:51:41,926 INFO lm_eval.evaluator: Using pre-initialized model
+2026-10-16 13:51:49,794 WARNING datasets.load: Using the latest cached version of the dataset since Rowan/hellaswag couldn't be found on the Hugging Face Hub (offline mode is enabled).
+2026-10-16 13:51:49,795 WARNING datasets.packaged_modules.cache.cache: Found the latest cached dataset configuration 'default' at C:\Users\ARYA\.cache\huggingface\datasets\Rowan___hellaswag\default\0.0.0\218ec52e09a7e7462a5400043bb9a69a41d06b76 (last modified on Wed Sep 23 18:26:46 2026).
+2026-10-16 13:51:52,128 INFO lm_eval.evaluator_utils: Selected tasks:
+2026-10-16 13:51:52,128 INFO lm_eval.evaluator_utils: Task: hellaswag (hellaswag\hellaswag.yaml)
+2026-10-16 13:51:52,128 WARNING lm_eval.evaluator: Overwriting default num_fewshot of hellaswag from None to 0
+2026-10-16 13:51:52,128 INFO lm_eval.api.task: Building contexts for hellaswag on rank 0...
+2026-10-16 13:51:56,959 INFO lm_eval.evaluator: Running loglikelihood requests
+2026-10-16 13:52:05,386 INFO jbrain.bench: scored 17500 new requests (337/40168 in this call, 14 cache hits) | 2077.6 req/s | ETA 19s
+2026-10-16 13:52:14,466 INFO jbrain.bench: scored 18000 new requests (837/40168 in this call, 14 cache hits) | 1028.4 req/s | ETA 38s
+2026-10-16 13:52:23,524 INFO jbrain.bench: scored 18500 new requests (1337/40168 in this call, 14 cache hits) | 696.5 req/s | ETA 56s
+2026-10-16 13:52:32,734 INFO jbrain.bench: scored 19000 new requests (1837/40168 in this call, 14 cache hits) | 531.2 req/s | ETA 72s
+2026-10-16 13:52:41,776 INFO jbrain.bench: scored 19500 new requests (2337/40168 in this call, 14 cache hits) | 435.1 req/s | ETA 87s
+2026-10-16 13:52:50,978 INFO jbrain.bench: scored 20000 new requests (2837/40168 in this call, 14 cache hits) | 370.3 req/s | ETA 101s
+2026-10-16 13:52:59,757 INFO jbrain.bench: scored 20500 new requests (3337/40168 in this call, 14 cache hits) | 326.5 req/s | ETA 113s
+2026-10-16 13:53:08,948 INFO jbrain.bench: scored 21000 new requests (3837/40168 in this call, 14 cache hits) | 291.7 req/s | ETA 125s
+2026-10-16 13:53:17,928 INFO jbrain.bench: scored 21500 new requests (4337/40168 in this call, 14 cache hits) | 265.5 req/s | ETA 135s
+2026-10-16 13:53:26,986 INFO jbrain.bench: scored 22000 new requests (4837/40168 in this call, 14 cache hits) | 244.4 req/s | ETA 145s
+2026-10-16 13:53:36,069 INFO jbrain.bench: scored 22500 new requests (5337/40168 in this call, 14 cache hits) | 227.0 req/s | ETA 153s
+2026-10-16 13:53:45,094 INFO jbrain.bench: scored 23000 new requests (5837/40168 in this call, 14 cache hits) | 212.7 req/s | ETA 161s
+2026-10-16 13:53:54,028 INFO jbrain.bench: scored 23500 new requests (6337/40168 in this call, 14 cache hits) | 200.7 req/s | ETA 169s
+2026-10-16 13:54:03,308 INFO jbrain.bench: scored 24000 new requests (6837/40168 in this call, 14 cache hits) | 190.0 req/s | ETA 175s
+2026-10-16 13:54:12,269 INFO jbrain.bench: scored 24500 new requests (7337/40168 in this call, 14 cache hits) | 181.1 req/s | ETA 181s
+2026-10-16 13:54:21,540 INFO jbrain.bench: scored 25000 new requests (7837/40168 in this call, 14 cache hits) | 172.9 req/s | ETA 187s
+2026-10-16 13:54:30,622 INFO jbrain.bench: scored 25500 new requests (8337/40168 in this call, 14 cache hits) | 166.0 req/s | ETA 192s
+2026-10-16 13:54:39,774 INFO jbrain.bench: scored 26000 new requests (8837/40168 in this call, 14 cache hits) | 159.7 req/s | ETA 196s
+2026-10-16 13:54:48,718 INFO jbrain.bench: scored 26500 new requests (9337/40168 in this call, 14 cache hits) | 154.3 req/s | ETA 200s
+2026-10-16 13:54:57,738 INFO jbrain.bench: scored 27000 new requests (9837/40168 in this call, 14 cache hits) | 149.4 req/s | ETA 203s
+2026-10-16 13:55:06,638 INFO jbrain.bench: scored 27500 new requests (10337/40168 in this call, 14 cache hits) | 145.0 req/s | ETA 206s
+2026-10-16 13:55:15,707 INFO jbrain.bench: scored 28000 new requests (10837/40168 in this call, 14 cache hits) | 140.9 req/s | ETA 208s
+2026-10-16 13:55:24,855 INFO jbrain.bench: scored 28500 new requests (11337/40168 in this call, 14 cache hits) | 137.1 req/s | ETA 210s
+2026-10-16 13:55:35,819 INFO jbrain.bench: scored 29000 new requests (11837/40168 in this call, 14 cache hits) | 132.5 req/s | ETA 214s
+2026-10-16 13:55:46,894 INFO jbrain.bench: scored 29500 new requests (12337/40168 in this call, 14 cache hits) | 128.3 req/s | ETA 217s
+2026-10-16 13:55:58,582 INFO jbrain.bench: scored 30000 new requests (12837/40168 in this call, 14 cache hits) | 124.2 req/s | ETA 220s
+2026-10-16 13:56:11,755 INFO jbrain.bench: scored 30500 new requests (13337/40168 in this call, 14 cache hits) | 119.7 req/s | ETA 224s
+2026-10-16 13:56:25,509 INFO jbrain.bench: scored 31000 new requests (13837/40168 in this call, 14 cache hits) | 115.4 req/s | ETA 228s
+2026-10-16 13:56:35,438 INFO jbrain.bench: scored 31500 new requests (14337/40168 in this call, 14 cache hits) | 113.1 req/s | ETA 228s
+2026-10-16 13:56:46,006 INFO jbrain.bench: scored 32000 new requests (14837/40168 in this call, 14 cache hits) | 110.7 req/s | ETA 229s
+2026-10-16 13:56:55,883 INFO jbrain.bench: scored 32500 new requests (15337/40168 in this call, 14 cache hits) | 108.7 req/s | ETA 228s
+2026-10-16 13:57:06,702 INFO jbrain.bench: scored 33000 new requests (15837/40168 in this call, 14 cache hits) | 106.5 req/s | ETA 228s
+2026-10-16 13:57:16,927 INFO jbrain.bench: scored 33500 new requests (16337/40168 in this call, 14 cache hits) | 104.7 req/s | ETA 228s
+2026-10-16 13:57:27,221 INFO jbrain.bench: scored 34000 new requests (16837/40168 in this call, 14 cache hits) | 102.9 req/s | ETA 227s
+2026-10-16 13:57:37,429 INFO jbrain.bench: scored 34500 new requests (17337/40168 in this call, 14 cache hits) | 101.3 req/s | ETA 225s
+2026-10-16 13:57:48,320 INFO jbrain.bench: scored 35000 new requests (17837/40168 in this call, 14 cache hits) | 99.6 req/s | ETA 224s
+2026-10-16 13:57:58,667 INFO jbrain.bench: scored 35500 new requests (18337/40168 in this call, 14 cache hits) | 98.1 req/s | ETA 222s
+2026-10-16 13:58:09,282 INFO jbrain.bench: scored 36000 new requests (18838/40168 in this call, 15 cache hits) | 96.7 req/s | ETA 221s
+2026-10-16 13:58:19,114 INFO jbrain.bench: scored 36500 new requests (19338/40168 in this call, 15 cache hits) | 95.5 req/s | ETA 218s
+2026-10-16 13:58:29,464 INFO jbrain.bench: scored 37000 new requests (19838/40168 in this call, 15 cache hits) | 94.3 req/s | ETA 216s
+2026-10-16 13:58:39,525 INFO jbrain.bench: scored 37500 new requests (20339/40168 in this call, 16 cache hits) | 93.2 req/s | ETA 213s
+2026-10-16 13:58:49,821 INFO jbrain.bench: scored 38000 new requests (20839/40168 in this call, 16 cache hits) | 92.0 req/s | ETA 210s
+2026-10-16 13:58:59,759 INFO jbrain.bench: scored 38500 new requests (21341/40168 in this call, 18 cache hits) | 91.1 req/s | ETA 207s
+2026-10-16 13:59:10,340 INFO jbrain.bench: scored 39000 new requests (21842/40168 in this call, 19 cache hits) | 90.0 req/s | ETA 204s
+2026-10-16 13:59:19,883 INFO jbrain.bench: scored 39500 new requests (22343/40168 in this call, 20 cache hits) | 89.2 req/s | ETA 200s
+2026-10-16 13:59:30,811 INFO jbrain.bench: scored 40000 new requests (22843/40168 in this call, 20 cache hits) | 88.1 req/s | ETA 197s
+2026-10-16 13:59:40,659 INFO jbrain.bench: scored 40500 new requests (23344/40168 in this call, 21 cache hits) | 87.3 req/s | ETA 193s
+2026-10-16 13:59:51,274 INFO jbrain.bench: scored 41000 new requests (23844/40168 in this call, 21 cache hits) | 86.4 req/s | ETA 189s
+2026-10-16 14:00:03,326 INFO jbrain.bench: scored 41500 new requests (24345/40168 in this call, 22 cache hits) | 85.3 req/s | ETA 185s
+2026-10-16 14:00:17,460 INFO jbrain.bench: scored 42000 new requests (24846/40168 in this call, 23 cache hits) | 83.9 req/s | ETA 183s
+2026-10-16 14:00:29,637 INFO jbrain.bench: scored 42500 new requests (25347/40168 in this call, 24 cache hits) | 82.9 req/s | ETA 179s
+2026-10-16 14:00:40,425 INFO jbrain.bench: scored 43000 new requests (25847/40168 in this call, 24 cache hits) | 82.1 req/s | ETA 174s
+2026-10-16 14:00:51,826 INFO jbrain.bench: scored 43500 new requests (26348/40168 in this call, 25 cache hits) | 81.3 req/s | ETA 170s
+2026-10-16 14:01:03,997 INFO jbrain.bench: scored 44000 new requests (26848/40168 in this call, 25 cache hits) | 80.4 req/s | ETA 166s
+2026-10-16 14:01:15,417 INFO jbrain.bench: scored 44500 new requests (27349/40168 in this call, 26 cache hits) | 79.7 req/s | ETA 161s
+2026-10-16 14:01:27,219 INFO jbrain.bench: scored 45000 new requests (27849/40168 in this call, 26 cache hits) | 78.9 req/s | ETA 156s
+2026-10-16 14:01:37,442 INFO jbrain.bench: scored 45500 new requests (28349/40168 in this call, 26 cache hits) | 78.4 req/s | ETA 151s
+2026-10-16 14:01:48,123 INFO jbrain.bench: scored 46000 new requests (28849/40168 in this call, 26 cache hits) | 77.8 req/s | ETA 145s
+2026-10-16 14:01:58,513 INFO jbrain.bench: scored 46500 new requests (29350/40168 in this call, 27 cache hits) | 77.3 req/s | ETA 140s
+2026-10-16 14:02:09,659 INFO jbrain.bench: scored 47000 new requests (29850/40168 in this call, 27 cache hits) | 76.7 req/s | ETA 135s
+2026-10-16 14:02:19,778 INFO jbrain.bench: scored 47500 new requests (30352/40168 in this call, 29 cache hits) | 76.3 req/s | ETA 129s
+2026-10-16 14:02:30,828 INFO jbrain.bench: scored 48000 new requests (30853/40168 in this call, 30 cache hits) | 75.7 req/s | ETA 123s
+2026-10-16 14:02:40,991 INFO jbrain.bench: scored 48500 new requests (31353/40168 in this call, 30 cache hits) | 75.3 req/s | ETA 117s
+2026-10-16 14:02:52,006 INFO jbrain.bench: scored 49000 new requests (31853/40168 in this call, 30 cache hits) | 74.8 req/s | ETA 111s
+2026-10-16 14:03:01,978 INFO jbrain.bench: scored 49500 new requests (32353/40168 in this call, 30 cache hits) | 74.4 req/s | ETA 105s
+2026-10-16 14:03:12,790 INFO jbrain.bench: scored 50000 new requests (32853/40168 in this call, 30 cache hits) | 74.0 req/s | ETA 99s
+2026-10-16 14:03:22,984 INFO jbrain.bench: scored 50500 new requests (33353/40168 in this call, 30 cache hits) | 73.6 req/s | ETA 93s
+2026-10-16 14:03:34,669 INFO jbrain.bench: scored 51000 new requests (33854/40168 in this call, 31 cache hits) | 73.1 req/s | ETA 86s
+2026-10-16 14:03:46,444 INFO jbrain.bench: scored 51500 new requests (34355/40168 in this call, 32 cache hits) | 72.6 req/s | ETA 80s
+2026-10-16 14:03:59,482 INFO jbrain.bench: scored 52000 new requests (34856/40168 in this call, 33 cache hits) | 72.0 req/s | ETA 74s
+2026-10-16 14:04:12,809 INFO jbrain.bench: scored 52500 new requests (35356/40168 in this call, 33 cache hits) | 71.3 req/s | ETA 67s
+2026-10-16 14:04:26,025 INFO jbrain.bench: scored 53000 new requests (35857/40168 in this call, 34 cache hits) | 70.8 req/s | ETA 61s
+2026-10-16 14:04:37,469 INFO jbrain.bench: scored 53500 new requests (36357/40168 in this call, 34 cache hits) | 70.3 req/s | ETA 54s
+2026-10-16 14:04:49,589 INFO jbrain.bench: scored 54000 new requests (36857/40168 in this call, 34 cache hits) | 69.9 req/s | ETA 47s
+2026-10-16 14:05:00,893 INFO jbrain.bench: scored 54500 new requests (37357/40168 in this call, 34 cache hits) | 69.5 req/s | ETA 40s
+2026-10-16 14:05:11,284 INFO jbrain.bench: scored 55000 new requests (37857/40168 in this call, 34 cache hits) | 69.2 req/s | ETA 33s
+2026-10-16 14:05:21,185 INFO jbrain.bench: scored 55500 new requests (38358/40168 in this call, 35 cache hits) | 69.0 req/s | ETA 26s
+2026-10-16 14:05:31,502 INFO jbrain.bench: scored 56000 new requests (38858/40168 in this call, 35 cache hits) | 68.8 req/s | ETA 19s
+2026-10-16 14:05:41,315 INFO jbrain.bench: scored 56500 new requests (39360/40168 in this call, 37 cache hits) | 68.5 req/s | ETA 12s
+2026-10-16 14:05:51,659 INFO jbrain.bench: scored 57000 new requests (39860/40168 in this call, 37 cache hits) | 68.3 req/s | ETA 5s
+2026-10-16 14:06:07,100 INFO jbrain.bench: [hellaswag] done: n=10042 acc=0.2822 acc_norm=0.3002 (865s)
+2026-10-16 14:06:07,100 INFO jbrain.bench: [lambada_openai] evaluating (limit=None) ...
+2026-10-16 14:06:07,101 INFO lm_eval.evaluator: Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2026-10-16 14:06:07,101 INFO lm_eval.evaluator: Using pre-initialized model
+2026-10-16 14:06:14,948 WARNING datasets.load: Using the latest cached version of the dataset since EleutherAI/lambada_openai couldn't be found on the Hugging Face Hub (offline mode is enabled).
+2026-10-16 14:06:14,949 WARNING datasets.packaged_modules.cache.cache: Found the latest cached dataset configuration 'default' at C:\Users\ARYA\.cache\huggingface\datasets\EleutherAI___lambada_openai\default\0.0.0\900124bf3b8235c6daf21033af9948b3f07346c4 (last modified on Wed Sep 23 18:27:33 2026).
+2026-10-16 14:06:14,992 INFO lm_eval.evaluator_utils: Selected tasks:
+2026-10-16 14:06:14,992 INFO lm_eval.evaluator_utils: Task: lambada_openai (lambada\lambada_openai.yaml)
+2026-10-16 14:06:14,992 WARNING lm_eval.evaluator: Overwriting default num_fewshot of lambada_openai from None to 0
+2026-10-16 14:06:14,992 INFO lm_eval.api.task: Building contexts for lambada_openai on rank 0...
+2026-10-16 14:06:22,140 INFO lm_eval.evaluator: Running loglikelihood requests
+2026-10-16 14:06:25,907 INFO jbrain.bench: scored 57500 new requests (192/5153 in this call, 37 cache hits) | 15268.3 req/s | ETA 0s
+2026-10-16 14:06:34,896 INFO jbrain.bench: scored 58000 new requests (692/5153 in this call, 37 cache hits) | 4547.1 req/s | ETA 1s
+2026-10-16 14:06:43,900 INFO jbrain.bench: scored 58500 new requests (1192/5153 in this call, 37 cache hits) | 2688.4 req/s | ETA 1s
+2026-10-16 14:06:52,893 INFO jbrain.bench: scored 59000 new requests (1692/5153 in this call, 37 cache hits) | 1918.6 req/s | ETA 2s
+2026-10-16 14:07:01,825 INFO jbrain.bench: scored 59500 new requests (2193/5153 in this call, 38 cache hits) | 1499.3 req/s | ETA 2s
+2026-10-16 14:07:11,028 INFO jbrain.bench: scored 60000 new requests (2693/5153 in this call, 38 cache hits) | 1227.3 req/s | ETA 2s
+2026-10-16 14:07:20,513 INFO jbrain.bench: scored 60500 new requests (3193/5153 in this call, 38 cache hits) | 1036.5 req/s | ETA 2s
+2026-10-16 14:07:29,811 INFO jbrain.bench: scored 61000 new requests (3694/5153 in this call, 39 cache hits) | 901.4 req/s | ETA 2s
+2026-10-16 14:07:38,751 INFO jbrain.bench: scored 61500 new requests (4194/5153 in this call, 39 cache hits) | 802.8 req/s | ETA 1s
+2026-10-16 14:07:47,796 INFO jbrain.bench: scored 62000 new requests (4694/5153 in this call, 39 cache hits) | 723.8 req/s | ETA 1s
+2026-10-16 14:08:01,339 INFO jbrain.bench: [lambada_openai] done: n=5153 acc=0.0266 perplexity=5721.25 (114s)
