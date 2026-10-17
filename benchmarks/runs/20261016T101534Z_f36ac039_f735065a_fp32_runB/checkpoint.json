@@ -1,0 +1,25 @@
+{
+  "bytes": 649280810,
+  "dtype": [
+    "torch.float32"
+  ],
+  "model_source": "architecture_v2.JBRLanguageModel",
+  "model_source_sha256": "f9887bdc2fe22ea4521b08e51f49a6eeb8ecd64a8b80d8ccfbf1755265f0784c",
+  "model_spec": {
+    "d_model": 768,
+    "n_heads": 12,
+    "n_layers": 12,
+    "vocab_size": 100277
+  },
+  "n_parameters": 162298656,
+  "n_state_tensors": 243,
+  "path": "D:\\aryan\\JBRAIN\\Models\\JBR1_V2_CE\\jbr_v2_ce_weights.pt",
+  "sha256": "f735065aac46203c0e9152f4b96a64c04f7d2416409c01579eaf021e1b1ca850",
+  "strict_load": true,
+  "tokenizer": {
+    "eot_token": 100257,
+    "n_vocab": 100277,
+    "name": "cl100k_base"
+  },
+  "weights_only_load": true
+}

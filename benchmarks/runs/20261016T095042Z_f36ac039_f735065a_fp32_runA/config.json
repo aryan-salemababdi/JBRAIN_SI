@@ -1,0 +1,44 @@
+{
+  "batch_size": 1,
+  "bootstrap_iters": 0,
+  "fewshot_random_seed": 1234,
+  "harness": {
+    "name": "lm-eval",
+    "version": "0.4.13"
+  },
+  "limit": null,
+  "max_length": 512,
+  "model_spec": {
+    "d_model": 768,
+    "n_heads": 12,
+    "n_layers": 12,
+    "vocab_size": 100277
+  },
+  "num_fewshot": 0,
+  "numpy_random_seed": 1234,
+  "precision": "fp32",
+  "random_seed": 0,
+  "schema_version": 1,
+  "scoring": {
+    "answer_normalisation": "none (acc); acc_norm divides by choice character length",
+    "context_truncation": "left-truncate context so that context+continuation <= max_length; error if the continuation alone does not fit",
+    "method": "lm-eval loglikelihood requests; per-request sum of fp32 log-softmax over continuation tokens",
+    "special_tokens": "none added; special-token strings in text are encoded as ordinary text"
+  },
+  "tasks": [
+    "arc_easy",
+    "piqa",
+    "sciq",
+    "hellaswag",
+    "lambada_openai"
+  ],
+  "tokenizer": {
+    "encode_policy": "enc.encode(text, disallowed_special=()) -- special-token strings are ordinary text; no BOS/EOT is added",
+    "eot_token": 100257,
+    "n_vocab": 100277,
+    "name": "cl100k_base",
+    "probe_encodings_sha256": "18d65bd8a8e3e1cd10a22305d21233f3c718c2204f61b259fc96e62777f34bd4",
+    "tiktoken_version": "0.13.0"
+  },
+  "torch_random_seed": 1234
+}
