@@ -10,6 +10,7 @@ import tiktoken
 from context import ContextBuilder
 from jbrain_model import JBRConfig, JBRLanguageModel
 
+from torch import nn
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="J-BRAIN v2 inference CLI.")
@@ -84,6 +85,8 @@ def load_model_and_tokenizer(args: argparse.Namespace):
 
     tokenizer = tiktoken.get_encoding(tokenizer_name)
     model = JBRLanguageModel(config=model_config)
+    model.lm_head.weight = nn.Parameter(model.lm_head.weight.clone())
+    
     state = torch.load(weights_path, map_location="cpu")
     model.load_state_dict(state, strict=True)
     model.eval()
