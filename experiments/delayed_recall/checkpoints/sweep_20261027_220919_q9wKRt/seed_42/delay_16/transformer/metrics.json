@@ -1,0 +1,130 @@
+{
+  "model": "transformer",
+  "best_epoch": 10,
+  "best_val_accuracy": 1.0,
+  "best_val_loss": 0.00034749810211360453,
+  "test_loss": 0.0003394162009935826,
+  "test_accuracy": 1.0,
+  "chance_accuracy": 0.125,
+  "num_parameters": 101256,
+  "training_seconds": 166.27481686999818,
+  "test_by_delay": {
+    "1": {
+      "count": 139,
+      "correct": 139,
+      "accuracy": 1.0
+    },
+    "2": {
+      "count": 115,
+      "correct": 115,
+      "accuracy": 1.0
+    },
+    "3": {
+      "count": 135,
+      "correct": 135,
+      "accuracy": 1.0
+    },
+    "4": {
+      "count": 145,
+      "correct": 145,
+      "accuracy": 1.0
+    },
+    "5": {
+      "count": 119,
+      "correct": 119,
+      "accuracy": 1.0
+    },
+    "6": {
+      "count": 129,
+      "correct": 129,
+      "accuracy": 1.0
+    },
+    "7": {
+      "count": 133,
+      "correct": 133,
+      "accuracy": 1.0
+    },
+    "8": {
+      "count": 133,
+      "correct": 133,
+      "accuracy": 1.0
+    },
+    "9": {
+      "count": 123,
+      "correct": 123,
+      "accuracy": 1.0
+    },
+    "10": {
+      "count": 106,
+      "correct": 106,
+      "accuracy": 1.0
+    },
+    "11": {
+      "count": 116,
+      "correct": 116,
+      "accuracy": 1.0
+    },
+    "12": {
+      "count": 126,
+      "correct": 126,
+      "accuracy": 1.0
+    },
+    "13": {
+      "count": 131,
+      "correct": 131,
+      "accuracy": 1.0
+    },
+    "14": {
+      "count": 111,
+      "correct": 111,
+      "accuracy": 1.0
+    },
+    "15": {
+      "count": 116,
+      "correct": 116,
+      "accuracy": 1.0
+    },
+    "16": {
+      "count": 123,
+      "correct": 123,
+      "accuracy": 1.0
+    }
+  },
+  "test_delay_buckets": [
+    {
+      "min_delay": 1,
+      "max_delay": 1,
+      "count": 139,
+      "correct": 139,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 2,
+      "max_delay": 3,
+      "count": 250,
+      "correct": 250,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 4,
+      "max_delay": 7,
+      "count": 526,
+      "correct": 526,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 8,
+      "max_delay": 15,
+      "count": 962,
+      "correct": 962,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 16,
+      "max_delay": 31,
+      "count": 123,
+      "correct": 123,
+      "accuracy": 1.0
+    }
+  ]
+}

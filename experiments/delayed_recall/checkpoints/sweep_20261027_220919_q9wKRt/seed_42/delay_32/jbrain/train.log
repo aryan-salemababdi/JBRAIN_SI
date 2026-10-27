@@ -1,0 +1,21 @@
+Model: jbrain; number of parameters: 102,424
+Device: cuda; sequence length: 1025; delay range: 1..32; chance accuracy: 0.1250
+epoch=001/10 train_loss=2.0995 train_acc=0.1200 val_loss=2.0821 val_acc=0.1220 seconds=7.27
+epoch=002/10 train_loss=2.0895 train_acc=0.1271 val_loss=2.0823 val_acc=0.1240 seconds=6.50
+epoch=003/10 train_loss=2.0864 train_acc=0.1226 val_loss=2.0845 val_acc=0.1290 seconds=6.75
+epoch=004/10 train_loss=2.0847 train_acc=0.1295 val_loss=2.0884 val_acc=0.1220 seconds=6.42
+epoch=005/10 train_loss=2.0848 train_acc=0.1239 val_loss=2.0826 val_acc=0.1290 seconds=6.49
+epoch=006/10 train_loss=2.0828 train_acc=0.1262 val_loss=2.0807 val_acc=0.1245 seconds=6.44
+epoch=007/10 train_loss=2.0821 train_acc=0.1236 val_loss=2.0797 val_acc=0.1330 seconds=6.43
+epoch=008/10 train_loss=2.0809 train_acc=0.1281 val_loss=2.0782 val_acc=0.1330 seconds=6.43
+epoch=009/10 train_loss=2.0800 train_acc=0.1229 val_loss=2.0795 val_acc=0.1240 seconds=6.53
+epoch=010/10 train_loss=2.0792 train_acc=0.1301 val_loss=2.0794 val_acc=0.1240 seconds=7.10
+Best validation accuracy: 0.1330 (epoch 8)
+Held-out test loss: 2.0795; accuracy: 0.1175
+Test delay 1..1: accuracy=0.0909 n=77
+Test delay 2..3: accuracy=0.0625 n=128
+Test delay 4..7: accuracy=0.1343 n=268
+Test delay 8..15: accuracy=0.1413 n=453
+Test delay 16..31: accuracy=0.1127 n=1020
+Test delay 32..63: accuracy=0.0926 n=54
+Checkpoint: /home/soroosh/Documents/ChatGPT/J-BRAIN/JBRAIN/experiments/delayed_recall/checkpoints/sweep_20261027_220919_q9wKRt/seed_42/delay_32/jbrain/best.pt
