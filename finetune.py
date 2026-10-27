@@ -13,6 +13,7 @@ import tiktoken
 
 from context import ContextBuilder
 from jbrain_model import JBRConfig, JBRLanguageModel
+from transformers import Trainer, TrainingArguments, TrainerCallback, TrainerState, TrainerControl
 
 MODEL_TRAIN_SEQ_LEN = 512
 MIN_PROMPT_TOKENS = 32
@@ -327,11 +328,11 @@ def maybe_push_to_hub(args: argparse.Namespace):
         commit_message="Upload QA fine-tuned J-BRAIN checkpoint",
     )
     print(f"Pushed fine-tuned artifacts to: https://huggingface.co/{args.hub_model_id}")
-                                        
+          
 
 def main() -> None:
     from datasets import load_dataset
-    from transformers import Trainer, TrainingArguments
+    
 
     args = parse_args()
     if not MIN_PROMPT_TOKENS + 2 <= args.max_length <= MODEL_TRAIN_SEQ_LEN:
@@ -388,12 +389,18 @@ def main() -> None:
     supported = set(inspect.signature(TrainingArguments.__init__).parameters.keys())
     targs = TrainingArguments(**{k: v for k, v in desired_args.items() if k in supported})
 
+    class ModelSave(TrainerCallback):
+        def on_step_end(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, **kwargs):
+            if state.global_step % args.save_steps == 0:
+                save_artifacts(args.output_dir, model, model_config, tokenizer_name) 
+
     trainer = Trainer(
         model=wrapped_model,
         args=targs,
         train_dataset=train_ds,
         eval_dataset=eval_ds,
         data_collator=qa_collator,
+        callbacks=[ModelSave],
     )
     trainer.train(resume_from_checkpoint=args.resume)
     print(f"Example fitting (train): {dict(train_stats)}")

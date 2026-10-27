@@ -103,6 +103,10 @@ def run_hf_training(args) -> None:
     wrapped_model = JBRTrainerModel(core_model)
     train_dataset = build_hf_dataset(args, tokenizer)
 
+    ## Print Number of Parameters
+    num_params = sum(p.numel() for p in core_model.parameters())
+    print(f"Number of parameters: {num_params:,}")
+
     bf16 = args.precision == "bf16"
     fp16 = args.precision == "fp16"
     desired_args = {

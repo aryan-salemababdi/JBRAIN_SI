@@ -4,6 +4,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from jbrain_model.jbrain_scan import complex_phase_parallel_scan
+
 from jbrain_model.causal_conv import CausalConv1d
 
 
@@ -35,93 +37,90 @@ class JBRHolographicRecurrentCore(nn.Module):
         nn.init.normal_(self.out_proj.weight, std=0.02)
         nn.init.zeros_(self.out_proj.bias)
 
-    def complex_phase_parallel_scan(
-        self,
-        gamma_t: torch.Tensor,
-        delta_phi_t: torch.Tensor,
-        val_r: torch.Tensor,
-        val_i: torch.Tensor,
-    ):
-        _, _, L, _ = val_r.shape
-        log_gamma = torch.log(gamma_t + 1e-8)
-        C = torch.cumsum(log_gamma, dim=-1)
-        Phi = torch.cumsum(delta_phi_t, dim=-1)
+    def complex_phase_parallel_scan(self, gamma_t, delta_phi_t, val_r, val_i):
+        # States h_t = gamma_t e^{i delta_phi_t} h_{t-1} + v_t from a zero initial state, plus C = cumsum(log(gamma_t + 1e-8))
+        # and Phi = cumsum(delta_phi_t), with the same contract as before. jbrain_scan picks the implementation
+        # (JBRAIN_SCAN=auto|triton|fallback|reference); "reference" is the original O(L^2) code, moved verbatim to
+        # jbrain_scan.reference_scan. The single-token decode branch in forward() does not call this method.
+        return complex_phase_parallel_scan(gamma_t, delta_phi_t, val_r, val_i)
 
-        C_diff = C.unsqueeze(-1) - C.unsqueeze(-2)
-        Phi_diff = Phi.unsqueeze(-1) - Phi.unsqueeze(-2)
-        decay_matrix = torch.exp(C_diff)
-
-        M_cos = decay_matrix * torch.cos(Phi_diff)
-        M_sin = decay_matrix * torch.sin(Phi_diff)
-        causal_mask = torch.tril(torch.ones(L, L, device=val_r.device)).view(1, 1, L, L)
-        M_cos = M_cos * causal_mask
-        M_sin = M_sin * causal_mask
-
-        B_r = torch.matmul(M_cos, val_r) - torch.matmul(M_sin, val_i)
-        B_i = torch.matmul(M_sin, val_r) + torch.matmul(M_cos, val_i)
-        return B_r, B_i, C, Phi
-
-    def forward(self, U: torch.Tensor, past_state=None):
+    def forward(self, U, past_state=None):
         B, L, D = U.shape
+        
         if past_state is not None:
             past_x, prev_h_r, prev_h_i = past_state
         else:
             past_x, prev_h_r, prev_h_i = None, None, None
-
+            
         X_conv, next_x = self.conv(U, past_x)
         X_mixed = F.silu(X_conv)
-
-        theta = self.W_theta(X_mixed).view(B, L, self.n_heads, self.head_dim) * (2 * math.pi)
+        
+        theta = (self.W_theta(X_mixed).view(B, L, self.n_heads, self.head_dim)) * (2 * math.pi)
         u = torch.tanh(self.W_u(X_mixed)).view(B, L, self.n_heads, self.head_dim)
-        theta_q = self.W_key_theta(X_mixed).view(B, L, self.n_heads, self.head_dim) * (2 * math.pi)
+        theta_q = (self.W_key_theta(X_mixed).view(B, L, self.n_heads, self.head_dim)) * (2 * math.pi)    
+            
         gamma_l = 0.9 + 0.099 * torch.sigmoid(self.W_gamma(X_mixed))
-        delta_phi_l = torch.tanh(self.W_delta_phi(X_mixed)) * math.pi
-
-        # Match notes.html convention: apply (1-gamma) exactly once at injection.
+        delta_phi_l = torch.tanh(self.W_delta_phi(X_mixed)) * math.pi 
+        
         bound_factor = (1.0 - gamma_l).unsqueeze(-1)
         val_r = u * torch.cos(theta) * bound_factor
         val_i = u * torch.sin(theta) * bound_factor
-
-        # Training scan path uses [B,H,L,d_h], while projections start as [B,L,H,d_h].
-        val_r = val_r.transpose(1, 2)
+        
+        # [B, L, H, d_h] -> [B, H, L, d_h]
+        val_r = val_r.transpose(1, 2) 
         val_i = val_i.transpose(1, 2)
+        
+        # [B, L, H] -> [B, H, L]
         gamma_t = gamma_l.transpose(1, 2)
         delta_phi_t = delta_phi_l.transpose(1, 2)
-
-        # L==1 with past is the O(1) recurrent generation step.
+        
         if L == 1 and past_state is not None:
-            h_r_prev = prev_h_r
+            h_r_prev = prev_h_r # [B, H, head_dim]
             h_i_prev = prev_h_i
-            g = gamma_t.squeeze(2).unsqueeze(-1)
-            d_phi = delta_phi_t.squeeze(2).unsqueeze(-1)
+            
+            g = gamma_t.squeeze(2).unsqueeze(-1)         # [B, H, 1]
+            d_phi = delta_phi_t.squeeze(2).unsqueeze(-1) # [B, H, 1]
+            
             cos_phi = torch.cos(d_phi)
             sin_phi = torch.sin(d_phi)
-
+            
             current_h_r = g * (cos_phi * h_r_prev - sin_phi * h_i_prev) + val_r.squeeze(2)
             current_h_i = g * (sin_phi * h_r_prev + cos_phi * h_i_prev) + val_i.squeeze(2)
-            B_r_out = current_h_r.unsqueeze(2)
+            
+            B_r_out = current_h_r.unsqueeze(2) # [B, H, 1, head_dim]
             B_i_out = current_h_i.unsqueeze(2)
+            
             next_h_r, next_h_i = current_h_r, current_h_i
+            
         else:
             B_r_inc, B_i_inc, C, Phi = self.complex_phase_parallel_scan(gamma_t, delta_phi_t, val_r, val_i)
+            
             if past_state is not None:
-                decay_past = torch.exp(C).unsqueeze(-1)
+                decay_past = torch.exp(C).unsqueeze(-1) # [B, H, L, 1]
                 cos_past = torch.cos(Phi).unsqueeze(-1)
                 sin_past = torch.sin(Phi).unsqueeze(-1)
-                h_r_p = prev_h_r.unsqueeze(2)
+                
+                h_r_p = prev_h_r.unsqueeze(2) # [B, H, 1, head_dim]
                 h_i_p = prev_h_i.unsqueeze(2)
+                
                 past_r_rot = cos_past * h_r_p - sin_past * h_i_p
                 past_i_rot = sin_past * h_r_p + cos_past * h_i_p
+                
                 B_r_out = B_r_inc + decay_past * past_r_rot
                 B_i_out = B_i_inc + decay_past * past_i_rot
             else:
                 B_r_out = B_r_inc
                 B_i_out = B_i_inc
+                
             next_h_r, next_h_i = B_r_out[:, :, -1, :], B_i_out[:, :, -1, :]
 
         theta_q_t = theta_q.transpose(1, 2)
         scale = 1.0 / math.sqrt(self.head_dim)
+        
         R_k = (B_r_out * torch.cos(theta_q_t) + B_i_out * torch.sin(theta_q_t)) * scale
         R_k = R_k.transpose(1, 2).contiguous().view(B, L, D)
+        
         output = self.out_proj(R_k)
+        
         return output, (next_x, next_h_r, next_h_i)
+
