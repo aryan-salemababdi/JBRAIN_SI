@@ -1,0 +1,83 @@
+{
+  "model": "transformer",
+  "best_epoch": 10,
+  "best_val_accuracy": 1.0,
+  "best_val_loss": 0.000539483638945967,
+  "test_loss": 0.000542504295706749,
+  "test_accuracy": 1.0,
+  "chance_accuracy": 0.125,
+  "num_parameters": 101256,
+  "training_seconds": 165.73554370200145,
+  "test_by_delay": {
+    "1": {
+      "count": 262,
+      "correct": 262,
+      "accuracy": 1.0
+    },
+    "2": {
+      "count": 221,
+      "correct": 221,
+      "accuracy": 1.0
+    },
+    "3": {
+      "count": 251,
+      "correct": 251,
+      "accuracy": 1.0
+    },
+    "4": {
+      "count": 271,
+      "correct": 271,
+      "accuracy": 1.0
+    },
+    "5": {
+      "count": 250,
+      "correct": 250,
+      "accuracy": 1.0
+    },
+    "6": {
+      "count": 240,
+      "correct": 240,
+      "accuracy": 1.0
+    },
+    "7": {
+      "count": 249,
+      "correct": 249,
+      "accuracy": 1.0
+    },
+    "8": {
+      "count": 256,
+      "correct": 256,
+      "accuracy": 1.0
+    }
+  },
+  "test_delay_buckets": [
+    {
+      "min_delay": 1,
+      "max_delay": 1,
+      "count": 262,
+      "correct": 262,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 2,
+      "max_delay": 3,
+      "count": 472,
+      "correct": 472,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 4,
+      "max_delay": 7,
+      "count": 1010,
+      "correct": 1010,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 8,
+      "max_delay": 15,
+      "count": 256,
+      "correct": 256,
+      "accuracy": 1.0
+    }
+  ]
+}

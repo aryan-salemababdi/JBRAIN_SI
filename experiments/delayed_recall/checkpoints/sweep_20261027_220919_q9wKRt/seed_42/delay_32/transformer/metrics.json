@@ -1,0 +1,217 @@
+{
+  "model": "transformer",
+  "best_epoch": 10,
+  "best_val_accuracy": 1.0,
+  "best_val_loss": 0.00024524010764434936,
+  "test_loss": 0.000245798779418692,
+  "test_accuracy": 1.0,
+  "chance_accuracy": 0.125,
+  "num_parameters": 101256,
+  "training_seconds": 168.0588132720004,
+  "test_by_delay": {
+    "1": {
+      "count": 77,
+      "correct": 77,
+      "accuracy": 1.0
+    },
+    "2": {
+      "count": 52,
+      "correct": 52,
+      "accuracy": 1.0
+    },
+    "3": {
+      "count": 76,
+      "correct": 76,
+      "accuracy": 1.0
+    },
+    "4": {
+      "count": 73,
+      "correct": 73,
+      "accuracy": 1.0
+    },
+    "5": {
+      "count": 58,
+      "correct": 58,
+      "accuracy": 1.0
+    },
+    "6": {
+      "count": 67,
+      "correct": 67,
+      "accuracy": 1.0
+    },
+    "7": {
+      "count": 70,
+      "correct": 70,
+      "accuracy": 1.0
+    },
+    "8": {
+      "count": 62,
+      "correct": 62,
+      "accuracy": 1.0
+    },
+    "9": {
+      "count": 55,
+      "correct": 55,
+      "accuracy": 1.0
+    },
+    "10": {
+      "count": 42,
+      "correct": 42,
+      "accuracy": 1.0
+    },
+    "11": {
+      "count": 60,
+      "correct": 60,
+      "accuracy": 1.0
+    },
+    "12": {
+      "count": 68,
+      "correct": 68,
+      "accuracy": 1.0
+    },
+    "13": {
+      "count": 56,
+      "correct": 56,
+      "accuracy": 1.0
+    },
+    "14": {
+      "count": 53,
+      "correct": 53,
+      "accuracy": 1.0
+    },
+    "15": {
+      "count": 57,
+      "correct": 57,
+      "accuracy": 1.0
+    },
+    "16": {
+      "count": 69,
+      "correct": 69,
+      "accuracy": 1.0
+    },
+    "17": {
+      "count": 62,
+      "correct": 62,
+      "accuracy": 1.0
+    },
+    "18": {
+      "count": 63,
+      "correct": 63,
+      "accuracy": 1.0
+    },
+    "19": {
+      "count": 59,
+      "correct": 59,
+      "accuracy": 1.0
+    },
+    "20": {
+      "count": 72,
+      "correct": 72,
+      "accuracy": 1.0
+    },
+    "21": {
+      "count": 61,
+      "correct": 61,
+      "accuracy": 1.0
+    },
+    "22": {
+      "count": 62,
+      "correct": 62,
+      "accuracy": 1.0
+    },
+    "23": {
+      "count": 63,
+      "correct": 63,
+      "accuracy": 1.0
+    },
+    "24": {
+      "count": 71,
+      "correct": 71,
+      "accuracy": 1.0
+    },
+    "25": {
+      "count": 68,
+      "correct": 68,
+      "accuracy": 1.0
+    },
+    "26": {
+      "count": 64,
+      "correct": 64,
+      "accuracy": 1.0
+    },
+    "27": {
+      "count": 56,
+      "correct": 56,
+      "accuracy": 1.0
+    },
+    "28": {
+      "count": 58,
+      "correct": 58,
+      "accuracy": 1.0
+    },
+    "29": {
+      "count": 75,
+      "correct": 75,
+      "accuracy": 1.0
+    },
+    "30": {
+      "count": 58,
+      "correct": 58,
+      "accuracy": 1.0
+    },
+    "31": {
+      "count": 59,
+      "correct": 59,
+      "accuracy": 1.0
+    },
+    "32": {
+      "count": 54,
+      "correct": 54,
+      "accuracy": 1.0
+    }
+  },
+  "test_delay_buckets": [
+    {
+      "min_delay": 1,
+      "max_delay": 1,
+      "count": 77,
+      "correct": 77,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 2,
+      "max_delay": 3,
+      "count": 128,
+      "correct": 128,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 4,
+      "max_delay": 7,
+      "count": 268,
+      "correct": 268,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 8,
+      "max_delay": 15,
+      "count": 453,
+      "correct": 453,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 16,
+      "max_delay": 31,
+      "count": 1020,
+      "correct": 1020,
+      "accuracy": 1.0
+    },
+    {
+      "min_delay": 32,
+      "max_delay": 63,
+      "count": 54,
+      "correct": 54,
+      "accuracy": 1.0
+    }
+  ]
+}
