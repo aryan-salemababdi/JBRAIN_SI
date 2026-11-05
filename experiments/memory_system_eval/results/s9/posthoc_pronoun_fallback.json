@@ -1,0 +1,500 @@
+{
+ "per_seed": {
+  "fallback=False/seed0": {
+   "calibration": {
+    "tau": -1.0010024741621644,
+    "delta": 0.7581433699095157,
+    "val_far": 0.009123363744545815,
+    "val_sub": 0.009998701467341903,
+    "val_exact": 0.9309180625892741,
+    "feasible": true
+   },
+   "val": {
+    "HIER": {
+     "exact": 0.9309180625892741,
+     "far": 0.009123363744545815,
+     "binding_error": 0.005194130632385404,
+     "substitution": 0.009998701467341903
+    },
+    "ORACLE": {
+     "exact": 0.9671471237501623,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.006492663290481756
+    },
+    "HIER_pronoun_exact": 0.8896595208070618,
+    "HIER_src_coref_exact": 0.8772770853307766
+   },
+   "test_id": {
+    "HIER": {
+     "exact": 0.9713847726111395,
+     "far": 0.002337358784573432,
+     "binding_error": 0.00012774655084312725,
+     "substitution": 0.00370464997445069
+    },
+    "ORACLE": {
+     "exact": 0.9810935104752172,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.003960143076136944
+    },
+    "HIER_pronoun_exact": 0.9433374844333748,
+    "HIER_src_coref_exact": 0.9540669856459331,
+    "extraction": {
+     "record_precision": 0.9885442141845797,
+     "record_recall": 0.9810935104752172,
+     "record_tp": 7680,
+     "record_fp": 89,
+     "record_fn": 148,
+     "span_precision": 0.9989472760768489,
+     "span_recall": 0.9986552460022803,
+     "intent_acc": 1.0
+    }
+   },
+   "test_ood": {
+    "HIER": {
+     "exact": 0.5587934560327198,
+     "far": 0.0872093023255814,
+     "binding_error": 0.036170756646216766,
+     "substitution": 0.09164110429447853
+    },
+    "ORACLE": {
+     "exact": 0.7914110429447853,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.08410020449897751
+    },
+    "HIER_pronoun_exact": 0.3178082191780822,
+    "HIER_src_coref_exact": 0.6146025878003697,
+    "extraction": {
+     "record_precision": 0.743694451116983,
+     "record_recall": 0.7914110429447853,
+     "record_tp": 6192,
+     "record_fp": 2134,
+     "record_fn": 1632,
+     "span_precision": 0.8586987901215127,
+     "span_recall": 0.9248402962292951,
+     "intent_acc": 0.9445811830091306
+    }
+   }
+  },
+  "fallback=False/seed1": {
+   "calibration": {
+    "tau": -1.1165750730898225,
+    "delta": 0.03799919377810035,
+    "val_far": 0.009916699722332408,
+    "val_sub": 0.009609141669912998,
+    "val_exact": 0.9332554213738475,
+    "feasible": true
+   },
+   "val": {
+    "HIER": {
+     "exact": 0.9332554213738475,
+     "far": 0.009916699722332408,
+     "binding_error": 0.005973250227243215,
+     "substitution": 0.009609141669912998
+    },
+    "ORACLE": {
+     "exact": 0.9679262433450201,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.005323983898195039
+    },
+    "HIER_pronoun_exact": 0.8934426229508197,
+    "HIER_src_coref_exact": 0.8772770853307766
+   },
+   "test_id": {
+    "HIER": {
+     "exact": 0.9703628002043945,
+     "far": 0.0027269185820023374,
+     "binding_error": 0.00012774655084312725,
+     "substitution": 0.003321410321921308
+    },
+    "ORACLE": {
+     "exact": 0.979943791517629,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.0035769034236075624
+    },
+    "HIER_pronoun_exact": 0.9464508094645081,
+    "HIER_src_coref_exact": 0.9521531100478469,
+    "extraction": {
+     "record_precision": 0.9872586872586873,
+     "record_recall": 0.979943791517629,
+     "record_tp": 7671,
+     "record_fp": 99,
+     "record_fn": 157,
+     "span_precision": 0.9993565746373421,
+     "span_recall": 0.9989183500453124,
+     "intent_acc": 1.0
+    }
+   },
+   "test_ood": {
+    "HIER": {
+     "exact": 0.5603271983640081,
+     "far": 0.0941860465116279,
+     "binding_error": 0.04550102249488753,
+     "substitution": 0.10748977505112474
+    },
+    "ORACLE": {
+     "exact": 0.7841257668711656,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.08997955010224949
+    },
+    "HIER_pronoun_exact": 0.31095890410958904,
+    "HIER_src_coref_exact": 0.6266173752310537,
+    "extraction": {
+     "record_precision": 0.736671469740634,
+     "record_recall": 0.7841257668711656,
+     "record_tp": 6135,
+     "record_fp": 2193,
+     "record_fn": 1689,
+     "span_precision": 0.8533728182818806,
+     "span_recall": 0.9204307761885918,
+     "intent_acc": 0.946486701071854
+    }
+   }
+  },
+  "fallback=False/seed2": {
+   "calibration": {
+    "tau": -0.8913866064830985,
+    "delta": 0.017373835071324173,
+    "val_far": 0.009520031733439112,
+    "val_sub": 0.009609141669912998,
+    "val_exact": 0.932736008310609,
+    "feasible": true
+   },
+   "val": {
+    "HIER": {
+     "exact": 0.932736008310609,
+     "far": 0.009520031733439112,
+     "binding_error": 0.005453837164004675,
+     "substitution": 0.009609141669912998
+    },
+    "ORACLE": {
+     "exact": 0.9677963900792105,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.00584339696143358
+    },
+    "HIER_pronoun_exact": 0.8890290037831021,
+    "HIER_src_coref_exact": 0.87823585810163
+   },
+   "test_id": {
+    "HIER": {
+     "exact": 0.9720235053653551,
+     "far": 0.001168679392286716,
+     "binding_error": 0.00012774655084312725,
+     "substitution": 0.0030659172202350538
+    },
+    "ORACLE": {
+     "exact": 0.9818599897802759,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.003321410321921308
+    },
+    "HIER_pronoun_exact": 0.9445828144458281,
+    "HIER_src_coref_exact": 0.9531100478468899,
+    "extraction": {
+     "record_precision": 0.9882988298829883,
+     "record_recall": 0.9818599897802759,
+     "record_tp": 7686,
+     "record_fp": 91,
+     "record_fn": 142,
+     "span_precision": 0.9992104108787835,
+     "span_recall": 0.9988598824801941,
+     "intent_acc": 0.999921666927777
+    }
+   },
+   "test_ood": {
+    "HIER": {
+     "exact": 0.5656952965235174,
+     "far": 0.09496124031007752,
+     "binding_error": 0.04141104294478527,
+     "substitution": 0.09419734151329244
+    },
+    "ORACLE": {
+     "exact": 0.781441717791411,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.07770961145194274
+    },
+    "HIER_pronoun_exact": 0.386986301369863,
+    "HIER_src_coref_exact": 0.633086876155268,
+    "extraction": {
+     "record_precision": 0.7375150784077201,
+     "record_recall": 0.781441717791411,
+     "record_tp": 6114,
+     "record_fp": 2176,
+     "record_fn": 1710,
+     "span_precision": 0.8577862735342638,
+     "span_recall": 0.9259426762394709,
+     "intent_acc": 0.9447399761810242
+    }
+   }
+  },
+  "fallback=True/seed0": {
+   "calibration": {
+    "tau": -0.5515253233029552,
+    "delta": 0.002837309241956021,
+    "val_far": 0.008330027766759222,
+    "val_sub": 0.009089728606674457,
+    "val_exact": 0.9567588624853915,
+    "feasible": true
+   },
+   "val": {
+    "HIER": {
+     "exact": 0.9567588624853915,
+     "far": 0.008330027766759222,
+     "binding_error": 0.005323983898195039,
+     "substitution": 0.009089728606674457
+    },
+    "ORACLE": {
+     "exact": 0.9841579015712245,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.004415011037527594
+    },
+    "HIER_pronoun_exact": 0.9564943253467844,
+    "HIER_src_coref_exact": 0.9491850431447747
+   },
+   "test_id": {
+    "HIER": {
+     "exact": 0.9844149207971384,
+     "far": 0.0027269185820023374,
+     "binding_error": 0.0003832396525293817,
+     "substitution": 0.003960143076136944
+    },
+    "ORACLE": {
+     "exact": 0.9885028104241186,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.00370464997445069
+    },
+    "HIER_pronoun_exact": 0.9788293897882939,
+    "HIER_src_coref_exact": 0.9789473684210527,
+    "extraction": {
+     "record_precision": 0.9878718243329503,
+     "record_recall": 0.9885028104241186,
+     "record_tp": 7738,
+     "record_fp": 95,
+     "record_fn": 90,
+     "span_precision": 0.9989472760768489,
+     "span_recall": 0.9986552460022803,
+     "intent_acc": 1.0
+    }
+   },
+   "test_ood": {
+    "HIER": {
+     "exact": 0.5485685071574642,
+     "far": 0.07829457364341086,
+     "binding_error": 0.036298568507157465,
+     "substitution": 0.09317484662576687
+    },
+    "ORACLE": {
+     "exact": 0.8029141104294478,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.08882924335378323
+    },
+    "HIER_pronoun_exact": 0.3232876712328767,
+    "HIER_src_coref_exact": 0.6266173752310537,
+    "extraction": {
+     "record_precision": 0.7410640556800755,
+     "record_recall": 0.8029141104294478,
+     "record_tp": 6282,
+     "record_fp": 2195,
+     "record_fn": 1542,
+     "span_precision": 0.8586987901215127,
+     "span_recall": 0.9248402962292951,
+     "intent_acc": 0.9445811830091306
+    }
+   }
+  },
+  "fallback=True/seed1": {
+   "calibration": {
+    "tau": -0.2238246516522162,
+    "delta": 0.03799919377810035,
+    "val_far": 0.00872669575565252,
+    "val_sub": 0.007921049214387741,
+    "val_exact": 0.9540319439033892,
+    "feasible": true
+   },
+   "val": {
+    "HIER": {
+     "exact": 0.9540319439033892,
+     "far": 0.00872669575565252,
+     "binding_error": 0.005453837164004675,
+     "substitution": 0.007921049214387741
+    },
+    "ORACLE": {
+     "exact": 0.9849370211660823,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.003246331645240878
+    },
+    "HIER_pronoun_exact": 0.9609079445145019,
+    "HIER_src_coref_exact": 0.9453499520613614
+   },
+   "test_id": {
+    "HIER": {
+     "exact": 0.9832652018395504,
+     "far": 0.003506038176860148,
+     "binding_error": 0.0003832396525293817,
+     "substitution": 0.0035769034236075624
+    },
+    "ORACLE": {
+     "exact": 0.9873530914665304,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.003321410321921308
+    },
+    "HIER_pronoun_exact": 0.9813200498132005,
+    "HIER_src_coref_exact": 0.9770334928229665,
+    "extraction": {
+     "record_precision": 0.9865968853714577,
+     "record_recall": 0.9873530914665304,
+     "record_tp": 7729,
+     "record_fp": 105,
+     "record_fn": 99,
+     "span_precision": 0.9993565746373421,
+     "span_recall": 0.9989183500453124,
+     "intent_acc": 1.0
+    }
+   },
+   "test_ood": {
+    "HIER": {
+     "exact": 0.5219836400817995,
+     "far": 0.07248062015503876,
+     "binding_error": 0.03208077709611452,
+     "substitution": 0.09688139059304704
+    },
+    "ORACLE": {
+     "exact": 0.7944785276073619,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.09573108384458077
+    },
+    "HIER_pronoun_exact": 0.2993150684931507,
+    "HIER_src_coref_exact": 0.5905730129390019,
+    "extraction": {
+     "record_precision": 0.7325005892057507,
+     "record_recall": 0.7944785276073619,
+     "record_tp": 6216,
+     "record_fp": 2270,
+     "record_fn": 1608,
+     "span_precision": 0.8533728182818806,
+     "span_recall": 0.9204307761885918,
+     "intent_acc": 0.946486701071854
+    }
+   }
+  },
+  "fallback=True/seed2": {
+   "calibration": {
+    "tau": -0.6495941695822322,
+    "delta": 0.017373835071324173,
+    "val_far": 0.009520031733439112,
+    "val_sub": 0.008440462277626282,
+    "val_exact": 0.9581872484092975,
+    "feasible": true
+   },
+   "val": {
+    "HIER": {
+     "exact": 0.9581872484092975,
+     "far": 0.009520031733439112,
+     "binding_error": 0.005323983898195039,
+     "substitution": 0.008440462277626282
+    },
+    "ORACLE": {
+     "exact": 0.9849370211660823,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.003765744708479418
+    },
+    "HIER_pronoun_exact": 0.9564943253467844,
+    "HIER_src_coref_exact": 0.9491850431447747
+   },
+   "test_id": {
+    "HIER": {
+     "exact": 0.9850536535513541,
+     "far": 0.0015582391897156214,
+     "binding_error": 0.0003832396525293817,
+     "substitution": 0.003321410321921308
+    },
+    "ORACLE": {
+     "exact": 0.9892692897291773,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.0030659172202350538
+    },
+    "HIER_pronoun_exact": 0.9800747198007472,
+    "HIER_src_coref_exact": 0.9779904306220095,
+    "extraction": {
+     "record_precision": 0.9876291289376355,
+     "record_recall": 0.9892692897291773,
+     "record_tp": 7744,
+     "record_fp": 97,
+     "record_fn": 84,
+     "span_precision": 0.9992104108787835,
+     "span_recall": 0.9988598824801941,
+     "intent_acc": 0.999921666927777
+    }
+   },
+   "test_ood": {
+    "HIER": {
+     "exact": 0.5621165644171779,
+     "far": 0.09108527131782945,
+     "binding_error": 0.03834355828220859,
+     "substitution": 0.09253578732106339
+    },
+    "ORACLE": {
+     "exact": 0.7935838445807771,
+     "far": 0.0,
+     "binding_error": 0.0,
+     "substitution": 0.08141615541922291
+    },
+    "HIER_pronoun_exact": 0.3952054794520548,
+    "HIER_src_coref_exact": 0.6432532347504621,
+    "extraction": {
+     "record_precision": 0.7356635071090047,
+     "record_recall": 0.7935838445807771,
+     "record_tp": 6209,
+     "record_fp": 2231,
+     "record_fn": 1615,
+     "span_precision": 0.8577862735342638,
+     "span_recall": 0.9259426762394709,
+     "intent_acc": 0.9447399761810242
+    }
+   }
+  }
+ },
+ "summary": {
+  "fallback=False|val|HIER_exact": 0.9323031640912435,
+  "fallback=False|val|HIER_far": 0.009520031733439112,
+  "fallback=False|val|HIER_binding_error": 0.005540406007877765,
+  "fallback=False|val|ORACLE_exact": 0.9676232523914643,
+  "fallback=False|test_id|HIER_exact": 0.9712570260602963,
+  "fallback=False|test_id|HIER_far": 0.0020776522529541617,
+  "fallback=False|test_id|HIER_binding_error": 0.00012774655084312725,
+  "fallback=False|test_id|ORACLE_exact": 0.980965763924374,
+  "fallback=False|test_ood|HIER_exact": 0.5616053169734151,
+  "fallback=False|test_ood|HIER_far": 0.09211886304909561,
+  "fallback=False|test_ood|HIER_binding_error": 0.04102760736196319,
+  "fallback=False|test_ood|ORACLE_exact": 0.785659509202454,
+  "fallback=True|val|HIER_exact": 0.9563260182660261,
+  "fallback=True|val|HIER_far": 0.008858918418616952,
+  "fallback=True|val|HIER_binding_error": 0.005367268320131585,
+  "fallback=True|val|ORACLE_exact": 0.984677314634463,
+  "fallback=True|test_id|HIER_exact": 0.984244592062681,
+  "fallback=True|test_id|HIER_far": 0.002597065316192702,
+  "fallback=True|test_id|HIER_binding_error": 0.0003832396525293817,
+  "fallback=True|test_id|ORACLE_exact": 0.9883750638732755,
+  "fallback=True|test_ood|HIER_exact": 0.5442229038854806,
+  "fallback=True|test_ood|HIER_far": 0.08062015503875969,
+  "fallback=True|test_ood|HIER_binding_error": 0.03557430129516019,
+  "fallback=True|test_ood|ORACLE_exact": 0.796992160872529
+ },
+ "seconds": 54.9,
+ "note": "post-hoc; selection on val only"
+}

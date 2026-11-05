@@ -1,0 +1,33 @@
+{
+ "splits": {
+  "trainB": {
+   "episodes": 300,
+   "line_tokens": 217730,
+   "question_tokens": 131826,
+   "key_texts": 8716,
+   "seconds": 65.0
+  },
+  "val": {
+   "episodes": 250,
+   "line_tokens": 180469,
+   "question_tokens": 107946,
+   "key_texts": 6840,
+   "seconds": 67.1
+  },
+  "test_id": {
+   "episodes": 250,
+   "line_tokens": 179452,
+   "question_tokens": 106770,
+   "key_texts": 6928,
+   "seconds": 59.7
+  },
+  "test_ood": {
+   "episodes": 250,
+   "line_tokens": 194390,
+   "question_tokens": 133890,
+   "key_texts": 7972,
+   "seconds": 62.2
+  }
+ },
+ "seconds": 257.6
+}

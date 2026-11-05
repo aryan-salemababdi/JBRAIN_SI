@@ -1,0 +1,30 @@
+{
+ "utc": "2026-11-04T21:03:25Z",
+ "git_head": "b0efedf93a2bfa5a8f3b5e81f772d3c8e191094d",
+ "git_status_short": [
+  " M jbrain_model/core.py",
+  "?? experiments/c1c3_multimode_memory/",
+  "?? experiments/jbrain-retrieval-audit/",
+  "?? experiments/memory_research_proposals/",
+  "?? experiments/memory_system_eval/",
+  "?? experiments/personal-assistant-phase-ablation/",
+  "?? experiments/retrieval_c3_c1c3_transformer/",
+  "?? experiments/retrieval_math_audit/",
+  "?? experiments/waem_controlled_retrieval/",
+  "?? tests/"
+ ],
+ "core_py_diff_vs_head_sha256": "1c4f9f0016287999156ce567b043e64d507496fe3a92e0a01e9f2e39f4af39fb",
+ "production_sources_sha256": {
+  "__init__.py": "7340b85aae1f67e3c06c96c1dde8df8c5e90a2b642577d113669ef0b56cfb8e6",
+  "__main__.py": "0507bf91e37deee08a64207e9917ad7fcf3a7b7596464714f41e03b33b6c1ac9",
+  "block.py": "7e641351d6268f33762263bd3cde3bfec9a410cb3d447fa72dcfcd24be492aca",
+  "causal_conv.py": "d6b200a9cfa4b66a31a7d8677a53cf05f371afa38729c8e6391415d627017ab2",
+  "config.py": "f591b30ac362e6847347b2ffd9a2675cfb717e1a5bf5cd32c4f63a7cd1c496f5",
+  "core.py": "60a8a1d6786a3ffd9284a75504d57c841be2757948213a28da3cad5fdf3b7767",
+  "jbrain_scan.py": "33dba600bfacdde1332f7995dc765bfabdf9849fc687af3a8e8065c21bc02f14",
+  "language_model.py": "424820acb4c7fa40126c5e977e80bcd6ab2b271ddc4343bf8cbd9824fa5ea60e",
+  "losses.py": "f3dc02b74eeef4582096a1aeb1fed62829f2ce61a8aa7c608cbc2ab04c59f86e"
+ },
+ "checkpoint_sha256": "f735065aac46203c0e9152f4b96a64c04f7d2416409c01579eaf021e1b1ca850",
+ "checkpoint_ok": true
+}

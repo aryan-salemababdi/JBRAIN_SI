@@ -1,0 +1,99 @@
+{
+ "N": 1000,
+ "buckets": 15,
+ "build_seconds": 0.24799490004079416,
+ "insert_per_s": 4032.340986994104,
+ "ivf_build_seconds": null,
+ "disk_bytes": {
+  "dense.f16": 524416,
+  "ibf.c64": 123008,
+  "mem.sqlite": 372736,
+  "mem.sqlite-shm": 32768,
+  "mem.sqlite-wal": 0
+ },
+ "rss_baseline_mb": 387.6484375,
+ "rss_before_open_mb": 2107.84765625,
+ "rss_after_open_mb": 2120.30859375,
+ "systems": {
+  "DICT": {
+   "p50_ms": 0.002200016751885414,
+   "p95_ms": 0.006140023469924924,
+   "mean_ms": 0.003281611412777574,
+   "first_pass_p95_ms": 0.008734976290725161,
+   "exact": 1.0,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.0,
+   "read_bytes_per_query": 0.0,
+   "rss_mb_after": 2120.5390625,
+   "n_queries": 533,
+   "n_answerable": 400
+  },
+  "HIER": {
+   "p50_ms": 0.02800003858283162,
+   "p95_ms": 0.13862000778317451,
+   "mean_ms": 0.04451557210651812,
+   "first_pass_p95_ms": 0.2678249962627887,
+   "exact": 1.0,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.0,
+   "read_bytes_per_query": 7.684803001876173,
+   "rss_mb_after": 2120.60546875,
+   "n_queries": 533,
+   "n_answerable": 400
+  },
+  "IBF-soft": {
+   "p50_ms": 3.7932999548502266,
+   "p95_ms": 8.187439967878163,
+   "mean_ms": 3.997340712868425,
+   "first_pass_p95_ms": 9.419825015356755,
+   "exact": 0.92,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.0,
+   "read_bytes_per_query": 0.0,
+   "rss_mb_after": 2121.015625,
+   "n_queries": 533,
+   "n_answerable": 400
+  },
+  "BM25": {
+   "p50_ms": 0.14259997988119721,
+   "p95_ms": 0.7174999802373344,
+   "mean_ms": 0.23773077084275757,
+   "first_pass_p95_ms": 0.7560349884442985,
+   "exact": 1.0,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 1.0,
+   "read_bytes_per_query": 0.0,
+   "rss_mb_after": 2121.08203125,
+   "n_queries": 533,
+   "n_answerable": 400
+  },
+  "VEL": {
+   "p50_ms": 1.1086000013165176,
+   "p95_ms": 3.143759991507977,
+   "mean_ms": 1.474767916911853,
+   "first_pass_p95_ms": 2.22587500757072,
+   "exact": 1.0,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.007518796992481203,
+   "read_bytes_per_query": 0.0,
+   "rss_mb_after": 2121.7734375,
+   "n_queries": 533,
+   "n_answerable": 400
+  }
+ },
+ "dict_rss_mb": 0.14453125,
+ "update": {
+  "n": 100,
+  "p50_ms": 0.07985002594068646,
+  "p95_ms": 0.25259501999244066,
+  "correct": 1.0
+ },
+ "delete": {
+  "n": 100,
+  "p50_ms": 0.3787500027101487,
+  "p95_ms": 1.0279149544658137,
+  "correct": 1.0
+ },
+ "rss_peak_mb": 2121.8515625,
+ "rss_end_mb": 2121.84765625
+}

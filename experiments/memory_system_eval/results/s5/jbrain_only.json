@@ -1,0 +1,841 @@
+{
+ "results": {
+  "test_id": {
+   "chain": {
+    "n": 10395,
+    "n_answerable": 7828,
+    "n_absent": 2567,
+    "top1": 0.0,
+    "accept_rate": 1.0,
+    "exact": 0.0,
+    "exact_ci95": [
+     0.0,
+     0.0005
+    ],
+    "exact_given_accepted": 0.0,
+    "far": 1.0,
+    "far_ci95": [
+     0.9985,
+     1.0
+    ],
+    "frr": 0.0,
+    "substitution": 1.0,
+    "stale": 0.0,
+    "unknown_precision": null,
+    "unknown_recall": 0.0,
+    "far_ambiguous_partial": 1.0,
+    "far_attr_missing": 1.0,
+    "far_deleted": 1.0,
+    "far_mention_only": 1.0,
+    "far_near_miss": 1.0,
+    "far_similar_attr": 1.0,
+    "far_similar_name": 1.0,
+    "far_unknown_entity": 1.0
+   },
+   "by_family": {
+    "alias": {
+     "n": 2967,
+     "n_answerable": 2245,
+     "n_absent": 722,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0017
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9947,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_mention_only": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "canon": {
+     "n": 1389,
+     "n_answerable": 1007,
+     "n_absent": 382,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      -0.0,
+      0.0038
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.99,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_mention_only": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "multi_pron": {
+     "n": 744,
+     "n_answerable": 566,
+     "n_absent": 178,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0067
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9789,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "para": {
+     "n": 2874,
+     "n_answerable": 2196,
+     "n_absent": 678,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      -0.0,
+      0.0017
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9944,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_mention_only": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "partial": {
+     "n": 1029,
+     "n_answerable": 774,
+     "n_absent": 255,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0049
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9852,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_ambiguous_partial": 1.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0
+    },
+    "pronoun": {
+     "n": 1392,
+     "n_answerable": 1040,
+     "n_absent": 352,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0037
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9892,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    }
+   },
+   "by_kind": {
+    "ambiguous_partial": {
+     "n": 129,
+     "n_answerable": 0,
+     "n_absent": 129,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9711,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_ambiguous_partial": 1.0
+    },
+    "answerable": {
+     "n": 7828,
+     "n_answerable": 7828,
+     "n_absent": 0,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0005
+     ],
+     "exact_given_accepted": 0.0,
+     "far": null,
+     "far_ci95": null,
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": null
+    },
+    "attr_missing": {
+     "n": 288,
+     "n_answerable": 0,
+     "n_absent": 288,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9868,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0
+    },
+    "deleted": {
+     "n": 234,
+     "n_answerable": 0,
+     "n_absent": 234,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9838,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_deleted": 1.0
+    },
+    "mention_only": {
+     "n": 229,
+     "n_answerable": 0,
+     "n_absent": 229,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9835,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_mention_only": 1.0
+    },
+    "near_miss": {
+     "n": 483,
+     "n_answerable": 0,
+     "n_absent": 483,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9921,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_near_miss": 1.0
+    },
+    "similar_attr": {
+     "n": 270,
+     "n_answerable": 0,
+     "n_absent": 270,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.986,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_similar_attr": 1.0
+    },
+    "similar_name": {
+     "n": 484,
+     "n_answerable": 0,
+     "n_absent": 484,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9921,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_similar_name": 1.0
+    },
+    "unknown_entity": {
+     "n": 450,
+     "n_answerable": 0,
+     "n_absent": 450,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9915,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_unknown_entity": 1.0
+    }
+   },
+   "value_exact": 0.0,
+   "unknown_rate": 0.0
+  },
+  "test_ood": {
+   "chain": {
+    "n": 10404,
+    "n_answerable": 7824,
+    "n_absent": 2580,
+    "top1": 0.0,
+    "accept_rate": 1.0,
+    "exact": 0.0,
+    "exact_ci95": [
+     -0.0,
+     0.0005
+    ],
+    "exact_given_accepted": 0.0,
+    "far": 1.0,
+    "far_ci95": [
+     0.9985,
+     1.0
+    ],
+    "frr": 0.0,
+    "substitution": 1.0,
+    "stale": 0.0,
+    "unknown_precision": null,
+    "unknown_recall": 0.0,
+    "far_ambiguous_partial": 1.0,
+    "far_attr_missing": 1.0,
+    "far_deleted": 1.0,
+    "far_mention_only": 1.0,
+    "far_near_miss": 1.0,
+    "far_similar_attr": 1.0,
+    "far_similar_name": 1.0,
+    "far_unknown_entity": 1.0
+   },
+   "by_family": {
+    "alias": {
+     "n": 2597,
+     "n_answerable": 1965,
+     "n_absent": 632,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.002
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.994,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_mention_only": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "canon": {
+     "n": 1241,
+     "n_answerable": 887,
+     "n_absent": 354,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0043
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9893,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_mention_only": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "generic_ood": {
+     "n": 1136,
+     "n_answerable": 879,
+     "n_absent": 257,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0044
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9853,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "multi_pron": {
+     "n": 668,
+     "n_answerable": 510,
+     "n_absent": 158,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      0.0,
+      0.0075
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9763,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "para": {
+     "n": 2602,
+     "n_answerable": 1975,
+     "n_absent": 627,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      -0.0,
+      0.0019
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9939,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_mention_only": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    },
+    "partial": {
+     "n": 904,
+     "n_answerable": 658,
+     "n_absent": 246,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      -0.0,
+      0.0058
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9846,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_ambiguous_partial": 1.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0
+    },
+    "pronoun": {
+     "n": 1256,
+     "n_answerable": 950,
+     "n_absent": 306,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      -0.0,
+      0.004
+     ],
+     "exact_given_accepted": 0.0,
+     "far": 1.0,
+     "far_ci95": [
+      0.9876,
+      1.0
+     ],
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0,
+     "far_deleted": 1.0,
+     "far_near_miss": 1.0,
+     "far_similar_attr": 1.0,
+     "far_similar_name": 1.0,
+     "far_unknown_entity": 1.0
+    }
+   },
+   "by_kind": {
+    "ambiguous_partial": {
+     "n": 124,
+     "n_answerable": 0,
+     "n_absent": 124,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.97,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_ambiguous_partial": 1.0
+    },
+    "answerable": {
+     "n": 7824,
+     "n_answerable": 7824,
+     "n_absent": 0,
+     "top1": 0.0,
+     "accept_rate": 1.0,
+     "exact": 0.0,
+     "exact_ci95": [
+      -0.0,
+      0.0005
+     ],
+     "exact_given_accepted": 0.0,
+     "far": null,
+     "far_ci95": null,
+     "frr": 0.0,
+     "substitution": 1.0,
+     "stale": 0.0,
+     "unknown_precision": null,
+     "unknown_recall": null
+    },
+    "attr_missing": {
+     "n": 315,
+     "n_answerable": 0,
+     "n_absent": 315,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.988,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_attr_missing": 1.0
+    },
+    "deleted": {
+     "n": 202,
+     "n_answerable": 0,
+     "n_absent": 202,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9813,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_deleted": 1.0
+    },
+    "mention_only": {
+     "n": 221,
+     "n_answerable": 0,
+     "n_absent": 221,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9829,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_mention_only": 1.0
+    },
+    "near_miss": {
+     "n": 498,
+     "n_answerable": 0,
+     "n_absent": 498,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9923,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_near_miss": 1.0
+    },
+    "similar_attr": {
+     "n": 304,
+     "n_answerable": 0,
+     "n_absent": 304,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9875,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_similar_attr": 1.0
+    },
+    "similar_name": {
+     "n": 457,
+     "n_answerable": 0,
+     "n_absent": 457,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9917,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_similar_name": 1.0
+    },
+    "unknown_entity": {
+     "n": 459,
+     "n_answerable": 0,
+     "n_absent": 459,
+     "top1": null,
+     "accept_rate": null,
+     "exact": null,
+     "exact_ci95": null,
+     "exact_given_accepted": null,
+     "far": 1.0,
+     "far_ci95": [
+      0.9917,
+      1.0
+     ],
+     "frr": null,
+     "substitution": null,
+     "stale": null,
+     "unknown_precision": null,
+     "unknown_recall": 0.0,
+     "far_unknown_entity": 1.0
+    }
+   },
+   "value_exact": 0.0,
+   "unknown_rate": 0.0
+  }
+ },
+ "header": "The notes below are my personal notes. Answer each question with the exact value from the notes, or UNKNOWN if the notes do not contain it.\nNote: Ada Quill's locker code is 4471.\nQ: What is Ada Quill's locker code?\nA: 4471\nQ: What is Ada Quill's email?\nA: UNKNOWN\n",
+ "seconds": 295.8
+}

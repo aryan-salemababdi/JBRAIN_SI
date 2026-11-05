@@ -1,0 +1,74 @@
+{
+ "10": {
+  "N": 10,
+  "rss_before_open_mb": 1163.72265625,
+  "rss_after_open_mb": 1165.7109375,
+  "rss_after_HIER_mb": 1165.85546875,
+  "HIER_seconds": 0.0024744999827817082,
+  "rss_after_IBF-soft_mb": 1166.109375,
+  "IBF-soft_seconds": 0.0278556999983266,
+  "rss_after_dense-channel-exact_mb": 1166.171875,
+  "dense-channel-exact_seconds": 0.006732099980581552,
+  "peak_wset_mb": 1166.171875
+ },
+ "100": {
+  "N": 100,
+  "rss_before_open_mb": 1162.72265625,
+  "rss_after_open_mb": 1164.71484375,
+  "rss_after_HIER_mb": 1164.859375,
+  "HIER_seconds": 0.004109600035008043,
+  "rss_after_IBF-soft_mb": 1165.1640625,
+  "IBF-soft_seconds": 0.4024066000129096,
+  "rss_after_dense-channel-exact_mb": 1165.27734375,
+  "dense-channel-exact_seconds": 0.014766499982215464,
+  "peak_wset_mb": 1165.27734375
+ },
+ "1000": {
+  "N": 1000,
+  "rss_before_open_mb": 1163.94140625,
+  "rss_after_open_mb": 1165.921875,
+  "rss_after_HIER_mb": 1166.06640625,
+  "HIER_seconds": 0.009395700006280094,
+  "rss_after_IBF-soft_mb": 1171.546875,
+  "IBF-soft_seconds": 1.344401000009384,
+  "rss_after_dense-channel-exact_mb": 1172.17578125,
+  "dense-channel-exact_seconds": 0.15132419997826219,
+  "peak_wset_mb": 1172.17578125
+ },
+ "10000": {
+  "N": 10000,
+  "rss_before_open_mb": 1165.84765625,
+  "rss_after_open_mb": 1167.91015625,
+  "rss_after_HIER_mb": 1168.1875,
+  "HIER_seconds": 0.01279509998857975,
+  "rss_after_IBF-soft_mb": 1176.11328125,
+  "IBF-soft_seconds": 1.4590585000114515,
+  "rss_after_dense-channel-IVF_mb": 1181.29296875,
+  "dense-channel-IVF_seconds": 0.13699079997604713,
+  "peak_wset_mb": 1181.29296875
+ },
+ "100000": {
+  "N": 100000,
+  "rss_before_open_mb": 1183.33984375,
+  "rss_after_open_mb": 1187.17578125,
+  "rss_after_HIER_mb": 1195.24609375,
+  "HIER_seconds": 0.05243229999905452,
+  "rss_after_IBF-soft_mb": 1212.71875,
+  "IBF-soft_seconds": 1.5241994999814779,
+  "rss_after_dense-channel-IVF_mb": 1261.8515625,
+  "dense-channel-IVF_seconds": 0.5287587000057101,
+  "peak_wset_mb": 1265.10546875
+ },
+ "1000000": {
+  "N": 1000000,
+  "rss_before_open_mb": 1355.7421875,
+  "rss_after_open_mb": 1366.3984375,
+  "rss_after_HIER_mb": 1381.28515625,
+  "HIER_seconds": 0.13600450003286824,
+  "rss_after_IBF-soft_mb": 1395.39453125,
+  "IBF-soft_seconds": 1.8746635999996215,
+  "rss_after_dense-channel-IVF_mb": 1876.421875,
+  "dense-channel-IVF_seconds": 5.061762300028931,
+  "peak_wset_mb": 1912.609375
+ }
+}

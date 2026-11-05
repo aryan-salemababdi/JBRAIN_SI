@@ -1,0 +1,123 @@
+seed 0: 6s  bm25 check {'n': 1200, 'top1_agree': 1190, 'max_abs_score_diff': 8.881784197001252e-16}  calib {'S3': {'tau': 4.204083234850475, 'delta': 0.8286926725561692, 'val_far': 0.0, 'val_sub': 0.0, 'val_exact': 0.7382222222222222, 'feasible': True}, 'S4': {'tau': 0.67, 'delta': 0.04, 'val_far': 0.01, 'val_sub': 0.0, 'val_exact': 0.19777777777777777, 'feasible': True}}
+seed 1: 7s  bm25 check {'n': 0, 'top1_agree': 0, 'max_abs_score_diff': 0.0}  calib {'S3': {'tau': 4.204083234850475, 'delta': 0.8286926725561692, 'val_far': 0.0, 'val_sub': 0.0, 'val_exact': 0.7508888888888889, 'feasible': True}, 'S4': {'tau': 0.655, 'delta': 0.035, 'val_far': 0.01, 'val_sub': 0.00044444444444444447, 'val_exact': 0.26755555555555555, 'feasible': True}}
+seed 2: 7s  bm25 check {'n': 0, 'top1_agree': 0, 'max_abs_score_diff': 0.0}  calib {'S3': {'tau': 4.204083234850475, 'delta': 0.737598943130779, 'val_far': 0.0, 'val_sub': 0.0, 'val_exact': 0.7728888888888888, 'feasible': True}, 'S4': {'tau': 0.68, 'delta': 0.01, 'val_far': 0.01, 'val_sub': 0.0024444444444444444, 'val_exact': 0.19177777777777777, 'feasible': True}}
+
+== test_main
+S1                                top1=0.4793 accept_rate=0.4793 exact=0.4793 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.5207 substitution=0.0000 stale=0.0000
+S2                                top1=1.0000 accept_rate=1.0000 exact=1.0000 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.0000 substitution=0.0000 stale=0.0000
+S3                                top1=1.0000 accept_rate=0.8197 exact=0.8197 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.1803 substitution=0.0000 stale=0.0000
+S4                                top1=0.4584 accept_rate=0.1304 exact=0.1300 exact_given_accepted=0.9974 far=0.0091 far_absent_near=0.0093 far_absent_far=0.0089 frr=0.8696 substitution=0.0004 stale=0.0000
+ORACLE                            top1=1.0000 accept_rate=1.0000 exact=1.0000 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.0000 substitution=0.0000 stale=0.0000
+WAEM:phase_off_phase128_hid       top1=0.6489 accept_rate=0.0557 exact=0.0540 exact_given_accepted=0.9675 far=0.0113 far_absent_near=0.0122 far_absent_far=0.0104 frr=0.9443 substitution=0.0017 stale=0.0000
+WAEM:phase_off_real128_hid        top1=0.9003 accept_rate=0.1920 exact=0.1919 exact_given_accepted=0.9996 far=0.0107 far_absent_near=0.0118 far_absent_far=0.0096 frr=0.8080 substitution=0.0001 stale=0.0000
+WAEM:phase_off_real256_hid        top1=0.9157 accept_rate=0.1959 exact=0.1954 exact_given_accepted=0.9977 far=0.0078 far_absent_near=0.0107 far_absent_far=0.0048 frr=0.8041 substitution=0.0005 stale=0.0000
+WAEM:phase_on_phase128_emb        top1=0.8368 accept_rate=0.4330 exact=0.4324 exact_given_accepted=0.9989 far=0.0120 far_absent_near=0.0093 far_absent_far=0.0148 frr=0.5670 substitution=0.0006 stale=0.0000
+WAEM:phase_on_phase128_hid        top1=0.6975 accept_rate=0.1380 exact=0.1380 exact_given_accepted=1.0000 far=0.0126 far_absent_near=0.0167 far_absent_far=0.0085 frr=0.8620 substitution=0.0000 stale=0.0000
+WAEM:phase_on_real128_hid         top1=0.9468 accept_rate=0.3390 exact=0.3384 exact_given_accepted=0.9983 far=0.0130 far_absent_near=0.0130 far_absent_far=0.0130 frr=0.6610 substitution=0.0006 stale=0.0000
+WAEM:phase_on_real256_hid         top1=0.9480 accept_rate=0.3220 exact=0.3216 exact_given_accepted=0.9988 far=0.0102 far_absent_near=0.0096 far_absent_far=0.0107 frr=0.6780 substitution=0.0004 stale=0.0000
+
+== test_overwrite
+S1                                top1=0.4764 accept_rate=0.4764 exact=0.4764 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.5236 substitution=0.0000 stale=0.0000
+S2                                top1=1.0000 accept_rate=1.0000 exact=1.0000 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.0000 substitution=0.0000 stale=0.0000
+S3                                top1=1.0000 accept_rate=0.7086 exact=0.7086 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.2914 substitution=0.0000 stale=0.0000
+S4                                top1=0.4764 accept_rate=0.1236 exact=0.1236 exact_given_accepted=1.0000 far=0.0083 far_absent_near=0.0167 far_absent_far=0.0000 frr=0.8764 substitution=0.0000 stale=0.0000
+ORACLE                            top1=1.0000 accept_rate=1.0000 exact=1.0000 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.0000 substitution=0.0000 stale=0.0000
+WAEM:phase_off_phase128_hid       top1=0.6800 accept_rate=0.0578 exact=0.0558 exact_given_accepted=0.9592 far=0.0097 far_absent_near=0.0083 far_absent_far=0.0111 frr=0.9422 substitution=0.0019 stale=0.0000
+WAEM:phase_off_real128_hid        top1=0.9217 accept_rate=0.2092 exact=0.2089 exact_given_accepted=0.9987 far=0.0083 far_absent_near=0.0111 far_absent_far=0.0056 frr=0.7908 substitution=0.0003 stale=0.0000
+WAEM:phase_off_real256_hid        top1=0.9350 accept_rate=0.2097 exact=0.2086 exact_given_accepted=0.9950 far=0.0097 far_absent_near=0.0111 far_absent_far=0.0083 frr=0.7903 substitution=0.0011 stale=0.0000
+WAEM:phase_on_phase128_emb        top1=0.8628 accept_rate=0.4467 exact=0.4464 exact_given_accepted=0.9994 far=0.0042 far_absent_near=0.0056 far_absent_far=0.0028 frr=0.5533 substitution=0.0003 stale=0.0000
+WAEM:phase_on_phase128_hid        top1=0.7175 accept_rate=0.1558 exact=0.1558 exact_given_accepted=1.0000 far=0.0111 far_absent_near=0.0194 far_absent_far=0.0028 frr=0.8442 substitution=0.0000 stale=0.0000
+WAEM:phase_on_real128_hid         top1=0.9581 accept_rate=0.3617 exact=0.3611 exact_given_accepted=0.9986 far=0.0111 far_absent_near=0.0139 far_absent_far=0.0083 frr=0.6383 substitution=0.0006 stale=0.0000
+WAEM:phase_on_real256_hid         top1=0.9581 accept_rate=0.3314 exact=0.3311 exact_given_accepted=0.9990 far=0.0069 far_absent_near=0.0083 far_absent_far=0.0056 frr=0.6686 substitution=0.0003 stale=0.0000
+
+== test_capacity
+S1                                top1=0.3158 accept_rate=0.3158 exact=0.3158 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.6842 substitution=0.0000 stale=0.0000
+S2                                top1=0.6667 accept_rate=0.6667 exact=0.6667 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.3333 substitution=0.0000 stale=0.0000
+S3                                top1=0.6667 accept_rate=0.6604 exact=0.6604 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.3396 substitution=0.0000 stale=0.0000
+S4                                top1=0.2987 accept_rate=0.0900 exact=0.0872 exact_given_accepted=0.9698 far=0.0128 far_absent_near=0.0122 far_absent_far=0.0133 frr=0.9100 substitution=0.0028 stale=0.0000
+ORACLE                            top1=0.6667 accept_rate=0.6667 exact=0.6667 exact_given_accepted=1.0000 far=0.0000 far_absent_near=0.0000 far_absent_far=0.0000 frr=0.3333 substitution=0.0000 stale=0.0000
+WAEM:phase_off_phase128_hid       top1=0.3990 accept_rate=0.0283 exact=0.0246 exact_given_accepted=0.8667 far=0.0089 far_absent_near=0.0067 far_absent_far=0.0111 frr=0.9717 substitution=0.0038 stale=0.0000
+WAEM:phase_off_real128_hid        top1=0.5862 accept_rate=0.0920 exact=0.0899 exact_given_accepted=0.9770 far=0.0072 far_absent_near=0.0089 far_absent_far=0.0056 frr=0.9080 substitution=0.0021 stale=0.0000
+WAEM:phase_off_real256_hid        top1=0.5926 accept_rate=0.0989 exact=0.0959 exact_given_accepted=0.9698 far=0.0061 far_absent_near=0.0056 far_absent_far=0.0067 frr=0.9011 substitution=0.0030 stale=0.0000
+WAEM:phase_on_phase128_emb        top1=0.5472 accept_rate=0.2841 exact=0.2821 exact_given_accepted=0.9936 far=0.0111 far_absent_near=0.0044 far_absent_far=0.0178 frr=0.7159 substitution=0.0020 stale=0.0000
+WAEM:phase_on_phase128_hid        top1=0.4377 accept_rate=0.0781 exact=0.0752 exact_given_accepted=0.9624 far=0.0122 far_absent_near=0.0089 far_absent_far=0.0156 frr=0.9219 substitution=0.0029 stale=0.0000
+WAEM:phase_on_real128_hid         top1=0.6299 accept_rate=0.2152 exact=0.2113 exact_given_accepted=0.9824 far=0.0094 far_absent_near=0.0111 far_absent_far=0.0078 frr=0.7848 substitution=0.0039 stale=0.0000
+WAEM:phase_on_real256_hid         top1=0.6319 accept_rate=0.2032 exact=0.2010 exact_given_accepted=0.9893 far=0.0067 far_absent_near=0.0067 far_absent_far=0.0067 frr=0.7968 substitution=0.0022 stale=0.0000
+
+leakage: {
+"test_main/train": {
+"n": 16258,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.6234
+},
+"test_main/test": {
+"n": 16142,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.3338
+},
+"test_main/all": {
+"n": 32400,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.4791
+},
+"test_dsweep/train": {
+"n": 8021,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.6261
+},
+"test_dsweep/test": {
+"n": 8179,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.3351
+},
+"test_dsweep/all": {
+"n": 16200,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.4792
+},
+"test_nsweep/train": {
+"n": 2984,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.6253
+},
+"test_nsweep/test": {
+"n": 2956,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.3417
+},
+"test_nsweep/all": {
+"n": 5940,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.4842
+},
+"test_overwrite/train": {
+"n": 2182,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.6256
+},
+"test_overwrite/test": {
+"n": 2138,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.3279
+},
+"test_overwrite/all": {
+"n": 4320,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.4782
+},
+"test_capacity/train": {
+"n": 5320,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.6254
+},
+"test_capacity/test": {
+"n": 5480,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.3268
+},
+"test_capacity/all": {
+"n": 10800,
+"key_words_in_question": 1.0,
+"key_string_in_question": 0.4739
+}
+}

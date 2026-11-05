@@ -1,0 +1,11 @@
+2026-11-04 15:03:56 [run ] s6_longseq
+2026-11-04 15:15:51 [FAIL] s6_longseq rc=1 715s
+2026-11-04 15:17:22 [run ] s6_longseq
+2026-11-04 15:42:28 [ok] s6_longseq rc=0 1506s
+2026-11-04 15:42:28 [run ] s5_vjb
+2026-11-04 15:43:37 [FAIL] s5_vjb rc=4294967295 69s
+2026-11-04 15:44:04 [skip] s6_longseq: results/s6/longseq.json exists
+2026-11-04 15:44:04 [run ] s5_vjb
+2026-11-04 15:48:47 [ok] s5_vjb rc=0 283s
+2026-11-04 15:48:47 [run ] s7_efficiency
+2026-11-04 16:03:23 [ok] s7_efficiency rc=0 876s

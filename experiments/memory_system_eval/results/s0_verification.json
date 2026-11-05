@@ -1,0 +1,471 @@
+{
+ "checks": [
+  {
+   "id": "C01",
+   "claim": "pretrained LM single-key recall falls 0.300 -> 0.123 -> 0.037 -> 0.028 -> 0.020 at delays 0/16/64/256/1024",
+   "source": "D:\\aryan\\JBRAIN\\experiments\\soroush-three-experiments\\results\\ws2\\lm_probe_base_ce_4B_fp32.json",
+   "reported": [
+    0.3,
+    0.123,
+    0.037,
+    0.028,
+    0.02
+   ],
+   "measured": [
+    0.3,
+    0.123,
+    0.037,
+    0.028,
+    0.02
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C01b",
+   "claim": "linear probe (all layers, pre-cue, held-out distractors) decodes the key at delay 16 with accuracy 1.000, 0.353 at 64",
+   "source": "D:\\aryan\\JBRAIN\\experiments\\soroush-three-experiments\\results\\ws2\\lm_probe_base_ce_4B_fp32.json",
+   "reported": [
+    1.0,
+    0.353
+   ],
+   "measured": [
+    1.0,
+    0.353
+   ],
+   "status": "confirmed",
+   "note": "label-permuted control at 16: 0.0133"
+  },
+  {
+   "id": "C02",
+   "claim": "single-key recall learned by J-BRAIN arm A in 3/3 seeds; ~11x slower (median T95 ratio vs RG-LRU)",
+   "source": "D:\\aryan\\JBRAIN\\experiments\\jbrain-decisive-recall\\results\\stage1_decision.json",
+   "reported": [
+    3,
+    11.0
+   ],
+   "measured": [
+    3,
+    11.0
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C03",
+   "claim": "removing rotation (dphi=0): learned 5/5 paired seeds; median T95 ratio 0.09 (P1)",
+   "source": "D:\\aryan\\JBRAIN\\experiments\\jbrain-phase-retention-study\\results\\decision_P1.json",
+   "reported": [
+    5,
+    0.091
+   ],
+   "measured": [
+    5,
+    0.091
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C03b",
+   "claim": "P2 (long training delays): dphi=0 raises the 2048/4096 extrapolation score by a median +0.38",
+   "source": "D:\\aryan\\JBRAIN\\experiments\\jbrain-phase-retention-study\\results\\decision_P2.json",
+   "reported": 0.381,
+   "measured": 0.381,
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C04",
+   "claim": "LAMBADA accuracy of the base model 0.0266 (independent scorer)",
+   "source": "D:\\aryan\\JBRAIN\\experiments\\jbrain-v2-context-investigation\\results\\s02_lambada.json",
+   "reported": 0.0266,
+   "measured": 0.0266,
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C04b",
+   "claim": "bf16 autocast makes 33/144 heads write nothing at every position",
+   "source": "D:\\aryan\\JBRAIN\\experiments\\jbrain-v2-context-investigation\\results\\s05_bf16_numerics.json",
+   "reported": 33,
+   "measured": 33,
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C05",
+   "claim": "32 random tokens shown twice: 14.2 -> 13.3 nats/token (copy benefit ~0.9 nats)",
+   "source": "D:\\aryan\\JBRAIN\\experiments\\jbrain-mvp-postmortem\\results\\induction_results.json",
+   "reported": [
+    14.2,
+    13.3
+   ],
+   "measured": [
+    14.2,
+    13.3
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C06",
+   "claim": "two-fact binding test at chance for all 6 model variants (base/SFT x phase on/off): 2-way accuracy 0.47-0.55 for 0-256 filler tokens, n=96 each",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\jbrain-retrieval-audit\\analysis\\behavior_models.json",
+   "reported": [
+    0.47,
+    0.55
+   ],
+   "measured": [
+    0.469,
+    0.552
+   ],
+   "status": "confirmed",
+   "note": "base_phase_on alone: {'two_fact_N0': 0.5, 'two_fact_N16': 0.51, 'two_fact_N64': 0.5, 'two_fact_N256': 0.531}"
+  },
+  {
+   "id": "C07-baseline",
+   "claim": "MQAR16 runs that learned: baseline 4/5",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\c1c3_multimode_memory\\results\\mqar16",
+   "reported": 4,
+   "measured": 4,
+   "status": "confirmed",
+   "note": "n=5, eval N=8 acc per seed [0.911, 0.762, 0.167, 0.819, 0.687]"
+  },
+  {
+   "id": "C07-c1",
+   "claim": "MQAR16 runs that learned: c1 0/5",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\c1c3_multimode_memory\\results\\mqar16",
+   "reported": 0,
+   "measured": 0,
+   "status": "confirmed",
+   "note": "n=5, eval N=8 acc per seed [0.118, 0.156, 0.105, 0.157, 0.141]"
+  },
+  {
+   "id": "C07-c3",
+   "claim": "MQAR16 runs that learned: c3 5/5",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\c1c3_multimode_memory\\results\\mqar16",
+   "reported": 5,
+   "measured": 5,
+   "status": "confirmed",
+   "note": "n=5, eval N=8 acc per seed [0.846, 0.868, 0.881, 0.973, 0.812]"
+  },
+  {
+   "id": "C07-c1c3",
+   "claim": "MQAR16 runs that learned: c1c3 3/5",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\c1c3_multimode_memory\\results\\mqar16",
+   "reported": 3,
+   "measured": 3,
+   "status": "confirmed",
+   "note": "n=5, eval N=8 acc per seed [0.997, 0.99, 0.14, 0.989, 0.113]"
+  },
+  {
+   "id": "C08-E0",
+   "claim": "controlled ~105K C1+C3 E0: final MQAR-8 top-1 on training symbols [0.02, 0.012, 0.008]",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\retrieval_c3_c1c3_transformer\\diag_c1c3\\controlled\\runs",
+   "reported": [
+    0.02,
+    0.012,
+    0.008
+   ],
+   "measured": [
+    0.02,
+    0.012,
+    0.008
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C08-E1",
+   "claim": "controlled ~105K C1+C3 E1: final MQAR-8 top-1 on training symbols [0.107, 0.009, 0.12]",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\retrieval_c3_c1c3_transformer\\diag_c1c3\\controlled\\runs",
+   "reported": [
+    0.107,
+    0.009,
+    0.12
+   ],
+   "measured": [
+    0.107,
+    0.009,
+    0.12
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C08-E3",
+   "claim": "controlled ~105K C1+C3 E3: final MQAR-8 top-1 on training symbols [0.018, 0.012, 0.009]",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\retrieval_c3_c1c3_transformer\\diag_c1c3\\controlled\\runs",
+   "reported": [
+    0.018,
+    0.012,
+    0.009
+   ],
+   "measured": [
+    0.018,
+    0.012,
+    0.009
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_phase128_hid-s0",
+   "claim": "WAEM phase_on_phase128_hid seed 0: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_phase128_hid",
+   "reported": [
+    0.1646,
+    0.7054,
+    0.0183
+   ],
+   "measured": [
+    0.1646,
+    0.7054,
+    0.0183
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_phase128_hid-s1",
+   "claim": "WAEM phase_on_phase128_hid seed 1: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_phase128_hid",
+   "reported": [
+    0.1574,
+    0.6982,
+    0.0139
+   ],
+   "measured": [
+    0.1574,
+    0.6982,
+    0.0139
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_phase128_hid-s2",
+   "claim": "WAEM phase_on_phase128_hid seed 2: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_phase128_hid",
+   "reported": [
+    0.0919,
+    0.6888,
+    0.0056
+   ],
+   "measured": [
+    0.0919,
+    0.6888,
+    0.0056
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_real256_hid-s0",
+   "claim": "WAEM phase_on_real256_hid seed 0: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_real256_hid",
+   "reported": [
+    0.3036,
+    0.936,
+    0.0078
+   ],
+   "measured": [
+    0.3036,
+    0.936,
+    0.0078
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_real256_hid-s1",
+   "claim": "WAEM phase_on_real256_hid seed 1: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_real256_hid",
+   "reported": [
+    0.3441,
+    0.9499,
+    0.0144
+   ],
+   "measured": [
+    0.3441,
+    0.9499,
+    0.0144
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_real256_hid-s2",
+   "claim": "WAEM phase_on_real256_hid seed 2: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_real256_hid",
+   "reported": [
+    0.3171,
+    0.9582,
+    0.0083
+   ],
+   "measured": [
+    0.3171,
+    0.9582,
+    0.0083
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_phase128_emb-s0",
+   "claim": "WAEM phase_on_phase128_emb seed 0: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_phase128_emb",
+   "reported": [
+    0.4672,
+    0.8207,
+    0.0144
+   ],
+   "measured": [
+    0.4672,
+    0.8207,
+    0.0144
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_phase128_emb-s1",
+   "claim": "WAEM phase_on_phase128_emb seed 1: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_phase128_emb",
+   "reported": [
+    0.4871,
+    0.848,
+    0.02
+   ],
+   "measured": [
+    0.4871,
+    0.848,
+    0.02
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C09-phase_on_phase128_emb-s2",
+   "claim": "WAEM phase_on_phase128_emb seed 2: exact/top-1/FAR on test_main as reported in metrics.json",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\waem\\phase_on_phase128_emb",
+   "reported": [
+    0.3429,
+    0.8417,
+    0.0017
+   ],
+   "measured": [
+    0.3429,
+    0.8417,
+    0.0017
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C10-A0",
+   "claim": "WAEM LM answering A0: 0% exact payload on test_main (3 seeds)",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\lm_eval\\A0",
+   "reported": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "measured": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C10-A-FT",
+   "claim": "WAEM LM answering A-FT: 0% exact payload on test_main (3 seeds)",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\lm_eval\\A-FT",
+   "reported": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "measured": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C10-C0",
+   "claim": "WAEM LM answering C0: 0% exact payload on test_main (3 seeds)",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\lm_eval\\C0",
+   "reported": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "measured": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C10-C-FT",
+   "claim": "WAEM LM answering C-FT: 0% exact payload on test_main (3 seeds)",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\runs\\lm_eval\\C-FT",
+   "reported": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "measured": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C11",
+   "claim": "WAEM attached (B) leaves LAMBADA passage perplexity identical to A0: 102.944 / 102.944 / max diff 0",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\results\\lm_preservation",
+   "reported": [
+    102.944,
+    102.944,
+    0.0
+   ],
+   "measured": [
+    102.944,
+    102.944,
+    0.0
+   ],
+   "status": "confirmed",
+   "note": ""
+  },
+  {
+   "id": "C12",
+   "claim": "LM gold-vs-competitor preference at chance (0.483-0.501) for A0, C0, A-FT s0, C-FT s0",
+   "source": "D:\\aryan\\jbrain_si\\JBRAIN_SI\\experiments\\waem_controlled_retrieval\\results\\audit\\lm_probes.json",
+   "reported": [
+    0.489,
+    0.483,
+    0.501,
+    0.484
+   ],
+   "measured": [
+    0.489,
+    0.483,
+    0.501,
+    0.484
+   ],
+   "status": "confirmed",
+   "note": ""
+  }
+ ]
+}

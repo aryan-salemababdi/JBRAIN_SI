@@ -1,0 +1,32 @@
+{
+ "val/seed0": {
+  "record_precision": 0.9725085910652921,
+  "record_recall": 0.9691780821917808,
+  "record_tp": 283,
+  "record_fp": 8,
+  "record_fn": 9,
+  "span_precision": 1.0,
+  "span_recall": 0.9984459984459985,
+  "intent_acc": 1.0
+ },
+ "test_id/seed0": {
+  "record_precision": 0.9908814589665653,
+  "record_recall": 0.9731343283582089,
+  "record_tp": 326,
+  "record_fp": 3,
+  "record_fn": 9,
+  "span_precision": 0.9992867332382311,
+  "span_recall": 0.9992867332382311,
+  "intent_acc": 1.0
+ },
+ "test_ood/seed0": {
+  "record_precision": 0.7283950617283951,
+  "record_recall": 0.7866666666666666,
+  "record_tp": 236,
+  "record_fp": 88,
+  "record_fn": 64,
+  "span_precision": 0.8481099656357388,
+  "span_recall": 0.9215832710978342,
+  "intent_acc": 0.9488272921108742
+ }
+}

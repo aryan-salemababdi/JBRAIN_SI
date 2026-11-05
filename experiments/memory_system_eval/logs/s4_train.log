@@ -1,0 +1,36 @@
+{'label': 'stage 4 training', 'disk_free_gb': 33.88, 'ram_available_gb': 13.88, 'vram_free_gb': 6.94, 'need': {'disk': 0.5, 'ram': 6, 'vram': 4}}
+features: 1369049 tokens in 150s
+gender val acc 0.8888888888888888
+== tagger
+  tagger lr=3e-04 best_val_loss=0.0038 epoch=1 (48s)
+  tagger lr=1e-03 best_val_loss=0.0242 epoch=1 (46s)
+  tagger lr=3e-03 best_val_loss=0.1809 epoch=4 (50s)
+  tagger lr=1e-04 best_val_loss=0.0025 epoch=1 (51s)
+  tagger lr=3e-05 best_val_loss=0.0016 epoch=6 (47s)
+  tagger lr=1e-05 best_val_loss=0.0019 epoch=7 (48s)
+   {0: {'best_epoch': 6, 'best_val_loss': 0.0016321947510839346, 'best_val_metric': 0.999597801778687, 'final_val_loss': 0.0016804762619257556, 'final_val_metric': 0.9996359412651907}, 1: {'best_epoch': 5, 'best_val_loss': 0.0018418946861239115, 'best_val_metric': 0.9996636790735572, 'final_val_loss': 0.002376695605770815, 'final_val_metric': 0.9996636790735572}, 2: {'best_epoch': 4, 'best_val_loss': 0.0020717810707602496, 'best_val_metric': 0.9996255395870534, 'final_val_loss': 0.002149560801056989, 'final_val_metric': 0.999667146299603}}
+== intent
+  intent lr=3e-04 best_val_loss=0.0002 epoch=7 (2s)
+  intent lr=1e-03 best_val_loss=0.0002 epoch=7 (2s)
+  intent lr=3e-03 best_val_loss=0.0003 epoch=6 (2s)
+   {0: {'best_epoch': 7, 'best_val_loss': 0.00022371449449565262, 'best_val_metric': 0.9999215602874756, 'final_val_loss': 0.00022371449449565262, 'final_val_metric': 0.9999215602874756}, 1: {'best_epoch': 7, 'best_val_loss': 0.00011663384066196159, 'best_val_metric': 0.9999215602874756, 'final_val_loss': 0.00011663384066196159, 'final_val_metric': 0.9999215602874756}, 2: {'best_epoch': 6, 'best_val_loss': 0.00014280155301094055, 'best_val_metric': 0.9999215602874756, 'final_val_loss': 0.0001442277425667271, 'final_val_metric': 0.9999215602874756}}
+== span_attr
+  span_attr lr=3e-04 best_val_loss=0.0073 epoch=5 (3s)
+  span_attr lr=1e-03 best_val_loss=0.0070 epoch=7 (3s)
+  span_attr lr=3e-03 best_val_loss=0.0079 epoch=5 (4s)
+   {0: {'best_epoch': 7, 'best_val_loss': 0.0069549246691167355, 'best_val_metric': 0.9975006580352783, 'final_val_loss': 0.0069549246691167355, 'final_val_metric': 0.9975006580352783}, 1: {'best_epoch': 2, 'best_val_loss': 0.007571283262223005, 'best_val_metric': 0.9972833395004272, 'final_val_loss': 0.03233110159635544, 'final_val_metric': 0.9932083487510681}, 2: {'best_epoch': 3, 'best_val_loss': 0.009029529057443142, 'best_val_metric': 0.9973376393318176, 'final_val_loss': 0.01645514741539955, 'final_val_metric': 0.9962509870529175}}
+== q_attr
+  q_attr lr=3e-04 best_val_loss=0.1517 epoch=5 (2s)
+  q_attr lr=1e-03 best_val_loss=0.1743 epoch=5 (2s)
+  q_attr lr=3e-03 best_val_loss=0.1596 epoch=0 (2s)
+  q_attr lr=1e-04 best_val_loss=0.1451 epoch=7 (2s)
+  q_attr lr=3e-05 best_val_loss=0.1634 epoch=7 (2s)
+   {0: {'best_epoch': 7, 'best_val_loss': 0.1450749933719635, 'best_val_metric': 0.9766190052032471, 'final_val_loss': 0.1450749933719635, 'final_val_metric': 0.9766190052032471}, 1: {'best_epoch': 7, 'best_val_loss': 0.15164758265018463, 'best_val_metric': 0.9747602939605713, 'final_val_loss': 0.15164758265018463, 'final_val_metric': 0.9747602939605713}, 2: {'best_epoch': 7, 'best_val_loss': 0.14443650841712952, 'best_val_metric': 0.9770103693008423, 'final_val_loss': 0.14443650841712952, 'final_val_metric': 0.9770103693008423}}
+== dense
+  dense lr=3e-04 best_val_loss=0.2420 epoch=7 (15s)
+  dense lr=1e-03 best_val_loss=0.3323 epoch=7 (15s)
+  dense lr=3e-03 best_val_loss=0.4499 epoch=7 (15s)
+  dense lr=1e-04 best_val_loss=0.2227 epoch=7 (15s)
+  dense lr=3e-05 best_val_loss=0.2609 epoch=7 (15s)
+   {0: {'best_epoch': 7, 'best_val_loss': 0.2226679305848445, 'best_val_metric': 0.9287105570705103, 'final_val_loss': 0.2226679305848445, 'final_val_metric': 0.9287105570705103}, 1: {'best_epoch': 5, 'best_val_loss': 0.22200685273747084, 'best_val_metric': 0.9266329048175561, 'final_val_loss': 0.22838720225292108, 'final_val_metric': 0.9223477470458382}, 2: {'best_epoch': 5, 'best_val_loss': 0.22965398211350938, 'best_val_metric': 0.9262433450201273, 'final_val_loss': 0.2416888631056956, 'final_val_metric': 0.923126866640696}}
+done 753.8

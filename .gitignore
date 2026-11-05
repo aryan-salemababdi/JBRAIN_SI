@@ -10,3 +10,5 @@ demos
 data
 *.pth
 .cache
+experiments/memory_system_eval/features/
+experiments/memory_system_eval/models/

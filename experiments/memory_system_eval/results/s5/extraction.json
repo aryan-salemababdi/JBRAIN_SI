@@ -1,0 +1,92 @@
+{
+ "val/seed0": {
+  "record_precision": 0.9812911725955205,
+  "record_recall": 0.9671471237501623,
+  "record_tp": 7448,
+  "record_fp": 142,
+  "record_fn": 253,
+  "span_precision": 0.9986468598323283,
+  "span_recall": 0.9987937628714327,
+  "intent_acc": 0.9999215317011927
+ },
+ "test_id/seed0": {
+  "record_precision": 0.9885442141845797,
+  "record_recall": 0.9810935104752172,
+  "record_tp": 7680,
+  "record_fp": 89,
+  "record_fn": 148,
+  "span_precision": 0.9989472760768489,
+  "span_recall": 0.9986552460022803,
+  "intent_acc": 1.0
+ },
+ "test_ood/seed0": {
+  "record_precision": 0.743694451116983,
+  "record_recall": 0.7914110429447853,
+  "record_tp": 6192,
+  "record_fp": 2134,
+  "record_fn": 1632,
+  "span_precision": 0.8586987901215127,
+  "span_recall": 0.9248402962292951,
+  "intent_acc": 0.9445811830091306
+ },
+ "val/seed1": {
+  "record_precision": 0.9811767803080164,
+  "record_recall": 0.9679262433450201,
+  "record_tp": 7454,
+  "record_fp": 143,
+  "record_fn": 247,
+  "span_precision": 0.9996762134636329,
+  "span_recall": 0.9991762283024419,
+  "intent_acc": 0.9999215317011927
+ },
+ "test_id/seed1": {
+  "record_precision": 0.9872586872586873,
+  "record_recall": 0.979943791517629,
+  "record_tp": 7671,
+  "record_fp": 99,
+  "record_fn": 157,
+  "span_precision": 0.9993565746373421,
+  "span_recall": 0.9989183500453124,
+  "intent_acc": 1.0
+ },
+ "test_ood/seed1": {
+  "record_precision": 0.736671469740634,
+  "record_recall": 0.7841257668711656,
+  "record_tp": 6135,
+  "record_fp": 2193,
+  "record_fn": 1689,
+  "span_precision": 0.8533728182818806,
+  "span_recall": 0.9204307761885918,
+  "intent_acc": 0.946486701071854
+ },
+ "val/seed2": {
+  "record_precision": 0.9813034891375905,
+  "record_recall": 0.9677963900792105,
+  "record_tp": 7453,
+  "record_fp": 142,
+  "record_fn": 248,
+  "span_precision": 0.9992644246329478,
+  "span_recall": 0.9991762283024419,
+  "intent_acc": 0.9999215317011927
+ },
+ "test_id/seed2": {
+  "record_precision": 0.9882988298829883,
+  "record_recall": 0.9818599897802759,
+  "record_tp": 7686,
+  "record_fp": 91,
+  "record_fn": 142,
+  "span_precision": 0.9992104108787835,
+  "span_recall": 0.9988598824801941,
+  "intent_acc": 0.999921666927777
+ },
+ "test_ood/seed2": {
+  "record_precision": 0.7375150784077201,
+  "record_recall": 0.781441717791411,
+  "record_tp": 6114,
+  "record_fp": 2176,
+  "record_fn": 1710,
+  "span_precision": 0.8577862735342638,
+  "span_recall": 0.9259426762394709,
+  "intent_acc": 0.9447399761810242
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "_provenance": {
+  "preregistered": "HIER/system/seed0 calibration, results/s5/metrics.json (Stage 5, preregistered system)",
+  "optimized": "HIER with the post-hoc pronoun fallback, fallback=True/seed0 calibration, results/s9/posthoc_pronoun_fallback.json (selected on val only)",
+  "rule": "WAEM rule on MemBench-H val: FAR <= 1%, substitution <= 1%, maximise exact; scores are logits of p(attribute|q) of the best existing (entity, attribute) record; 'ibf' additionally requires IBF resonance >= the analytic Rayleigh threshold"
+ },
+ "preregistered": {
+  "hier": {
+   "tau": -1.0010024741621644,
+   "delta": 0.7581433699095157
+  },
+  "ibf": {
+   "tau": -1.0010024741621644,
+   "delta": 0.7581433699095157
+  },
+  "pronoun_fallback": false
+ },
+ "optimized": {
+  "hier": {
+   "tau": -0.5515253233029552,
+   "delta": 0.002837309241956021
+  },
+  "ibf": {
+   "tau": -0.5515253233029552,
+   "delta": 0.002837309241956021
+  },
+  "pronoun_fallback": true
+ }
+}

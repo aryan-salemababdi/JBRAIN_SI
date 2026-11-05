@@ -1,0 +1,155 @@
+{'label': 'stage 6', 'disk_free_gb': 33.23, 'ram_available_gb': 10.06, 'vram_free_gb': 6.94, 'need': {'disk': 1, 'ram': 4, 'vram': 3}}
+  gpu density 512: 26s
+  gpu density 2048: 45s
+  gpu density 4096: 74s
+  gpu density 8192: 119s
+  gpu density 16384: 213s
+Traceback (most recent call last):
+  File "D:\aryan\jbrain_si\JBRAIN_SI\experiments\memory_system_eval\exp\s6_longseq.py", line 263, in <module>
+    main()
+    ~~~~^^
+  File "D:\aryan\jbrain_si\JBRAIN_SI\experiments\memory_system_eval\exp\s6_longseq.py", line 208, in main
+    G[(regime, L)] = gpu_part(regime, L, model, heads, norm, enc, nl_any, emb_raw)
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "D:\aryan\jbrain_si\JBRAIN_SI\experiments\memory_system_eval\exp\s6_longseq.py", line 76, in gpu_part
+    Xl, ol, ll = pack_features(model, [it["ids"] for it in L_items], norm=norm)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aryan\jbrain_si\JBRAIN_SI\experiments\memory_system_eval\src\heads.py", line 32, in pack_features
+    enc = J.encode_batch(model, seqs[s:s + chunk], capture=LAYERS, out_dtype=torch.float32, truncate=truncate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "D:\aryan\jbrain_si\JBRAIN_SI\experiments\memory_system_eval\src\jbrain_frozen.py", line 92, in encode_batch
+    t = torch.full((len(idx), L), pad_id, dtype=torch.long)
+                 ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aryan\jbrain_si\JBRAIN_SI\experiments\memory_system_eval\src\jbrain_frozen.py", line 45, in run_layers
+    for i, layer in enumerate(model.layers):
+                ^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\aryan\jbrain_si\JBRAIN_SI\jbrain_model\block.py", line 34, in forward
+    x = x + self.ffn(self.ln2(x))
+            ~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\aryan\jbrain_si\JBRAIN_SI\jbrain_model\block.py", line 20, in forward
+    return self.w2(self.act(self.w1(x)))
+                   ~~~~~~~~^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\activation.py", line 432, in forward
+    return F.silu(input, inplace=self.inplace)
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\functional.py", line 2380, in silu
+    return torch._C._nn.silu(input)
+           ~~~~~~~~~~~~~~~~~^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 192.00 MiB. GPU 0 has a total capacity of 8.00 GiB of which 1.03 GiB is free. 6.00 GiB allowed; Of the allocated memory 4.73 GiB is allocated by PyTorch, and 1.16 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+{'label': 'stage 6', 'disk_free_gb': 33.0, 'ram_available_gb': 13.62, 'vram_free_gb': 6.94, 'need': {'disk': 1, 'ram': 4, 'vram': 3}}
+D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+  gpu density 32768: 428s
+  gpu fixed 512: 28s
+  gpu fixed 2048: 43s
+  gpu fixed 4096: 63s
+  gpu fixed 8192: 96s
+  gpu fixed 16384: 177s
+  gpu fixed 32768: 338s
+  cpu density 512: 8s
+  cpu density 2048: 12s
+  cpu density 4096: 18s
+  cpu density 8192: 27s
+  cpu density 16384: 47s
+  cpu density 32768: 94s
+  cpu fixed 512: 9s
+  cpu fixed 2048: 9s
+  cpu fixed 4096: 10s
+  cpu fixed 8192: 11s
+  cpu fixed 16384: 14s
+  cpu fixed 32768: 17s
+== density
+  HIER             oracle        0.998 0.998 1.000 1.000 0.996 0.998
+  HIER             system-local  0.981 0.969 0.990 0.975 0.968 0.983
+  HIER             system-stream 0.976 0.954 0.972 0.955 0.967 0.974
+  Hybrid-feat      oracle        0.998 0.998 1.000 1.000 0.996 0.998
+  Hybrid-feat      system-local  0.983 0.975 0.994 0.986 0.972 0.991
+  Hybrid-feat      system-stream 0.978 0.962 0.976 0.960 0.970 0.982
+  IBF-hash         oracle        0.998 0.993 0.975 0.915 0.906 0.922
+  IBF-hash         system-local  0.981 0.959 0.953 0.913 0.887 0.865
+  IBF-hash         system-stream 0.976 0.951 0.912 0.862 0.836 0.868
+  IBF-hash-analytic oracle        0.998 0.993 0.980 0.945 0.881 0.927
+  IBF-hash-analytic system-local  0.981 0.959 0.965 0.933 0.915 0.893
+  IBF-hash-analytic system-stream 0.976 0.951 0.927 0.890 0.868 0.891
+  IBF-soft         oracle        0.998 0.993 0.992 0.970 0.956 0.958
+  IBF-soft         system-local  0.981 0.961 0.983 0.967 0.945 0.964
+  IBF-soft         system-stream 0.976 0.954 0.965 0.947 0.930 0.948
+  IBF-soft-analytic oracle        0.998 0.993 0.980 0.941 0.881 0.927
+  IBF-soft-analytic system-local  0.981 0.959 0.965 0.933 0.915 0.891
+  IBF-soft-analytic system-stream 0.976 0.951 0.927 0.890 0.868 0.891
+  IBF-soft-single  oracle        0.998 0.941 0.478 0.083 0.013 0.003
+  IBF-soft-single  system-local  0.981 0.911 0.517 0.130 0.015 0.000
+  IBF-soft-single  system-stream 0.976 0.896 0.468 0.118 0.023 0.011
+  IBF-soft-single-analytic oracle        0.998 0.877 0.300 0.030 0.005 0.000
+  IBF-soft-single-analytic system-local  0.981 0.857 0.378 0.050 0.010 0.000
+  IBF-soft-single-analytic system-stream 0.976 0.824 0.316 0.028 0.002 0.000
+  JBRAIN-only      none          0.000 0.000 0.000 0.000 0.000 0.000
+  ORACLE           oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  ORACLE           system-local  0.983 0.982 1.000 0.995 0.985 0.995
+  ORACLE           system-stream 0.978 0.967 0.982 0.975 0.983 0.987
+  S2L              oracle        0.708 0.682 0.713 0.752 0.698 0.770
+  S2L              system-local  0.694 0.672 0.713 0.750 0.690 0.765
+  S2L              system-stream 0.683 0.656 0.697 0.723 0.679 0.749
+  S3               oracle        0.107 0.352 0.432 0.448 0.420 0.448
+  S3               system-local  0.064 0.476 0.727 0.748 0.792 0.805
+  S3               system-stream 0.066 0.505 0.725 0.742 0.790 0.797
+  VEL-feat         oracle        0.998 0.998 1.000 1.000 0.996 0.998
+  VEL-feat         system-local  0.983 0.976 0.993 0.982 0.969 0.987
+  VEL-feat         system-stream 0.978 0.961 0.974 0.961 0.967 0.978
+== fixed
+  HIER             oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  HIER             system-local  0.971 0.985 0.962 0.990 0.965 0.973
+  HIER             system-stream 0.958 0.964 0.943 0.980 0.940 0.936
+  Hybrid-feat      oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  Hybrid-feat      system-local  0.977 0.994 0.974 0.990 0.980 0.977
+  Hybrid-feat      system-stream 0.963 0.973 0.957 0.980 0.960 0.943
+  IBF-hash         oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  IBF-hash         system-local  0.971 0.985 0.962 0.990 0.965 0.973
+  IBF-hash         system-stream 0.958 0.964 0.943 0.977 0.938 0.934
+  IBF-hash-analytic oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  IBF-hash-analytic system-local  0.971 0.985 0.962 0.990 0.965 0.973
+  IBF-hash-analytic system-stream 0.958 0.964 0.943 0.980 0.940 0.934
+  IBF-soft         oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  IBF-soft         system-local  0.971 0.985 0.962 0.990 0.965 0.973
+  IBF-soft         system-stream 0.958 0.964 0.943 0.980 0.940 0.936
+  IBF-soft-analytic oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  IBF-soft-analytic system-local  0.971 0.985 0.962 0.990 0.965 0.973
+  IBF-soft-analytic system-stream 0.958 0.964 0.943 0.980 0.940 0.934
+  IBF-soft-single  oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  IBF-soft-single  system-local  0.971 0.985 0.962 0.990 0.965 0.973
+  IBF-soft-single  system-stream 0.958 0.964 0.943 0.980 0.940 0.936
+  IBF-soft-single-analytic oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  IBF-soft-single-analytic system-local  0.971 0.985 0.962 0.990 0.965 0.973
+  IBF-soft-single-analytic system-stream 0.958 0.964 0.943 0.980 0.940 0.934
+  JBRAIN-only      none          0.000 0.000 0.000 0.000 0.000 0.000
+  ORACLE           oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  ORACLE           system-local  0.988 1.000 0.987 0.993 0.990 0.980
+  ORACLE           system-stream 0.975 0.982 0.968 0.983 0.967 0.948
+  S2L              oracle        0.690 0.667 0.670 0.647 0.635 0.670
+  S2L              system-local  0.683 0.667 0.666 0.645 0.627 0.660
+  S2L              system-stream 0.671 0.632 0.648 0.635 0.614 0.628
+  S3               oracle        0.120 0.155 0.092 0.125 0.130 0.117
+  S3               system-local  0.087 0.115 0.073 0.107 0.106 0.083
+  S3               system-stream 0.101 0.151 0.129 0.165 0.207 0.220
+  VEL-feat         oracle        1.000 1.000 1.000 1.000 1.000 1.000
+  VEL-feat         system-local  0.985 0.998 0.976 0.993 0.982 0.978
+  VEL-feat         system-stream 0.973 0.974 0.957 0.982 0.958 0.941

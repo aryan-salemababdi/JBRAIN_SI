@@ -1,0 +1,15 @@
+== test_id
+  S1      exact 0.234  FAR 0.000  top1 0.234  binding_err 0.000  {'alias': 0.367, 'canon': 1.0, 'multi_pron': 0.0, 'para': 0.0, 'partial': 0.0, 'pronoun': 0.0}
+  S2      exact 0.361  FAR 0.006  top1 0.361  binding_err 0.000  {'alias': 0.406, 'canon': 1.0, 'multi_pron': 0.33, 'para': 0.143, 'partial': 0.0, 'pronoun': 0.393}
+  S2L     exact 0.661  FAR 0.046  top1 0.661  binding_err 0.004  {'alias': 1.0, 'canon': 1.0, 'multi_pron': 0.795, 'para': 0.197, 'partial': 0.0, 'pronoun': 1.0}
+  S3      exact 0.209  FAR 0.010  top1 0.834  binding_err 0.000  {'alias': 0.243, 'canon': 0.587, 'multi_pron': 0.157, 'para': 0.073, 'partial': 0.027, 'pronoun': 0.223}
+  S4      exact 0.065  FAR 0.014  top1 0.354  binding_err 0.004  {'alias': 0.108, 'canon': 0.165, 'multi_pron': 0.007, 'para': 0.025, 'partial': 0.026, 'pronoun': 0.017}
+  ORACLE  exact 1.000  FAR 0.000  top1 1.000  binding_err 0.000  {'alias': 1.0, 'canon': 1.0, 'multi_pron': 1.0, 'para': 1.0, 'partial': 1.0, 'pronoun': 1.0}
+== test_ood
+  S1      exact 0.000  FAR 0.000  top1 0.000  binding_err 0.000  {'alias': 0.0, 'canon': 0.0, 'generic_ood': 0.0, 'multi_pron': 0.0, 'para': 0.0, 'partial': 0.0, 'pronoun': 0.0}
+  S2      exact 0.207  FAR 0.003  top1 0.207  binding_err 0.000  {'alias': 0.0, 'canon': 0.877, 'generic_ood': 0.363, 'multi_pron': 0.316, 'para': 0.0, 'partial': 0.0, 'pronoun': 0.378}
+  S2L     exact 0.381  FAR 0.031  top1 0.381  binding_err 0.002  {'alias': 0.0, 'canon': 0.877, 'generic_ood': 0.873, 'multi_pron': 0.763, 'para': 0.049, 'partial': 0.0, 'pronoun': 1.0}
+  S3      exact 0.114  FAR 0.010  top1 0.646  binding_err 0.000  {'alias': 0.002, 'canon': 0.494, 'generic_ood': 0.188, 'multi_pron': 0.165, 'para': 0.002, 'partial': 0.023, 'pronoun': 0.196}
+  S4      exact 0.019  FAR 0.009  top1 0.229  binding_err 0.007  {'alias': 0.046, 'canon': 0.026, 'generic_ood': 0.017, 'multi_pron': 0.01, 'para': 0.002, 'partial': 0.006, 'pronoun': 0.004}
+  ORACLE  exact 1.000  FAR 0.000  top1 1.000  binding_err 0.000  {'alias': 1.0, 'canon': 1.0, 'generic_ood': 1.0, 'multi_pron': 1.0, 'para': 1.0, 'partial': 1.0, 'pronoun': 1.0}
+calib {'S3': {'tau': 7.063648479532853, 'delta': 2.533541814308947, 'val_far': 0.009520031733439112, 'val_sub': 0.0002597065316192702, 'val_exact': 0.2097130242825607, 'feasible': True}, 'S4': {'tau': 0.88, 'delta': 0.03, 'val_far': 0.009123363744545815, 'val_sub': 0.0036358914426697832, 'val_exact': 0.04869497467861317, 'feasible': True}} us/query {'S1': 29.37, 'S2': 5.63, 'S2L': 72.76, 'S3': 32.53, 'S4': 28.81}

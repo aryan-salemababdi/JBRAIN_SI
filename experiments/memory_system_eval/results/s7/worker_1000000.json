@@ -1,0 +1,113 @@
+{
+ "N": 1000000,
+ "buckets": 15625,
+ "build_seconds": 222.36329579999438,
+ "insert_per_s": 4497.145072446913,
+ "ivf_build_seconds": 20.660313499975018,
+ "disk_bytes": {
+  "dense.f16": 536871040,
+  "ibf.c64": 128000128,
+  "ivf.npz": 9057516,
+  "mem.sqlite": 201695232,
+  "mem.sqlite-shm": 32768,
+  "mem.sqlite-wal": 0
+ },
+ "rss_baseline_mb": 387.49609375,
+ "rss_before_open_mb": 2108.80078125,
+ "rss_after_open_mb": 2687.65625,
+ "systems": {
+  "DICT": {
+   "p50_ms": 0.002500019036233425,
+   "p95_ms": 0.005300005432218313,
+   "mean_ms": 0.0028335827876294754,
+   "first_pass_p95_ms": 0.010374988778494292,
+   "exact": 1.0,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.0,
+   "read_bytes_per_query": 0.0,
+   "rss_mb_after": 3039.30859375,
+   "n_queries": 533,
+   "n_answerable": 400
+  },
+  "HIER": {
+   "p50_ms": 0.29880000511184335,
+   "p95_ms": 0.4753799876198172,
+   "mean_ms": 0.32120694119769794,
+   "first_pass_p95_ms": 1.484195003286004,
+   "exact": 1.0,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.0,
+   "read_bytes_per_query": 15776.900562851783,
+   "rss_mb_after": 3039.359375,
+   "n_queries": 533,
+   "n_answerable": 400
+  },
+  "IBF-soft": {
+   "p50_ms": 4.283500020392239,
+   "p95_ms": 7.121999969240276,
+   "mean_ms": 4.148555161081093,
+   "first_pass_p95_ms": 9.558474997174926,
+   "exact": 0.9,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.0,
+   "read_bytes_per_query": 341996.7879924953,
+   "rss_mb_after": 3044.8359375,
+   "n_queries": 533,
+   "n_answerable": 400
+  },
+  "BM25": {
+   "p50_ms": 52.515699993819,
+   "p95_ms": 511.4364000270143,
+   "mean_ms": 138.635306765721,
+   "first_pass_p95_ms": 569.254719975288,
+   "exact": 0.72,
+   "binding_or_wrong_record_rate": 0.28,
+   "far": 1.0,
+   "read_bytes_per_query": 1129849.2631578948,
+   "rss_mb_after": 3044.88671875,
+   "n_queries": 133,
+   "n_answerable": 100
+  },
+  "VEL": {
+   "p50_ms": 826.8869999446906,
+   "p95_ms": 1398.437299998477,
+   "mean_ms": 825.9643127824901,
+   "first_pass_p95_ms": 1468.4238649788308,
+   "exact": 1.0,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.0,
+   "read_bytes_per_query": 5085692.15037594,
+   "rss_mb_after": 3533.5625,
+   "n_queries": 133,
+   "n_answerable": 100
+  },
+  "VEL-IVF": {
+   "p50_ms": 66.67839997680858,
+   "p95_ms": 592.1094199758954,
+   "mean_ms": 170.43942481163833,
+   "first_pass_p95_ms": 588.2488949981052,
+   "exact": 1.0,
+   "binding_or_wrong_record_rate": 0.0,
+   "far": 0.0,
+   "read_bytes_per_query": 5085692.15037594,
+   "rss_mb_after": 3533.578125,
+   "n_queries": 133,
+   "n_answerable": 100
+  }
+ },
+ "dict_rss_mb": 351.5234375,
+ "update": {
+  "n": 100,
+  "p50_ms": 2.9194499948062003,
+  "p95_ms": 4.598610021639615,
+  "correct": 1.0
+ },
+ "delete": {
+  "n": 100,
+  "p50_ms": 3.4643500111997128,
+  "p95_ms": 5.4598100105067715,
+  "correct": 1.0
+ },
+ "rss_peak_mb": 4395.7578125,
+ "rss_end_mb": 3534.796875
+}

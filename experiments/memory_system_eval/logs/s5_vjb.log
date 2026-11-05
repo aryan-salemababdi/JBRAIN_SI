@@ -1,0 +1,18 @@
+{'label': 'V-JB', 'disk_free_gb': 32.72, 'ram_available_gb': 13.37, 'vram_free_gb': 6.94, 'need': {'disk': 0.2, 'ram': 4, 'vram': 3}}
+unique pair texts 218437
+D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+{'label': 'V-JB', 'disk_free_gb': 32.72, 'ram_available_gb': 13.19, 'vram_free_gb': 6.94, 'need': {'disk': 0.2, 'ram': 4, 'vram': 3}}
+unique pair texts 218437
+D:\aryan\JBRAIN\jbr_cuda_env\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+  V-JB lr=3e-04 best_val_loss=0.3532 epoch=2
+  V-JB lr=1e-03 best_val_loss=0.3656 epoch=5
+  V-JB lr=3e-03 best_val_loss=0.3797 epoch=2
+  V-JB lr=1e-04 best_val_loss=0.3830 epoch=1
+seed 0 oracle: ID exact 0.125 FAR 0.012 | OOD exact 0.038 FAR 0.003
+seed 0 system: ID exact 0.125 FAR 0.010 | OOD exact 0.028 FAR 0.004
+seed 1 oracle: ID exact 0.148 FAR 0.006 | OOD exact 0.041 FAR 0.008
+seed 1 system: ID exact 0.141 FAR 0.006 | OOD exact 0.032 FAR 0.009
+seed 2 oracle: ID exact 0.120 FAR 0.006 | OOD exact 0.059 FAR 0.003
+seed 2 system: ID exact 0.120 FAR 0.005 | OOD exact 0.044 FAR 0.005

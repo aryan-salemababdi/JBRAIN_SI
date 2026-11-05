@@ -1,0 +1,55 @@
+seed 0 oracle: 121s
+   S2L                ID exact 0.661 FAR 0.046 bind_err 0.0038 | OOD exact 0.381 FAR 0.031 bind_err 0.0023
+   HIER               ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.717 FAR 0.053 bind_err 0.0395
+   IBF-hash           ID exact 0.998 FAR 0.000 bind_err 0.0000 | OOD exact 0.688 FAR 0.039 bind_err 0.0353
+   IBF-soft           ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.646 FAR 0.024 bind_err 0.0219
+   IBF-soft-analytic  ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.646 FAR 0.024 bind_err 0.0221
+   VEL-feat           ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.732 FAR 0.055 bind_err 0.0390
+   Hybrid-feat        ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.716 FAR 0.055 bind_err 0.0403
+   ORACLE             ID exact 1.000 FAR 0.000 bind_err 0.0000 | OOD exact 1.000 FAR 0.000 bind_err 0.0000
+seed 0 system: 149s
+   S2L                ID exact 0.650 FAR 0.047 bind_err 0.0049 | OOD exact 0.311 FAR 0.050 bind_err 0.0101
+   HIER               ID exact 0.971 FAR 0.002 bind_err 0.0001 | OOD exact 0.559 FAR 0.087 bind_err 0.0362
+   IBF-hash           ID exact 0.971 FAR 0.002 bind_err 0.0001 | OOD exact 0.546 FAR 0.078 bind_err 0.0372
+   IBF-soft           ID exact 0.971 FAR 0.002 bind_err 0.0001 | OOD exact 0.511 FAR 0.062 bind_err 0.0240
+   IBF-soft-analytic  ID exact 0.971 FAR 0.002 bind_err 0.0001 | OOD exact 0.511 FAR 0.062 bind_err 0.0242
+   VEL-feat           ID exact 0.976 FAR 0.005 bind_err 0.0001 | OOD exact 0.562 FAR 0.080 bind_err 0.0339
+   Hybrid-feat        ID exact 0.978 FAR 0.007 bind_err 0.0001 | OOD exact 0.565 FAR 0.087 bind_err 0.0406
+   ORACLE             ID exact 0.981 FAR 0.000 bind_err 0.0000 | OOD exact 0.791 FAR 0.000 bind_err 0.0000
+seed 1 oracle: 118s
+   S2L                ID exact 0.661 FAR 0.046 bind_err 0.0038 | OOD exact 0.381 FAR 0.031 bind_err 0.0023
+   HIER               ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.711 FAR 0.052 bind_err 0.0396
+   IBF-hash           ID exact 0.998 FAR 0.000 bind_err 0.0000 | OOD exact 0.685 FAR 0.039 bind_err 0.0364
+   IBF-soft           ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.640 FAR 0.027 bind_err 0.0231
+   IBF-soft-analytic  ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.640 FAR 0.027 bind_err 0.0233
+   VEL-feat           ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.720 FAR 0.057 bind_err 0.0386
+   Hybrid-feat        ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.713 FAR 0.058 bind_err 0.0415
+   ORACLE             ID exact 1.000 FAR 0.000 bind_err 0.0000 | OOD exact 1.000 FAR 0.000 bind_err 0.0000
+seed 1 system: 121s
+   S2L                ID exact 0.650 FAR 0.049 bind_err 0.0063 | OOD exact 0.310 FAR 0.055 bind_err 0.0138
+   HIER               ID exact 0.970 FAR 0.003 bind_err 0.0001 | OOD exact 0.560 FAR 0.094 bind_err 0.0455
+   IBF-hash           ID exact 0.970 FAR 0.003 bind_err 0.0001 | OOD exact 0.538 FAR 0.081 bind_err 0.0401
+   IBF-soft           ID exact 0.970 FAR 0.003 bind_err 0.0001 | OOD exact 0.502 FAR 0.066 bind_err 0.0262
+   IBF-soft-analytic  ID exact 0.970 FAR 0.003 bind_err 0.0001 | OOD exact 0.502 FAR 0.066 bind_err 0.0262
+   VEL-feat           ID exact 0.975 FAR 0.005 bind_err 0.0003 | OOD exact 0.555 FAR 0.085 bind_err 0.0371
+   Hybrid-feat        ID exact 0.976 FAR 0.007 bind_err 0.0003 | OOD exact 0.550 FAR 0.087 bind_err 0.0419
+   ORACLE             ID exact 0.980 FAR 0.000 bind_err 0.0000 | OOD exact 0.784 FAR 0.000 bind_err 0.0000
+seed 2 oracle: 121s
+   S2L                ID exact 0.661 FAR 0.046 bind_err 0.0038 | OOD exact 0.381 FAR 0.031 bind_err 0.0023
+   HIER               ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.755 FAR 0.069 bind_err 0.0475
+   IBF-hash           ID exact 0.998 FAR 0.000 bind_err 0.0000 | OOD exact 0.706 FAR 0.037 bind_err 0.0376
+   IBF-soft           ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.661 FAR 0.026 bind_err 0.0228
+   IBF-soft-analytic  ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.661 FAR 0.026 bind_err 0.0228
+   VEL-feat           ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.743 FAR 0.053 bind_err 0.0403
+   Hybrid-feat        ID exact 0.999 FAR 0.000 bind_err 0.0000 | OOD exact 0.734 FAR 0.053 bind_err 0.0412
+   ORACLE             ID exact 1.000 FAR 0.000 bind_err 0.0000 | OOD exact 1.000 FAR 0.000 bind_err 0.0000
+seed 2 system: 127s
+   S2L                ID exact 0.650 FAR 0.046 bind_err 0.0054 | OOD exact 0.309 FAR 0.057 bind_err 0.0120
+   HIER               ID exact 0.972 FAR 0.001 bind_err 0.0001 | OOD exact 0.566 FAR 0.095 bind_err 0.0414
+   IBF-hash           ID exact 0.972 FAR 0.001 bind_err 0.0001 | OOD exact 0.553 FAR 0.086 bind_err 0.0394
+   IBF-soft           ID exact 0.972 FAR 0.001 bind_err 0.0001 | OOD exact 0.517 FAR 0.072 bind_err 0.0240
+   IBF-soft-analytic  ID exact 0.972 FAR 0.001 bind_err 0.0001 | OOD exact 0.517 FAR 0.072 bind_err 0.0240
+   VEL-feat           ID exact 0.978 FAR 0.004 bind_err 0.0001 | OOD exact 0.560 FAR 0.088 bind_err 0.0357
+   Hybrid-feat        ID exact 0.978 FAR 0.004 bind_err 0.0001 | OOD exact 0.566 FAR 0.093 bind_err 0.0396
+   ORACLE             ID exact 0.982 FAR 0.000 bind_err 0.0000 | OOD exact 0.781 FAR 0.000 bind_err 0.0000
+done 758

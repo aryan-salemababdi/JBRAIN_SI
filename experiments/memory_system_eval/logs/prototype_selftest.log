@@ -1,0 +1,11 @@
+loaded J-BRAIN + heads on cpu in 3.2s; profile preregistered; store at C:\Users\ARYA\AppData\Local\Temp\jbrain_mem___1in_1x
+  [assert] 'I had coffee with Bastian Oyelaran this morning. He told me his email is lantern61@posteo.net.' -> [{'op': 'skipped (unresolved entity)', 'attr': 'email'}]
+  [XX] "What's his email?" (turn: "I'm about to call Bastian Oyelaran.") -> UNKNOWN  conf=0.0 entity=None attr=None (36 ms)
+  [ok] "What is Petra Novakova's email?" -> UNKNOWN  conf=0.0 entity=None attr=None (26 ms)
+self-test: 10/11 correct
+loaded J-BRAIN + heads on cpu in 3.2s; profile optimized; store at C:\Users\ARYA\AppData\Local\Temp\jbrain_mem_673qu9to
+  [assert] 'I had coffee with Bastian Oyelaran this morning. He told me his email is lantern61@posteo.net.' -> [{'op': 'insert', 'entity': 'Bastian Oyelaran', 'attr': 'email', 'value': 'lantern61@posteo.net'}]
+  [ok] "What's his email?" (turn: "I'm about to call Bastian Oyelaran.") -> lantern61@posteo.net  conf=0.9997 entity=Bastian Oyelaran attr=email (40 ms)
+        evidence: 'I had coffee with Bastian Oyelaran this morning. He told me his email is lantern61@posteo.net.'
+  [ok] "What is Petra Novakova's email?" -> UNKNOWN  conf=0.0 entity=None attr=None (27 ms)
+self-test: 11/11 correct
